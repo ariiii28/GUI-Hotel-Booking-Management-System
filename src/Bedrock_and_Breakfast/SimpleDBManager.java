@@ -27,7 +27,7 @@ private static final String URL = "jdbc:derby://localhost:1527/Bedrock and Break
     }
 
     public static void main(String[] args) {
-        DBManager dbManager = new DBManager();
+        SimpleDBManager dbManager = new SimpleDBManager();
         System.out.println(dbManager.getConnection());
     }
 
