@@ -4,6 +4,11 @@
  */
 package Bedrock_and_Breakfast;
 
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ariannemasinading
@@ -34,7 +39,7 @@ public class LoginForm extends javax.swing.JFrame {
         UsernameInput = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         PasswordInput = new javax.swing.JPasswordField();
-        Login = new javax.swing.JButton();
+        LoginButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,7 +74,6 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel2.setText("Username:");
 
         UsernameInput.setBackground(new java.awt.Color(255, 255, 255));
-        UsernameInput.setText("Username");
         UsernameInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsernameInputActionPerformed(evt);
@@ -81,14 +85,13 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel3.setText("Password:");
 
         PasswordInput.setBackground(new java.awt.Color(255, 255, 255));
-        PasswordInput.setText("Password");
 
-        Login.setBackground(new java.awt.Color(204, 204, 204));
-        Login.setForeground(new java.awt.Color(0, 0, 0));
-        Login.setText("Login");
-        Login.addActionListener(new java.awt.event.ActionListener() {
+        LoginButton.setBackground(new java.awt.Color(204, 204, 204));
+        LoginButton.setForeground(new java.awt.Color(0, 0, 0));
+        LoginButton.setText("Login");
+        LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginActionPerformed(evt);
+                LoginButtonActionPerformed(evt);
             }
         });
 
@@ -100,7 +103,7 @@ public class LoginForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(130, 130, 130)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
@@ -124,7 +127,7 @@ public class LoginForm extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(PasswordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
-                .addComponent(Login)
+                .addComponent(LoginButton)
                 .addContainerGap(74, Short.MAX_VALUE))
         );
 
@@ -146,9 +149,54 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_UsernameInputActionPerformed
 
-    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
-        //important 
-    }//GEN-LAST:event_LoginActionPerformed
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+
+        PreparedStatement ps;
+        ResultSet rs;
+
+        // Retrieve username from the UsernameInput field
+        String username = UsernameInput.getText();
+        String password = String.valueOf(PasswordInput.getPassword());
+
+        if (username.trim().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Enter Your Username to Login", "Empty Username", 2);
+        } else if (password.trim().equals("")) {
+
+            JOptionPane.showMessageDialog(rootPane, "Enter Your Password to Login", "Empty Password", 2);
+        } else {
+
+            SimpleDBManager dbmanager = new SimpleDBManager();
+
+            String selectQuery = "SELECT * FROM 'USERS' WHERE 'USERNAME'=? AND 'PASSWORD'=?";
+            try {
+                
+                //this is the line that connects it- but its not connecting unfortunately
+                ps = dbmanager.getConnection().prepareStatement(selectQuery);
+
+                ps.setString(1, username);
+                ps.setString(1, password);
+                
+                rs = ps.executeQuery();
+                
+                if(rs.next()) {
+                    // if this user exits open the main form and close the login form
+                    MainForm mainform = new MainForm();
+                    mainform.setVisible(true);
+                    mainform.pack();
+                    mainform.setLocationRelativeTo(null);
+                    
+                    this.dispose();
+                } else {
+                    //if the user enters the wrong information
+                    JOptionPane.showMessageDialog(rootPane, "Wrong UserName of Password", "Login Error", 2);
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }//GEN-LAST:event_LoginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,7 +234,7 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Login;
+    private javax.swing.JButton LoginButton;
     private javax.swing.JPasswordField PasswordInput;
     private javax.swing.JTextField UsernameInput;
     private javax.swing.JLabel jLabel1;

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Bedrock_and_Breakfast;
+
 /**
  *
  * @author diyatopiwala
@@ -17,8 +18,8 @@ import java.sql.Statement;
 public final class SimpleDBManager {
 
     private static final String USER_NAME = "ADMIN1"; //your DB username
-private static final String PASSWORD = "Admin123"; //your DB password
-private static final String URL = "jdbc:derby://localhost:1527/Bedrock and Breakfast";  //url of the DB host
+    private static final String PASSWORD = "Admin123"; //your DB password
+    private static final String URL = "jdbc:derby://localhost:1527/Bedrock and Breakfast";  //url of the DB host
 
     Connection conn;
 
@@ -38,7 +39,7 @@ private static final String URL = "jdbc:derby://localhost:1527/Bedrock and Break
     //Establish connection
     public void establishConnection() {
         conn = null;
-        
+
         try {
             conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
             if (conn != null) {
