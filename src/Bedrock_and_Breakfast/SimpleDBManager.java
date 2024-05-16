@@ -3,35 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Bedrock_and_Breakfast;
-
 /**
  *
  * @author diyatopiwala
  */
-/*
- * The programs are designed for PDC paper
- */
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public final class SimpleDBManager {
 
-    /**
-     * If you try to connect the database on the server, you must start the
-     * server first. Meanwhile, you need to import 'derbyclient.jar' to the
-     * libraries.
-     */
-    //    private static final String URL = "jdbc:derby://localhost:1527/BookStoreDB";
-    /**
-     * If you try to connect the database embedded in the project, you must stop
-     * the server first. Meanwhile, you need to import 'derby.jar' to the
-     * libraries.
-     */
     private static final String USER_NAME = "ADMIN1"; //your DB username
-    private static final String PASSWORD = "Admin123"; //your DB password
-    private static final String URL = "jdbc:derby://localhost:1527/Bedrock and Breakfast";  //url of the DB host
+private static final String PASSWORD = "Admin123"; //your DB password
+private static final String URL = "jdbc:derby://localhost:1527/Bedrock and Breakfast";  //url of the DB host
 
     Connection conn;
 
@@ -40,7 +27,7 @@ public final class SimpleDBManager {
     }
 
     public static void main(String[] args) {
-        SimpleDBManager dbManager = new SimpleDBManager();
+        DBManager dbManager = new DBManager();
         System.out.println(dbManager.getConnection());
     }
 
@@ -50,12 +37,25 @@ public final class SimpleDBManager {
 
     //Establish connection
     public void establishConnection() {
-        if (this.conn == null) {
-            try {
-                conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-                System.out.println(URL + " Get Connected Successfully ....");
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
+        conn = null;
+        
+        try {
+            conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            if (conn != null) {
+                System.out.println("Connection established successfully!");
+            }
+        } catch (SQLException e) {
+            System.err.println("Failed to establish connection!");
+            e.printStackTrace();
+        } finally {
+            // Closing the connection
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    System.err.println("Error closing connection!");
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -70,4 +70,34 @@ public final class SimpleDBManager {
         }
     }
 
+    public ResultSet queryDB(String sql) {
+
+        Connection connection = this.conn;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return resultSet;
+    }
+
+    public void updateDB(String sql) {
+
+        Connection connection = this.conn;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }
