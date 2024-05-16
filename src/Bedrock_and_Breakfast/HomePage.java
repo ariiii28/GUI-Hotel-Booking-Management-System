@@ -4,21 +4,16 @@
  */
 package Bedrock_and_Breakfast;
 
-import javax.swing.JFrame;
-
 /**
  *
  * @author ariannemasinading
  */
-public class MainForm extends javax.swing.JFrame {
+public class HomePage extends javax.swing.JFrame {
 
     /**
-     * Creates new form MainForm
+     * Creates new form HomePage
      */
-    
-    MainForm mainForm = new MainForm();
-    
-    public MainForm() {
+    public HomePage() {
         initComponents();
     }
 
@@ -32,8 +27,8 @@ public class MainForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        SignupButton = new javax.swing.JButton();
         LoginButton = new javax.swing.JButton();
-        SignUpButton = new javax.swing.JButton();
         StaffLoginButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -41,27 +36,16 @@ public class MainForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        SignupButton.setBackground(new java.awt.Color(204, 204, 204));
+        SignupButton.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        SignupButton.setForeground(new java.awt.Color(0, 0, 0));
+        SignupButton.setText("Sign Up");
 
         LoginButton.setBackground(new java.awt.Color(204, 204, 204));
-        LoginButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        LoginButton.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         LoginButton.setForeground(new java.awt.Color(0, 0, 0));
         LoginButton.setText("Login");
-        LoginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginButtonActionPerformed(evt);
-            }
-        });
-
-        SignUpButton.setBackground(new java.awt.Color(204, 204, 204));
-        SignUpButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        SignUpButton.setForeground(new java.awt.Color(0, 0, 0));
-        SignUpButton.setText("Sign Up");
-        SignUpButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SignUpButtonActionPerformed(evt);
-            }
-        });
 
         StaffLoginButton.setBackground(new java.awt.Color(204, 204, 204));
         StaffLoginButton.setForeground(new java.awt.Color(0, 0, 0));
@@ -76,7 +60,7 @@ public class MainForm extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Bedrock & Breakfast");
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Welcome to");
 
@@ -85,26 +69,22 @@ public class MainForm extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(103, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(jLabel2)))
-                .addContainerGap(101, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(StaffLoginButton)
-                .addGap(25, 25, 25))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(326, Short.MAX_VALUE)
-                    .addComponent(SignUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(91, 91, 91)))
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(SignupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(111, 111, 111))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(StaffLoginButton)
+                            .addGap(25, 25, 25)))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(268, 268, 268)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,15 +94,12 @@ public class MainForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(LoginButton)
-                .addGap(138, 138, 138)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SignupButton)
+                    .addComponent(LoginButton))
+                .addGap(152, 152, 152)
                 .addComponent(StaffLoginButton)
                 .addGap(18, 18, 18))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(199, Short.MAX_VALUE)
-                    .addComponent(SignUpButton)
-                    .addGap(179, 179, 179)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,24 +116,9 @@ public class MainForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LoginButtonActionPerformed
-
-    private void SignUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SignUpButtonActionPerformed
-
     private void StaffLoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StaffLoginButtonMouseClicked
-
         LoginForm loginForm = new LoginForm();
-
-        mainForm.getContentPane().removeAll();
-
-        mainForm.getContentPane().add(loginForm);
-
-        mainForm.revalidate();
-        mainForm.repaint();
+        loginForm.setVisible(true);
     }//GEN-LAST:event_StaffLoginButtonMouseClicked
 
     /**
@@ -176,27 +138,27 @@ public class MainForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainForm().setVisible(true);
+                new HomePage().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton LoginButton;
-    javax.swing.JButton SignUpButton;
+    javax.swing.JButton SignupButton;
     javax.swing.JButton StaffLoginButton;
     javax.swing.JLabel jLabel1;
     javax.swing.JLabel jLabel2;
