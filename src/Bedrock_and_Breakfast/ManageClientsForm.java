@@ -4,13 +4,12 @@
  */
 package Bedrock_and_Breakfast;
 
-
 import java.awt.Color;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
-        
 /**
  *
  * @author ariannemasinading
@@ -20,14 +19,17 @@ public class ManageClientsForm extends javax.swing.JFrame {
     /**
      * Creates new form ManageClientsForm
      */
-    
     CLIENTS client = new CLIENTS();
-    
+
     public ManageClientsForm() {
         initComponents();
-        
+
         Border border = BorderFactory.createMatteBorder(2, 2, 2, 2, Color.white);
         ClearFieldsButton.setBorder(border);
+        
+        //populate the jtable
+        client.fillClientJTable(ClientsTable);
+       
     }
 
     /**
@@ -103,11 +105,11 @@ public class ManageClientsForm extends javax.swing.JFrame {
 
         jTextField_ID.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_ID.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jTextField_ID.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField_ID.setForeground(new java.awt.Color(51, 51, 51));
 
         jTextField_FirstNAME.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_FirstNAME.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jTextField_FirstNAME.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField_FirstNAME.setForeground(new java.awt.Color(51, 51, 51));
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -115,7 +117,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
 
         jTextField_LastNAME.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_LastNAME.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jTextField_LastNAME.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField_LastNAME.setForeground(new java.awt.Color(51, 51, 51));
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -123,7 +125,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
 
         jTextField_PhoneNumber.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_PhoneNumber.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jTextField_PhoneNumber.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField_PhoneNumber.setForeground(new java.awt.Color(51, 51, 51));
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -131,7 +133,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
 
         jTextField_Email.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_Email.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jTextField_Email.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField_Email.setForeground(new java.awt.Color(51, 51, 51));
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -143,16 +145,14 @@ public class ManageClientsForm extends javax.swing.JFrame {
         ClientsTable.setForeground(new java.awt.Color(0, 0, 0));
         ClientsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
-
+                "ID", "First Name", "Last Name", "Phone", "Email"
             }
         ));
         ClientsTable.setCellSelectionEnabled(true);
+        ClientsTable.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(ClientsTable);
         ClientsTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
@@ -160,6 +160,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
         AddNewClient_Button.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
         AddNewClient_Button.setForeground(new java.awt.Color(0, 0, 0));
         AddNewClient_Button.setText("Add New Client");
+        AddNewClient_Button.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         AddNewClient_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AddNewClient_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +172,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
         EditButton.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
         EditButton.setForeground(new java.awt.Color(0, 0, 0));
         EditButton.setText("Edit");
+        EditButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         EditButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         EditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,6 +184,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
         RemoveButton.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
         RemoveButton.setForeground(new java.awt.Color(0, 0, 0));
         RemoveButton.setText("Remove");
+        RemoveButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         RemoveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         RemoveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +196,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
         ClearFieldsButton.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
         ClearFieldsButton.setForeground(new java.awt.Color(0, 0, 0));
         ClearFieldsButton.setText("Clear Fields");
+        ClearFieldsButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ClearFieldsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ClearFieldsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,9 +234,9 @@ public class ManageClientsForm extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(AddNewClient_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(RemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(RemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel6)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -299,18 +303,24 @@ public class ManageClientsForm extends javax.swing.JFrame {
 
     private void AddNewClient_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNewClient_ButtonActionPerformed
         // add a new client
-        
+
         //get data from input
         String fname = jTextField_FirstNAME.getText();
         String lname = jTextField_LastNAME.getText();
         String email = jTextField_Email.getText();
         String phone = jTextField_PhoneNumber.getText();
-        
-        if (client.addClient(fname, lname, phone, email)) {
-            System.out.println("YES");
+
+        if (fname.trim().equals("") || lname.trim().equals("") || phone.trim().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Required Fields -> First/Last Name + Phone Number", "Empty Fields", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            System.out.println("NO");
+            if (client.addClient(fname, lname, phone, email)) {
+                JOptionPane.showMessageDialog(rootPane, "New Client Added Successfully", "Add Client", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Client Added Successfully", "Add Client Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
+
+
     }//GEN-LAST:event_AddNewClient_ButtonActionPerformed
 
     private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed

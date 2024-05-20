@@ -10,6 +10,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.util.*;
 import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -25,7 +27,7 @@ public class CLIENTS {
         
         PreparedStatement ps;
         ResultSet rs;
-        String addQuery = "INSERT INTO CLIENTS (FIRST_NAME, LAST_NAME, PHONE, EMAIL) VALUES (?,?,?,?)";
+        String addQuery = "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, PHONE, EMAIL) VALUES (?,?,?,?)";
         
         try {
             ps = dbManager.getConnection().prepareStatement(addQuery);
@@ -52,6 +54,37 @@ public class CLIENTS {
     
     //create a function to remove the selected client
     
-    //create a function to return a list of all clients
+    //create a function to populate the jtable with all the clients in the database
     
+    public void fillClientJTable(JTable table) {
+        PreparedStatement ps;
+        ResultSet rs;
+        String selectQuery = "SELECT * FROM CLIENTS";
+        
+
+        try {
+            ps = dbManager.getConnection().prepareStatement(selectQuery);
+            rs = ps.executeQuery();
+            
+            DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+            tableModel.setRowCount(0);
+            
+            Object[] row;
+            
+            while (rs.next()) {
+                row = new Object[5];
+                row[0] = rs.getInt(1);
+                row[1] = rs.getInt(2);
+                row[2] = rs.getInt(3);
+                row[3] = rs.getInt(4);
+                row[4] = rs.getInt(5);
+                tableModel.addRow(row);
+            }
+            tableModel.fireTableDataChanged();
+        } catch (SQLException ex) {
+            Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+     
 }
