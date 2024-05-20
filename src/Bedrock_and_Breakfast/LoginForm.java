@@ -35,6 +35,7 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        BackButtonLogintoHome = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         UsernameInput = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -52,12 +53,23 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("USER LOGIN");
 
+        BackButtonLogintoHome.setBackground(new java.awt.Color(249, 229, 229));
+        BackButtonLogintoHome.setForeground(new java.awt.Color(0, 0, 0));
+        BackButtonLogintoHome.setText("< Back");
+        BackButtonLogintoHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BackButtonLogintoHomeMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(BackButtonLogintoHome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(209, 209, 209))
         );
@@ -67,6 +79,10 @@ public class LoginForm extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(15, 15, 15))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BackButtonLogintoHome)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -179,11 +195,10 @@ public class LoginForm extends javax.swing.JFrame {
                 rs = ps.executeQuery();
                 
                 if(rs.next()) {
-                    // if this user exits open the main form and close the login form
-//                    MainForm mainform = new MainForm();
-//                    mainform.setVisible(true);
-//                    mainform.pack();
-//                    mainform.setLocationRelativeTo(null);
+                    HomePage homePage = new HomePage();
+                    homePage.setVisible(true);
+                    homePage.pack();
+                    homePage.setLocationRelativeTo(null);
                     
                     this.dispose();
                 } else {
@@ -197,6 +212,11 @@ public class LoginForm extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
+
+    private void BackButtonLogintoHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonLogintoHomeMouseClicked
+        HomePage homePage = new HomePage();
+        homePage.setVisible(true);
+    }//GEN-LAST:event_BackButtonLogintoHomeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -234,6 +254,7 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButtonLogintoHome;
     private javax.swing.JButton LoginButton;
     private javax.swing.JPasswordField PasswordInput;
     private javax.swing.JTextField UsernameInput;
