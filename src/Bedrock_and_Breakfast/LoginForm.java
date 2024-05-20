@@ -62,6 +62,7 @@ public class LoginForm extends javax.swing.JFrame {
         BackButtonLogintoHome.setBackground(new java.awt.Color(204, 204, 204));
         BackButtonLogintoHome.setForeground(new java.awt.Color(0, 0, 0));
         BackButtonLogintoHome.setText("< Back");
+        BackButtonLogintoHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BackButtonLogintoHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BackButtonLogintoHomeMouseClicked(evt);
@@ -132,6 +133,7 @@ public class LoginForm extends javax.swing.JFrame {
         LoginButton.setBackground(new java.awt.Color(204, 204, 204));
         LoginButton.setForeground(new java.awt.Color(0, 0, 0));
         LoginButton.setText("Login");
+        LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginButtonActionPerformed(evt);

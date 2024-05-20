@@ -43,15 +43,18 @@ public class HomePage extends javax.swing.JFrame {
         SignupButton.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         SignupButton.setForeground(new java.awt.Color(0, 0, 0));
         SignupButton.setText("Sign Up");
+        SignupButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         LoginButton.setBackground(new java.awt.Color(204, 204, 204));
         LoginButton.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         LoginButton.setForeground(new java.awt.Color(0, 0, 0));
         LoginButton.setText("Login");
+        LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         StaffLoginButton.setBackground(new java.awt.Color(204, 204, 204));
         StaffLoginButton.setForeground(new java.awt.Color(0, 0, 0));
         StaffLoginButton.setText("Staff Login");
+        StaffLoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         StaffLoginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 StaffLoginButtonMouseClicked(evt);

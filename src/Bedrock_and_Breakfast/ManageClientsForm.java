@@ -4,6 +4,13 @@
  */
 package Bedrock_and_Breakfast;
 
+
+import java.awt.Color;
+import javax.swing.border.Border;
+import javax.swing.BorderFactory;
+import javax.swing.border.LineBorder;
+
+        
 /**
  *
  * @author ariannemasinading
@@ -13,8 +20,14 @@ public class ManageClientsForm extends javax.swing.JFrame {
     /**
      * Creates new form ManageClientsForm
      */
+    
+    CLIENTS client = new CLIENTS();
+    
     public ManageClientsForm() {
         initComponents();
+        
+        Border border = BorderFactory.createMatteBorder(2, 2, 2, 2, Color.white);
+        ClearFieldsButton.setBorder(border);
     }
 
     /**
@@ -52,6 +65,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 28)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -67,13 +81,11 @@ public class ManageClientsForm extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(391, 391, 391)
+                .addGap(401, 401, 401)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel4)))
-                .addContainerGap(419, Short.MAX_VALUE))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,7 +94,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
@@ -127,25 +139,28 @@ public class ManageClientsForm extends javax.swing.JFrame {
 
         ClientsTable.setAutoCreateRowSorter(true);
         ClientsTable.setBackground(new java.awt.Color(255, 255, 255));
+        ClientsTable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ClientsTable.setForeground(new java.awt.Color(0, 0, 0));
         ClientsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         ClientsTable.setCellSelectionEnabled(true);
         jScrollPane1.setViewportView(ClientsTable);
+        ClientsTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         AddNewClient_Button.setBackground(new java.awt.Color(255, 255, 255));
         AddNewClient_Button.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
         AddNewClient_Button.setForeground(new java.awt.Color(0, 0, 0));
         AddNewClient_Button.setText("Add New Client");
+        AddNewClient_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AddNewClient_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddNewClient_ButtonActionPerformed(evt);
@@ -156,6 +171,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
         EditButton.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
         EditButton.setForeground(new java.awt.Color(0, 0, 0));
         EditButton.setText("Edit");
+        EditButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         EditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditButtonActionPerformed(evt);
@@ -166,6 +182,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
         RemoveButton.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
         RemoveButton.setForeground(new java.awt.Color(0, 0, 0));
         RemoveButton.setText("Remove");
+        RemoveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         RemoveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RemoveButtonActionPerformed(evt);
@@ -176,6 +193,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
         ClearFieldsButton.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
         ClearFieldsButton.setForeground(new java.awt.Color(0, 0, 0));
         ClearFieldsButton.setText("Clear Fields");
+        ClearFieldsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ClearFieldsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ClearFieldsButtonActionPerformed(evt);
@@ -222,9 +240,9 @@ public class ManageClientsForm extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(ClearFieldsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,7 +280,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
                             .addComponent(RemoveButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ClearFieldsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -280,7 +298,19 @@ public class ManageClientsForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddNewClient_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNewClient_ButtonActionPerformed
-        // TODO add your handling code here:
+        // add a new client
+        
+        //get data from input
+        String fname = jTextField_FirstNAME.getText();
+        String lname = jTextField_LastNAME.getText();
+        String email = jTextField_Email.getText();
+        String phone = jTextField_PhoneNumber.getText();
+        
+        if (client.addClient(fname, lname, phone, email)) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
     }//GEN-LAST:event_AddNewClient_ButtonActionPerformed
 
     private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed
