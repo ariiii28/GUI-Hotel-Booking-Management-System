@@ -8,7 +8,6 @@ package Bedrock_and_Breakfast;
  *
  * @author diyatopiwala
  */
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -48,16 +47,6 @@ public final class SimpleDBManager {
         } catch (SQLException e) {
             System.err.println("Failed to establish connection!");
             e.printStackTrace();
-        } finally {
-            // Closing the connection
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    System.err.println("Error closing connection!");
-                    e.printStackTrace();
-                }
-            }
         }
     }
 

@@ -8,6 +8,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.util.*;
 
 /**
  *
@@ -170,31 +171,29 @@ public class LoginForm extends javax.swing.JFrame {
         PreparedStatement ps;
         ResultSet rs;
 
-        // Retrieve username from the UsernameInput field
+        //get the username and password
         String username = UsernameInput.getText();
         String password = String.valueOf(PasswordInput.getPassword());
 
-        if (username.trim().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Enter Your Username to Login", "Empty Username", 2);
+        //check if username/password is empty
+        if(username.trim().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Enter your Username Login", "Empty Username", 2);
         } else if (password.trim().equals("")) {
-
-            JOptionPane.showMessageDialog(rootPane, "Enter Your Password to Login", "Empty Password", 2);
+            JOptionPane.showMessageDialog(rootPane, "Enter your Password to Login", "Empty Password", 2);
         } else {
-
-            SimpleDBManager dbmanager = new SimpleDBManager();
-
-            String selectQuery = "SELECT * FROM 'USERS' WHERE 'USERNAME'=? AND 'PASSWORD'=?";
+           SimpleDBManager dbManager = new SimpleDBManager();
+           
+           String selectQuery = "SELECT * FROM USERS WHERE USERNAME = ? AND PASSWORD = ?";
             try {
+                ps = dbManager.getConnection().prepareStatement(selectQuery);
                 
-                //this is the line that connects it- but its not connecting unfortunately
-                ps = dbmanager.getConnection().prepareStatement(selectQuery);
-
                 ps.setString(1, username);
-                ps.setString(1, password);
+                ps.setString(2, password);
                 
                 rs = ps.executeQuery();
                 
-                if(rs.next()) {
+                if (rs.next()) {
+                    //if this user exits open the HomePage and close the login form
                     HomePage homePage = new HomePage();
                     homePage.setVisible(true);
                     homePage.pack();
@@ -203,13 +202,12 @@ public class LoginForm extends javax.swing.JFrame {
                     this.dispose();
                 } else {
                     //if the user enters the wrong information
-                    JOptionPane.showMessageDialog(rootPane, "Wrong UserName of Password", "Login Error", 2);
+                    JOptionPane.showMessageDialog(rootPane, "Wrong Username or Password", "Login Error", 2);
+                    
                 }
-                
             } catch (SQLException ex) {
                 Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
 
@@ -246,10 +244,8 @@ public class LoginForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginForm().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new LoginForm().setVisible(true);
         });
     }
 
