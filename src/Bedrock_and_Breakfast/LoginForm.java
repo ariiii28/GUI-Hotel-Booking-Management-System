@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.util.*;
+import javax.swing.JFrame;
 
 /**
  *
@@ -21,6 +22,8 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public LoginForm() {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -37,6 +40,7 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         BackButtonLogintoHome = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         UsernameInput = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -47,14 +51,15 @@ public class LoginForm extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(244, 223, 223));
+        jPanel2.setForeground(new java.awt.Color(248, 225, 225));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 22)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("USER LOGIN");
 
-        BackButtonLogintoHome.setBackground(new java.awt.Color(249, 229, 229));
+        BackButtonLogintoHome.setBackground(new java.awt.Color(204, 204, 204));
         BackButtonLogintoHome.setForeground(new java.awt.Color(0, 0, 0));
         BackButtonLogintoHome.setText("< Back");
         BackButtonLogintoHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -63,23 +68,37 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 28)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Bedrock & Breakfast");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BackButtonLogintoHome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(BackButtonLogintoHome)
+                        .addGap(209, 570, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(193, 193, 193))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(209, 209, 209))
+                .addGap(251, 251, 251))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(15, 15, 15))
+                .addGap(21, 21, 21))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackButtonLogintoHome)
@@ -91,6 +110,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel2.setText("Username:");
 
         UsernameInput.setBackground(new java.awt.Color(255, 255, 255));
+        UsernameInput.setText("testuser");
         UsernameInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsernameInputActionPerformed(evt);
@@ -102,6 +122,12 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel3.setText("Password:");
 
         PasswordInput.setBackground(new java.awt.Color(255, 255, 255));
+        PasswordInput.setText("password");
+        PasswordInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordInputActionPerformed(evt);
+            }
+        });
 
         LoginButton.setBackground(new java.awt.Color(204, 204, 204));
         LoginButton.setForeground(new java.awt.Color(0, 0, 0));
@@ -135,7 +161,7 @@ public class LoginForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
+                .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(UsernameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,7 +171,7 @@ public class LoginForm extends javax.swing.JFrame {
                     .addComponent(PasswordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addComponent(LoginButton)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -194,10 +220,11 @@ public class LoginForm extends javax.swing.JFrame {
                 
                 if (rs.next()) {
                     //if this user exits open the HomePage and close the login form
-                    HomePage homePage = new HomePage();
-                    homePage.setVisible(true);
-                    homePage.pack();
-                    homePage.setLocationRelativeTo(null);
+                    Manage manage = new Manage();
+                    manage.setVisible(true);
+                    manage.pack();
+                    manage.setLocationRelativeTo(null);
+                    manage.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     
                     this.dispose();
                 } else {
@@ -214,7 +241,13 @@ public class LoginForm extends javax.swing.JFrame {
     private void BackButtonLogintoHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonLogintoHomeMouseClicked
         HomePage homePage = new HomePage();
         homePage.setVisible(true);
+        homePage.pack();
+        homePage.setLocationRelativeTo(null);
     }//GEN-LAST:event_BackButtonLogintoHomeMouseClicked
+
+    private void PasswordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordInputActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,6 +290,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JProgressBar jProgressBar1;

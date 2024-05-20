@@ -4,6 +4,8 @@
  */
 package Bedrock_and_Breakfast;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author ariannemasinading
@@ -119,6 +121,9 @@ public class HomePage extends javax.swing.JFrame {
     private void StaffLoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StaffLoginButtonMouseClicked
         LoginForm loginForm = new LoginForm();
         loginForm.setVisible(true);
+        loginForm.pack();
+        loginForm.setLocationRelativeTo(null);
+        loginForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_StaffLoginButtonMouseClicked
 
     /**
