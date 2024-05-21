@@ -4,6 +4,7 @@
  */
 package Bedrock_and_Breakfast;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -17,8 +18,11 @@ public class HomePage extends javax.swing.JFrame {
      */
     public HomePage() {
         initComponents();
+        // change icon when you run java file
+        ImageIcon logoicon = new ImageIcon("/PDC-Assignment-2/Images for PDC/logo.png");
+        setIconImage(logoicon.getImage());
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
