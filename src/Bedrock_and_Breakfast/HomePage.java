@@ -45,18 +45,20 @@ public class HomePage extends javax.swing.JFrame {
 
         SignupButton.setBackground(new java.awt.Color(204, 204, 204));
         SignupButton.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        SignupButton.setForeground(new java.awt.Color(0, 0, 0));
         SignupButton.setText("Sign Up");
         SignupButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         LoginButton.setBackground(new java.awt.Color(204, 204, 204));
         LoginButton.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        LoginButton.setForeground(new java.awt.Color(0, 0, 0));
         LoginButton.setText("Login");
         LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginButtonActionPerformed(evt);
+            }
+        });
 
         StaffLoginButton.setBackground(new java.awt.Color(204, 204, 204));
-        StaffLoginButton.setForeground(new java.awt.Color(0, 0, 0));
         StaffLoginButton.setText("Staff Login");
         StaffLoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         StaffLoginButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -66,11 +68,9 @@ public class HomePage extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Bedrock & Breakfast");
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Welcome to");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -132,6 +132,10 @@ public class HomePage extends javax.swing.JFrame {
         loginForm.setLocationRelativeTo(null);
         loginForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_StaffLoginButtonMouseClicked
+
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LoginButtonActionPerformed
 
     /**
      * @param args the command line arguments

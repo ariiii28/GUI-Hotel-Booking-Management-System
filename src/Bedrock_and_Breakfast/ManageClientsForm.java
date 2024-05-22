@@ -9,6 +9,7 @@ import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +20,8 @@ public class ManageClientsForm extends javax.swing.JFrame {
     /**
      * Creates new form ManageClientsForm
      */
+    
+    //calls the clients class
     CLIENTS client = new CLIENTS();
 
     public ManageClientsForm() {
@@ -26,10 +29,9 @@ public class ManageClientsForm extends javax.swing.JFrame {
 
         Border border = BorderFactory.createMatteBorder(2, 2, 2, 2, Color.white);
         ClearFieldsButton.setBorder(border);
-        
+
         //populate the jtable
         client.fillClientJTable(ClientsTable);
-       
     }
 
     /**
@@ -315,12 +317,12 @@ public class ManageClientsForm extends javax.swing.JFrame {
         } else {
             if (client.addClient(fname, lname, phone, email)) {
                 JOptionPane.showMessageDialog(rootPane, "New Client Added Successfully", "Add Client", JOptionPane.INFORMATION_MESSAGE);
+                
+                client.fillClientJTable(ClientsTable);
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Client Added Successfully", "Add Client Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-
-
     }//GEN-LAST:event_AddNewClient_ButtonActionPerformed
 
     private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed

@@ -60,31 +60,30 @@ public class CLIENTS {
         PreparedStatement ps;
         ResultSet rs;
         String selectQuery = "SELECT * FROM CLIENTS";
-        
 
         try {
             ps = dbManager.getConnection().prepareStatement(selectQuery);
             rs = ps.executeQuery();
-            
+
             DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
             tableModel.setRowCount(0);
-            
+
             Object[] row;
-            
+
             while (rs.next()) {
                 row = new Object[5];
-                row[0] = rs.getInt(1);
-                row[1] = rs.getInt(2);
-                row[2] = rs.getInt(3);
-                row[3] = rs.getInt(4);
-                row[4] = rs.getInt(5);
+                // Assuming column indices start from 1
+                row[0] = rs.getInt(1); // ID
+                row[1] = rs.getString(2); // First Name
+                row[2] = rs.getString(3); // Last Name
+                row[3] = rs.getString(4); // Phone Number
+                row[4] = rs.getString(5); // Email
                 tableModel.addRow(row);
             }
             tableModel.fireTableDataChanged();
         } catch (SQLException ex) {
             Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
      
 }
