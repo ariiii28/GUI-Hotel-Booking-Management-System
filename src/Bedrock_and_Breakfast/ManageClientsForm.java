@@ -332,7 +332,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
 
                 client.fillClientJTable(ClientsTable);
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Client Added Successfully", "Add Client Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Client Added Failed", "Add Client Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_AddNewClient_ButtonActionPerformed
@@ -349,7 +349,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
         if (fname.trim().equals("") || lname.trim().equals("") || phone.trim().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Required Fields -> First/Last Name + Phone Number", "Empty Fields", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            if (client.editClient(id, fname, lname, phone, email)) {
+            if (client.editClient(id, fname, lname, email, phone)) {
                 JOptionPane.showMessageDialog(rootPane, "Client Updated Successfully", "Update Client", JOptionPane.INFORMATION_MESSAGE);
                 // Refresh the JTable data
                 client.fillClientJTable(ClientsTable);
