@@ -20,7 +20,6 @@ public class ManageClientsForm extends javax.swing.JFrame {
     /**
      * Creates new form ManageClientsForm
      */
-    
     //calls the clients class
     CLIENTS client = new CLIENTS();
 
@@ -150,14 +149,24 @@ public class ManageClientsForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "First Name", "Last Name", "Phone", "Email"
+                "ID", "First Name", "Last Name", "Email", "Phone"
             }
         )
-        {public boolean cellEdit(int row, int column) {return false;}}
+        {
+            public boolean isCellEditable(int row, int column) {
+                return false; // All cells are not editable
+            }
+        }
     );
-    ClientsTable.setEnabled(false);
+    ClientsTable.setColumnSelectionAllowed(true);
     ClientsTable.setGridColor(new java.awt.Color(0, 0, 0));
+    ClientsTable.setSelectionBackground(new java.awt.Color(204, 204, 255));
     ClientsTable.setShowGrid(true);
+    ClientsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            ClientsTableMouseClicked(evt);
+        }
+    });
     jScrollPane1.setViewportView(ClientsTable);
     ClientsTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
@@ -312,15 +321,15 @@ public class ManageClientsForm extends javax.swing.JFrame {
         //get data from input
         String fname = jTextField_FirstNAME.getText();
         String lname = jTextField_LastNAME.getText();
-        String email = jTextField_Email.getText();
         String phone = jTextField_PhoneNumber.getText();
+        String email = jTextField_Email.getText();
 
         if (fname.trim().equals("") || lname.trim().equals("") || phone.trim().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Required Fields -> First/Last Name + Phone Number", "Empty Fields", JOptionPane.INFORMATION_MESSAGE);
         } else {
             if (client.addClient(fname, lname, phone, email)) {
                 JOptionPane.showMessageDialog(rootPane, "New Client Added Successfully", "Add Client", JOptionPane.INFORMATION_MESSAGE);
-                
+
                 client.fillClientJTable(ClientsTable);
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Client Added Successfully", "Add Client Error", JOptionPane.ERROR_MESSAGE);
@@ -329,16 +338,82 @@ public class ManageClientsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_AddNewClient_ButtonActionPerformed
 
     private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed
-        // TODO add your handling code here:
+
+        try {
+        int id = Integer.parseInt(jTextField_ID.getText());
+        String fname = jTextField_FirstNAME.getText();
+        String lname = jTextField_LastNAME.getText();
+        String phone = jTextField_PhoneNumber.getText();
+        String email = jTextField_Email.getText();
+
+        if (fname.trim().equals("") || lname.trim().equals("") || phone.trim().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Required Fields -> First/Last Name + Phone Number", "Empty Fields", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            if (client.editClient(id, fname, lname, phone, email)) {
+                JOptionPane.showMessageDialog(rootPane, "Client Updated Successfully", "Update Client", JOptionPane.INFORMATION_MESSAGE);
+                // Refresh the JTable data
+                client.fillClientJTable(ClientsTable);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Client Update Failed", "Update Client Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(rootPane, "Invalid Client ID", "ID Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_EditButtonActionPerformed
 
     private void RemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveButtonActionPerformed
-        // TODO add your handling code here:
+        // Get the ID of the client to be removed
+        int id;
+        try {
+            id = Integer.parseInt(jTextField_ID.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(rootPane, "Please Enter a Valid Client ID", "Invalid ID", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        // Confirm the removal action
+        int confirm = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to remove this client?", "Remove Client", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            // Remove the client and update the JTable
+            if (client.removeClient(id)) {
+                JOptionPane.showMessageDialog(rootPane, "Client Deleted Successfully", "Delete Client", JOptionPane.INFORMATION_MESSAGE);
+
+                // Clear fields after deletion
+                ClearFieldsButtonActionPerformed(null);
+
+                // Refresh the JTable to show updated data
+                client.fillClientJTable(ClientsTable);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Client Deletion Failed", "Delete Client Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_RemoveButtonActionPerformed
 
     private void ClearFieldsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearFieldsButtonActionPerformed
-        // TODO add your handling code here:
+
+        jTextField_ID.setText("");
+        jTextField_FirstNAME.setText("");
+        jTextField_LastNAME.setText("");
+        jTextField_PhoneNumber.setText("");
+        jTextField_Email.setText("");
     }//GEN-LAST:event_ClearFieldsButtonActionPerformed
+
+    private void ClientsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClientsTableMouseClicked
+        // to display the selected row in the textfield
+
+        //display the jtable model
+        DefaultTableModel model = (DefaultTableModel) ClientsTable.getModel();
+
+        //get the selected row in the index
+        int rowIndex = ClientsTable.getSelectedRow();
+
+        jTextField_ID.setText(model.getValueAt(rowIndex, 0).toString());
+        jTextField_FirstNAME.setText(model.getValueAt(rowIndex, 1).toString());
+        jTextField_LastNAME.setText(model.getValueAt(rowIndex, 2).toString());
+        jTextField_PhoneNumber.setText(model.getValueAt(rowIndex, 3).toString());
+        jTextField_Email.setText(model.getValueAt(rowIndex, 4).toString());
+    }//GEN-LAST:event_ClientsTableMouseClicked
 
     /**
      * @param args the command line arguments

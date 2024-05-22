@@ -13,49 +13,80 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author ariannemasinading
  */
 public class CLIENTS {
-    
+
     SimpleDBManager dbManager = new SimpleDBManager();
-    
+
     //create a function to add a client
     public boolean addClient(String fname, String lname, String phone, String email) {
-        
+
         PreparedStatement ps;
         ResultSet rs;
-        String addQuery = "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, PHONE, EMAIL) VALUES (?,?,?,?)";
-        
+        String addQuery = "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES (?,?,?,?)";
+
         try {
             ps = dbManager.getConnection().prepareStatement(addQuery);
-            
+
             ps.setString(1, fname);
             ps.setString(2, lname);
             ps.setString(3, phone);
             ps.setString(4, email);
-            
-            if (ps.executeUpdate() > 0) {
-                return true;
-            } else {
-                return false; 
-            }
+
+            return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-        
-   
+
     }
-    
+
     //create a function to edit the selected client
-    
+    public boolean editClient(int id, String fname, String lname, String phone, String email) {
+
+        PreparedStatement ps;
+        ResultSet rs;
+        String updateQuery = "UPDATE CLIENTS SET FIRSTNAME = ?, LASTNAME = ?, EMAIL = ?, PHONE = ? WHERE ID = ?";
+
+        try {
+            ps = dbManager.getConnection().prepareStatement(updateQuery);
+
+            ps.setString(1, fname);
+            ps.setString(2, lname);
+            ps.setString(3, phone);
+            ps.setString(4, email);
+            ps.setInt(5, id);
+
+            return ps.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+
+    }
+
     //create a function to remove the selected client
-    
+    public boolean removeClient(int id) {
+        PreparedStatement ps;
+        ResultSet rs;
+        String deleteQuery = "DELETE FROM CLIENTS WHERE ID = ?";
+
+        try {
+            ps = dbManager.getConnection().prepareStatement(deleteQuery);
+
+            ps.setInt(1, id);
+
+            return ps.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
     //create a function to populate the jtable with all the clients in the database
-    
     public void fillClientJTable(JTable table) {
         PreparedStatement ps;
         ResultSet rs;
@@ -85,5 +116,5 @@ public class CLIENTS {
             Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     
+
 }
