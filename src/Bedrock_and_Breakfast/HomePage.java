@@ -4,6 +4,7 @@
  */
 package Bedrock_and_Breakfast;
 
+import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -21,7 +22,10 @@ public class HomePage extends javax.swing.JFrame {
         // change icon when you run java file
         ImageIcon logoicon = new ImageIcon("/PDC-Assignment-2/Images for PDC/logo.png");
         setIconImage(logoicon.getImage());
-        int MAXIMIZED_BOTH1 = HomePage.MAXIMIZED_BOTH;
+        
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //jPanel1.setPreferredSize(new Dimension(1024, 768));
+        //setLocationRelativeTo(null);
     }
     
 
@@ -40,7 +44,7 @@ public class HomePage extends javax.swing.JFrame {
         LoginButton = new javax.swing.JButton();
         StaffLoginButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -89,8 +93,6 @@ public class HomePage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 48)); // NOI18N
         jLabel1.setText("Bedrock & Breakfast");
 
-        jLabel2.setText("jLabel2");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -109,8 +111,8 @@ public class HomePage extends javax.swing.JFrame {
                 .addContainerGap(421, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(173, 173, 173))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,11 +123,11 @@ public class HomePage extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(StaffLoginButton)
                         .addComponent(LoginButton)))
-                .addGap(92, 92, 92)
-                .addComponent(jLabel2)
-                .addGap(48, 48, 48)
+                .addGap(157, 157, 157)
                 .addComponent(SignupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(515, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,7 +201,7 @@ public class HomePage extends javax.swing.JFrame {
     javax.swing.JButton StaffLoginButton;
     javax.swing.JDialog jDialog1;
     javax.swing.JLabel jLabel1;
-    javax.swing.JLabel jLabel2;
     javax.swing.JPanel jPanel1;
+    javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
