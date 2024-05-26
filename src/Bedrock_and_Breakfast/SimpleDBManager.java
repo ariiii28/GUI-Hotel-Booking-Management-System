@@ -20,7 +20,7 @@ public final class SimpleDBManager {
     private static final String PASSWORD = "breakfast"; //your DB password
     private static final String URL = "jdbc:derby://localhost:1527/BedrockDB";  //url of the DB host
 
-    Connection conn;
+    Connection conn; 
 
     public SimpleDBManager() {
         establishConnection();
