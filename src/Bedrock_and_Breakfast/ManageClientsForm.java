@@ -347,7 +347,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
         String email = jTextField_Email.getText();
 
         if (fname.trim().equals("") || lname.trim().equals("") || phone.trim().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Required Fields -> First/Last Name + Phone Number", "Empty Fields", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Required Fields -> First/Last Name + Phone Number", "Empty Fields", JOptionPane.ERROR_MESSAGE);
         } else {
             if (client.editClient(id, fname, lname, email, phone)) {
                 JOptionPane.showMessageDialog(rootPane, "Client Updated Successfully", "Update Client", JOptionPane.INFORMATION_MESSAGE);
@@ -443,10 +443,8 @@ public class ManageClientsForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ManageClientsForm().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ManageClientsForm().setVisible(true);
         });
     }
 
