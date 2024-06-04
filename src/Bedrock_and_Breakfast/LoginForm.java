@@ -223,13 +223,25 @@ public class LoginForm extends javax.swing.JFrame {
                 
                 if (rs.next()) {
                     //if this user exits open the HomePage and close the login form
-                    Manage manage = new Manage();
-                    manage.setVisible(true);
-                    manage.pack();
-                    manage.setLocationRelativeTo(null);
-                    manage.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                    
-                    this.dispose();
+                    if (username.equals("testuser")) {
+                        System.out.println("found username");
+                        Manage manage = new Manage();
+                        manage.setVisible(true);
+                        manage.pack();
+                        manage.setLocationRelativeTo(null);
+                        manage.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+                        this.dispose();
+                    }
+                    else if (username.equals("guest")) {
+                        System.out.println("found guest");
+                        GuestLoginForm guest = new GuestLoginForm();
+                        guest.setVisible(true);
+                        guest.pack();
+                        guest.setLocationRelativeTo(null);
+                        
+                        this.dispose();
+                    }
                 } else {
                     //if the user enters the wrong information
                     JOptionPane.showMessageDialog(rootPane, "Wrong Username or Password", "Login Error", 2);

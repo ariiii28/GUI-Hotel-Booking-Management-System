@@ -232,11 +232,11 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_StaffLoginButtonMouseClicked
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        GuestLoginForm guestLogin = new GuestLoginForm();
-        guestLogin.setVisible(true);
-        guestLogin.pack();
-        guestLogin.setLocationRelativeTo(null);
-        guestLogin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        LoginForm loginForm = new LoginForm();
+        loginForm.setVisible(true);
+        loginForm.pack();
+        loginForm.setLocationRelativeTo(null);
+        loginForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     /**
