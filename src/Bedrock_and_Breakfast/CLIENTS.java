@@ -56,8 +56,8 @@ public class CLIENTS {
 
             ps.setString(1, fname);
             ps.setString(2, lname);
-            ps.setString(3, phone);
-            ps.setString(4, email);
+            ps.setString(3, email);
+            ps.setString(4, phone);
             ps.setInt(5, id);
 
             return ps.executeUpdate() > 0;

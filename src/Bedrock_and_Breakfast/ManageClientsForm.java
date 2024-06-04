@@ -130,15 +130,20 @@ public class ManageClientsForm extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Phone No:");
+        jLabel6.setText("Email:");
 
         jTextField_Email.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_Email.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jTextField_Email.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField_Email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_EmailActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Email:");
+        jLabel7.setText("Phone No:");
 
         ClientsTable.setAutoCreateRowSorter(true);
         ClientsTable.setBackground(new java.awt.Color(255, 255, 255));
@@ -251,7 +256,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
                                 .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(RemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -414,6 +419,10 @@ public class ManageClientsForm extends javax.swing.JFrame {
         jTextField_PhoneNumber.setText(model.getValueAt(rowIndex, 3).toString());
         jTextField_Email.setText(model.getValueAt(rowIndex, 4).toString());
     }//GEN-LAST:event_ClientsTableMouseClicked
+
+    private void jTextField_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_EmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_EmailActionPerformed
 
     /**
      * @param args the command line arguments
