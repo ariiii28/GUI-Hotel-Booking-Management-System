@@ -429,8 +429,8 @@ public class ManageRoomsForm extends javax.swing.JFrame {
         jTextField_Number.setText("");
         jTextField_PhoneNumber.setText("");
         jComboBox_Type.setSelectedIndex(0);
-        jRadioButtonYES.setSelected(false);
-        jRadioButtonNO.setSelected(false);
+        //jRadioButtonYES.setSelected(false);
+        jRadioButtonNO.setSelected(true);
     }//GEN-LAST:event_ClearFieldsButtonRoomsActionPerformed
 
     private void ShowTypes_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowTypes_ButtonActionPerformed

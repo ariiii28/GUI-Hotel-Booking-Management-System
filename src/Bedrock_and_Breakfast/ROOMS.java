@@ -146,7 +146,6 @@ public class ROOMS {
             Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-
     }
     
     public boolean removeRoom(int roomNumber) {

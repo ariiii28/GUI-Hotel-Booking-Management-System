@@ -31,6 +31,8 @@ public class Manage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
         ManageMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         ClientsMenuItem = new javax.swing.JMenuItem();
@@ -206,5 +208,7 @@ public class Manage extends javax.swing.JFrame {
     javax.swing.JPopupMenu.Separator jSeparator1;
     javax.swing.JPopupMenu.Separator jSeparator2;
     javax.swing.JPopupMenu.Separator jSeparator3;
+    javax.swing.JTabbedPane jTabbedPane1;
+    javax.swing.JTabbedPane jTabbedPane2;
     // End of variables declaration//GEN-END:variables
 }
