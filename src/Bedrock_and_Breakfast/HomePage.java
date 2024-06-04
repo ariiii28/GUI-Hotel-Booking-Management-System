@@ -53,6 +53,13 @@ public class HomePage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         jScrollPane1.setPreferredSize(new Dimension(maxWidth, maxHeight));
+        
+        ScrollInfo scrollInfo = new ScrollInfo();
+        javax.swing.JPanel roomPanel = scrollInfo.getRoomPanel();
+        
+        jScrollPane1.setViewportView(roomPanel);
+        
+        pack();
     }
 
     /**
