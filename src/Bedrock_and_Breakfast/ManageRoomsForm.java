@@ -4,7 +4,10 @@
  */
 package Bedrock_and_Breakfast;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,13 +18,22 @@ public class ManageRoomsForm extends javax.swing.JFrame {
     /**
      * Creates new form ManageRoomsForm
      */
-    
     ROOMS room = new ROOMS();
-    
+
     public ManageRoomsForm() {
         initComponents();
-        
+
+        //this is the room type in the button drop down
         room.fillRooms_TYPE_JComboBox(jComboBox_Type);
+
+        //show all rooms in the table
+        room.fillRoomsJTable(RoomsTable);
+
+        RoomsTable.setRowHeight(30);
+
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(jRadioButtonYES);
+        bg.add(jRadioButtonNO);
     }
 
     /**
@@ -43,13 +55,16 @@ public class ManageRoomsForm extends javax.swing.JFrame {
         jTextField_PhoneNumber = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ClientsTable = new javax.swing.JTable();
+        RoomsTable = new javax.swing.JTable();
         AddNewRoom_Button = new javax.swing.JButton();
         EditRoomsButton = new javax.swing.JButton();
         RemoveRoomButton = new javax.swing.JButton();
         ClearFieldsButtonRooms = new javax.swing.JButton();
         jComboBox_Type = new javax.swing.JComboBox<>();
         ShowTypes_Button = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jRadioButtonYES = new javax.swing.JRadioButton();
+        jRadioButtonNO = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,21 +122,27 @@ public class ManageRoomsForm extends javax.swing.JFrame {
         jTextField_PhoneNumber.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_PhoneNumber.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jTextField_PhoneNumber.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField_PhoneNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_PhoneNumberActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Phone No:");
 
-        ClientsTable.setAutoCreateRowSorter(true);
-        ClientsTable.setBackground(new java.awt.Color(255, 255, 255));
-        ClientsTable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ClientsTable.setForeground(new java.awt.Color(0, 0, 0));
-        ClientsTable.setModel(new javax.swing.table.DefaultTableModel(
+        RoomsTable.setAutoCreateRowSorter(true);
+        RoomsTable.setBackground(new java.awt.Color(255, 255, 255));
+        RoomsTable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        RoomsTable.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        RoomsTable.setForeground(new java.awt.Color(0, 0, 0));
+        RoomsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "First Name", "Last Name", "Email", "Phone"
+                "Number", "Type", "Phone", "Reserved"
             }
         )
         {
@@ -130,16 +151,17 @@ public class ManageRoomsForm extends javax.swing.JFrame {
             }
         }
     );
-    ClientsTable.setColumnSelectionAllowed(true);
-    ClientsTable.setGridColor(new java.awt.Color(0, 0, 0));
-    ClientsTable.setSelectionBackground(new java.awt.Color(204, 204, 255));
-    ClientsTable.setShowGrid(true);
-    ClientsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+    RoomsTable.setColumnSelectionAllowed(true);
+    RoomsTable.setGridColor(new java.awt.Color(0, 0, 0));
+    RoomsTable.setSelectionBackground(new java.awt.Color(204, 204, 255));
+    RoomsTable.setShowGrid(true);
+    RoomsTable.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
-            ClientsTableMouseClicked(evt);
+            RoomsTableMouseClicked(evt);
         }
     });
-    jScrollPane1.setViewportView(ClientsTable);
+    jScrollPane1.setViewportView(RoomsTable);
+    RoomsTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
     AddNewRoom_Button.setBackground(new java.awt.Color(255, 255, 255));
     AddNewRoom_Button.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
@@ -199,79 +221,104 @@ public class ManageRoomsForm extends javax.swing.JFrame {
         }
     });
 
+    jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+    jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+    jLabel7.setText("Reserved:");
+
+    jRadioButtonYES.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+    jRadioButtonYES.setForeground(new java.awt.Color(0, 0, 0));
+    jRadioButtonYES.setText("YES");
+    jRadioButtonYES.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jRadioButtonYESActionPerformed(evt);
+        }
+    });
+
+    jRadioButtonNO.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+    jRadioButtonNO.setForeground(new java.awt.Color(0, 0, 0));
+    jRadioButtonNO.setText("NO");
+    jRadioButtonNO.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jRadioButtonNOActionPerformed(evt);
+        }
+    });
+
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addGroup(jPanel1Layout.createSequentialGroup()
-            .addGap(25, 25, 25)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(44, 44, 44)
                     .addComponent(jLabel2)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jTextField_Number, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(AddNewRoom_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EditRoomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(RemoveRoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ClearFieldsButtonRooms, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel3))
+                    .addComponent(jTextField_Number, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jComboBox_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(ShowTypes_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel6)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel7)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jRadioButtonYES)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jRadioButtonNO))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(42, 42, 42)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1021, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(306, 306, 306)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jComboBox_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddNewRoom_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(ShowTypes_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(30, 30, 30))
+                            .addComponent(EditRoomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(RemoveRoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ClearFieldsButtonRooms, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addContainerGap(84, Short.MAX_VALUE))
     );
     jPanel1Layout.setVerticalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel1Layout.createSequentialGroup()
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(18, 18, 18)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(44, 44, 44)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(jTextField_Number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jComboBox_Type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(ShowTypes_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(AddNewRoom_Button)
-                        .addComponent(EditRoomsButton)
-                        .addComponent(RemoveRoomButton))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(ClearFieldsButtonRooms, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(28, Short.MAX_VALUE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel3)
+                .addComponent(jComboBox_Type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2)
+                .addComponent(jTextField_Number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ShowTypes_Button)
+                .addComponent(jLabel6)
+                .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel7)
+                .addComponent(jRadioButtonYES)
+                .addComponent(jRadioButtonNO))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(AddNewRoom_Button)
+                .addComponent(EditRoomsButton)
+                .addComponent(RemoveRoomButton))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(ClearFieldsButtonRooms, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(15, 15, 15))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1147, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,39 +328,131 @@ public class ManageRoomsForm extends javax.swing.JFrame {
     pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ClientsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClientsTableMouseClicked
-        
-    }//GEN-LAST:event_ClientsTableMouseClicked
+    private void RoomsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RoomsTableMouseClicked
+        // to display the selected row in the textfield
+
+        //display the jtable model
+        DefaultTableModel model = (DefaultTableModel) RoomsTable.getModel();
+
+        //get the selected row in the index
+        int rowIndex = RoomsTable.getSelectedRow();
+
+        jTextField_Number.setText(model.getValueAt(rowIndex, 0).toString());
+        jComboBox_Type.setSelectedItem(model.getValueAt(rowIndex, 1));
+        jTextField_PhoneNumber.setText(model.getValueAt(rowIndex, 2).toString());
+
+        String isReserved = model.getValueAt(rowIndex, 3).toString();
+        if (isReserved.equals("Yes")) {
+            jRadioButtonYES.setSelected(true);
+        } else if (isReserved.equals("No")) {
+            jRadioButtonNO.setSelected(true);
+        }
+    }//GEN-LAST:event_RoomsTableMouseClicked
 
     private void AddNewRoom_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNewRoom_ButtonActionPerformed
-        
+
+        try {
+            int roomNumber = Integer.valueOf(jTextField_Number.getText());
+            int roomType = Integer.valueOf(jComboBox_Type.getSelectedItem().toString());
+            String phone = jTextField_PhoneNumber.getText();
+
+            if (room.addRoom(roomNumber, roomType, phone)) {
+                JOptionPane.showMessageDialog(rootPane, "New Room Added Successfully", "Add Room", JOptionPane.INFORMATION_MESSAGE);
+                //refresh
+                room.fillRoomsJTable(RoomsTable);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Room NOT Added", "Add Room Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Invalid Room Number", "Room Number Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_AddNewRoom_ButtonActionPerformed
 
     private void EditRoomsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditRoomsButtonActionPerformed
 
-        
+        try {
+            int roomNumber = Integer.parseInt(jTextField_Number.getText());;
+            int type = Integer.valueOf(jComboBox_Type.getSelectedItem().toString());
+            String phone = jTextField_PhoneNumber.getText();
+            String isReserved = "No";
+
+            if (jRadioButtonYES.isSelected()) {
+                isReserved = "Yes";
+            }
+
+            if (phone.trim().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Enter The Room Phone Number", "Empty Fields", JOptionPane.ERROR_MESSAGE);
+            } else {
+                if (room.editRoom(roomNumber, type, phone, isReserved)) {
+                    JOptionPane.showMessageDialog(rootPane, "Room Data Updated Successfully", "Edit Room", JOptionPane.INFORMATION_MESSAGE);
+                    // Refresh the JTable data
+                    room.fillRoomsJTable(RoomsTable);
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Room Data Update Failed", "Update Room Data Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Enter The Room Number", "Room Number Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_EditRoomsButtonActionPerformed
 
     private void RemoveRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveRoomButtonActionPerformed
-        
-        
+
+        int roomNumber;
+        try {
+            roomNumber = Integer.parseInt(jTextField_Number.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(rootPane, "Please Enter a Valid Room Number", "Invalid Room Number", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        // Confirm the removal action
+        int confirm = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to remove this room?", "Remove Room", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            // Remove the room and update the JTable
+            if (room.removeRoom(roomNumber)) {
+                JOptionPane.showMessageDialog(rootPane, "Room Deleted Successfully", "Delete Room", JOptionPane.INFORMATION_MESSAGE);
+
+                // Clear fields after deletion
+                ClearFieldsButtonRoomsActionPerformed(null);
+
+                // Refresh the JTable to show updated data
+                room.fillRoomsJTable(RoomsTable);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Room Deletion Failed", "Delete Room Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_RemoveRoomButtonActionPerformed
 
     private void ClearFieldsButtonRoomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearFieldsButtonRoomsActionPerformed
-
         jTextField_Number.setText("");
         jTextField_PhoneNumber.setText("");
-        
+        jComboBox_Type.setSelectedIndex(0);
+        jRadioButtonYES.setSelected(false);
+        jRadioButtonNO.setSelected(false);
     }//GEN-LAST:event_ClearFieldsButtonRoomsActionPerformed
 
     private void ShowTypes_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowTypes_ButtonActionPerformed
-        
+
         all_room_types_form roomTypesForm = new all_room_types_form();
         roomTypesForm.setVisible(true);
         roomTypesForm.pack();
         roomTypesForm.setLocationRelativeTo(null);
         roomTypesForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_ShowTypes_ButtonActionPerformed
+
+    private void jTextField_PhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PhoneNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_PhoneNumberActionPerformed
+
+    private void jRadioButtonYESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonYESActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonYESActionPerformed
+
+    private void jRadioButtonNOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonNOActionPerformed
 
     /**
      * @param args the command line arguments
@@ -353,9 +492,9 @@ public class ManageRoomsForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton AddNewRoom_Button;
     javax.swing.JButton ClearFieldsButtonRooms;
-    javax.swing.JTable ClientsTable;
     javax.swing.JButton EditRoomsButton;
     javax.swing.JButton RemoveRoomButton;
+    javax.swing.JTable RoomsTable;
     javax.swing.JButton ShowTypes_Button;
     javax.swing.JComboBox<String> jComboBox_Type;
     javax.swing.JLabel jLabel1;
@@ -363,8 +502,11 @@ public class ManageRoomsForm extends javax.swing.JFrame {
     javax.swing.JLabel jLabel3;
     javax.swing.JLabel jLabel4;
     javax.swing.JLabel jLabel6;
+    javax.swing.JLabel jLabel7;
     javax.swing.JPanel jPanel1;
     javax.swing.JPanel jPanel2;
+    javax.swing.JRadioButton jRadioButtonNO;
+    javax.swing.JRadioButton jRadioButtonYES;
     javax.swing.JScrollPane jScrollPane1;
     javax.swing.JTextField jTextField_Number;
     javax.swing.JTextField jTextField_PhoneNumber;

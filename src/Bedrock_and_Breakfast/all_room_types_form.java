@@ -45,7 +45,7 @@ public class all_room_types_form extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Room Number", "Label", "Price"
+                "Room Type ID", "Label", "Price"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
