@@ -79,7 +79,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         ImageIcon logoicon = new ImageIcon("/PDC-Assignment-2/Images for PDC/logo.png");
         StaffLoginButton = new javax.swing.JButton();
-        SignupButton = new javax.swing.JButton();
+        BookARoomButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
@@ -114,8 +114,6 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/diyatopiwala/Documents/GitHub/PDC-Assignment-2/src/Bedrock_and_Breakfast/images/logo2.png")); // NOI18N
-
         StaffLoginButton.setBackground(new java.awt.Color(204, 204, 204));
         StaffLoginButton.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         StaffLoginButton.setText("Staff Login");
@@ -126,10 +124,15 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        SignupButton.setBackground(new java.awt.Color(204, 204, 204));
-        SignupButton.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        SignupButton.setText("Book a Room");
-        SignupButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BookARoomButton.setBackground(new java.awt.Color(204, 204, 204));
+        BookARoomButton.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        BookARoomButton.setText("Book a Room");
+        BookARoomButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BookARoomButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BookARoomButtonActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setToolTipText("");
         jScrollPane1.setHorizontalScrollBar(null);
@@ -138,7 +141,7 @@ public class HomePage extends javax.swing.JFrame {
         jLayeredPane1.setLayer(LoginButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(StaffLoginButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(SignupButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(BookARoomButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -151,7 +154,7 @@ public class HomePage extends javax.swing.JFrame {
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                                 .addGap(39, 39, 39)
-                                .addComponent(SignupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 891, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(BookARoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 891, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 954, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
@@ -174,7 +177,7 @@ public class HomePage extends javax.swing.JFrame {
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(SignupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BookARoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(88, 88, 88))
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -239,6 +242,10 @@ public class HomePage extends javax.swing.JFrame {
         loginForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_LoginButtonActionPerformed
 
+    private void BookARoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookARoomButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BookARoomButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -275,8 +282,8 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    javax.swing.JButton BookARoomButton;
     javax.swing.JButton LoginButton;
-    javax.swing.JButton SignupButton;
     javax.swing.JButton StaffLoginButton;
     javax.swing.JDialog jDialog1;
     javax.swing.JLabel jLabel1;

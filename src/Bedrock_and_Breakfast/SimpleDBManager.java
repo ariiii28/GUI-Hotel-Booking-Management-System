@@ -80,7 +80,6 @@ public final class SimpleDBManager {
 
         Connection connection = this.conn;
         Statement statement = null;
-        ResultSet resultSet = null;
 
         try {
             statement = connection.createStatement();

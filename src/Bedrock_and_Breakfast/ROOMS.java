@@ -165,6 +165,7 @@ public class ROOMS {
         }
     }
     
+<<<<<<< Updated upstream
     // room type id, the price and the name of the room
     public String[] getTypeInfo(int clientId) {
     PreparedStatement ps;
@@ -193,3 +194,26 @@ public class ROOMS {
     }
 
 }
+=======
+    
+    //create a function to set a room reserved or not
+     public boolean setRoomToReserve(int number, String isReserved) {
+
+        PreparedStatement ps;
+        ResultSet rs;
+        String updateQuery = "UPDATE ROOM SET TYPE = ?, PHONE = ?, RESERVED = ? WHERE R_NUMBER = ?";
+
+        try {
+            ps = dbManager.getConnection().prepareStatement(updateQuery);
+
+            ps.setString(1, isReserved);
+            ps.setInt(4, number);
+
+            return ps.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+}
+>>>>>>> Stashed changes

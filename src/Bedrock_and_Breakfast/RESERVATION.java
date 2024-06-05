@@ -23,6 +23,7 @@ public class RESERVATION {
     java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 
     SimpleDBManager dbManager = new SimpleDBManager();
+    ROOMS room = new ROOMS();
 
     public void fillReservationsJTable(JTable table) {
         PreparedStatement ps;
@@ -69,12 +70,16 @@ public class RESERVATION {
             ps.setString(3, date_in);
             ps.setString(4, date_out);
 
-            return ps.executeUpdate() > 0;
+            if (ps.executeUpdate() > 0) {
+                room.setRoomToReserve(room_number, "Yes");
+                return true;
+            } else {
+                return false;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-
     }
 
     public boolean editReservation(int reservation_id, int client_id, int room_number, String date_in, String date_out) {
@@ -109,13 +114,18 @@ public class RESERVATION {
 
             ps.setInt(1, reservation_id);
 
-            return ps.executeUpdate() > 0;
+            if (ps.executeUpdate() > 0) {
+                room.setRoomToReserve(getRoomNumberFromReservation(reservation_id), "No");
+                return true;
+            } else {
+                return false;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
-    
+
     public Date getClientCheckInDate(int client_id) {
         PreparedStatement ps;
         ResultSet rs;
@@ -158,5 +168,26 @@ public class RESERVATION {
         }
 
         return checkOutDate;
+    }
+    
+    public int getRoomNumberFromReservation(int reservationID) {
+        PreparedStatement ps;
+        ResultSet rs;
+        String selectQuery = "SELECT ROOM_NUMBER FROM RESERVATIONS WHERE IF = ?";
+
+        try {
+            ps = dbManager.getConnection().prepareStatement(selectQuery);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(0);
+            } else {
+                return 0;
+            }
+         
+        } catch (SQLException ex) {
+            Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
     }
 }

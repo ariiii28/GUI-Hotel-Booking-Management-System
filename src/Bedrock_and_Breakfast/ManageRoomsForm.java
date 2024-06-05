@@ -212,6 +212,11 @@ public class ManageRoomsForm extends javax.swing.JFrame {
     });
 
     jComboBox_Type.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+    jComboBox_Type.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jComboBox_TypeActionPerformed(evt);
+        }
+    });
 
     ShowTypes_Button.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
     ShowTypes_Button.setText("Show Types");
@@ -453,6 +458,10 @@ public class ManageRoomsForm extends javax.swing.JFrame {
     private void jRadioButtonNOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNOActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonNOActionPerformed
+
+    private void jComboBox_TypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_TypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_TypeActionPerformed
 
     /**
      * @param args the command line arguments
