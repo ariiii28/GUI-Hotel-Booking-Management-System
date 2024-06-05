@@ -107,8 +107,8 @@ public class CLIENTS {
                 row[0] = rs.getInt(1); // ID
                 row[1] = rs.getString(2); // First Name
                 row[2] = rs.getString(3); // Last Name
-                row[3] = rs.getString(4); // Phone Number
-                row[4] = rs.getString(5); // Email
+                row[3] = rs.getString(4); // Email
+                row[4] = rs.getString(5); // Phone Number
                 tableModel.addRow(row);
             }
             tableModel.fireTableDataChanged();
@@ -132,8 +132,8 @@ public class CLIENTS {
             if (rs.next()) {
                 clientDetails[0] = rs.getString(2); // First Name
                 clientDetails[1] = rs.getString(3); // Last Name
-                clientDetails[2] = rs.getString(4); // Phone Number
-                clientDetails[3] = rs.getString(5); // Email
+                clientDetails[2] = rs.getString(4); // Email
+                clientDetails[3] = rs.getString(5); // Phone Number
                 clientDetails[4] = rs.getInt(1) + ""; // ID as String
             }
 

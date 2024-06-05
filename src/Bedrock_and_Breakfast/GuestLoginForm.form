@@ -97,29 +97,57 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="welcomeLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="guestNameLabel" min="-2" pref="289" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="welcomeLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="guestNameLabel" min="-2" pref="289" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="checkOutLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="checkInLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="costLabel" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="nightsLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="roomTypeLabel" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="checkInGuest" linkSize="1" alignment="0" pref="145" max="32767" attributes="0"/>
+                                      <Component id="checkOutGuest" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="numberOfNightsLabel" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="priceLabel" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="roomKindLabel" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="emailButton" linkSize="3" pref="125" max="32767" attributes="0"/>
+                                  <Component id="emailLabel" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="emailAddressLabel" min="-2" pref="134" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="textButton" linkSize="3" pref="125" max="32767" attributes="0"/>
+                              <Component id="textLabel" max="32767" attributes="0"/>
+                              <Component id="phoneNumberLabel" alignment="1" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="checkOutLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="checkInLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="costLabel" alignment="1" max="32767" attributes="0"/>
-                              <Component id="nightsLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="roomTypeLabel" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="checkInGuest" alignment="0" pref="145" max="32767" attributes="0"/>
-                              <Component id="checkOutGuest" alignment="0" max="32767" attributes="0"/>
-                              <Component id="numberOfNightsLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="priceLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="roomKindLabel" alignment="0" max="32767" attributes="0"/>
+                              <Component id="thanksLabel" pref="325" max="32767" attributes="0"/>
+                              <Component id="exitButton" max="32767" attributes="0"/>
+                              <Component id="seeYouLabel" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -138,29 +166,50 @@
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="checkInLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkInGuest" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="checkInGuest" linkSize="2" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="checkOutLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkOutGuest" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="checkOutGuest" linkSize="2" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="numberOfNightsLabel" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="numberOfNightsLabel" linkSize="2" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="nightsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="costLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="priceLabel" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="priceLabel" linkSize="2" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="roomKindLabel" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="roomKindLabel" linkSize="2" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="roomTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="373" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="emailAddressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="phoneNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="textButton" linkSize="4" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="emailButton" linkSize="4" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="thanksLabel" min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="exitButton" min="-2" pref="48" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="seeYouLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="55" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -179,6 +228,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="13" style="0"/>
+            </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="dd/mmm/yyyy"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -189,6 +241,9 @@
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="13" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="dd/mmm/yyyy"/>
@@ -236,6 +291,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="13" style="0"/>
+            </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="price"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -254,6 +312,9 @@
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="13" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="nights"/>
@@ -274,10 +335,73 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="13" style="0"/>
+            </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="room type"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="opaque" type="boolean" value="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="emailButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="SEND EMAIL"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="textButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="SEND TEXT"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="emailLabel">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Send Email To"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="textLabel">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Send Text To"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="emailAddressLabel">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="email@address.com?"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="phoneNumberLabel">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="phone number?"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="thanksLabel">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Thank you for booking with Bedrock &amp; Breakfast."/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="exitButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Click to Exit"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="seeYouLabel">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="See You Soon!!!"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -165,7 +165,6 @@ public class ROOMS {
         }
     }
     
-<<<<<<< Updated upstream
     // room type id, the price and the name of the room
     public String[] getTypeInfo(int clientId) {
     PreparedStatement ps;
@@ -192,9 +191,6 @@ public class ROOMS {
     }
     return roomTypeIdPriceAndLabel;
     }
-
-}
-=======
     
     //create a function to set a room reserved or not
      public boolean setRoomToReserve(int number, String isReserved) {
@@ -216,4 +212,3 @@ public class ROOMS {
         }
     }
 }
->>>>>>> Stashed changes
