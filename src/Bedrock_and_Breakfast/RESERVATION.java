@@ -177,6 +177,7 @@ public class RESERVATION {
 
         try {
             ps = dbManager.getConnection().prepareStatement(selectQuery);
+            ps.setInt(1, reservationID);
             rs = ps.executeQuery();
 
             if (rs.next()) {
@@ -190,4 +191,5 @@ public class RESERVATION {
             return 0;
         }
     }
+    
 }
