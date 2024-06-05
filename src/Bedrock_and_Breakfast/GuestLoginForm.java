@@ -32,8 +32,8 @@ public class GuestLoginForm extends javax.swing.JFrame {
             String firstName = clientDetails[0];
             String lastName = clientDetails[1];
             guestNameLabel.setText(firstName + " " + lastName);
-            //checkInGuest.setText(checkingIn.toString());
-            //checkOutGuest.setText(checkingOut.toString());
+            checkInGuest.setText(checkingIn.toString());
+            checkOutGuest.setText(checkingOut.toString());
         } else {
             guestNameLabel.setText("Guest");
             checkInGuest.setText("dd/mmm/yyyy");
@@ -50,13 +50,32 @@ public class GuestLoginForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        st = new javax.swing.JFormattedTextField();
+        It = new javax.swing.JFormattedTextField();
         headerLabel = new javax.swing.JLabel();
         welcomeLabel = new javax.swing.JLabel();
         guestNameLabel = new javax.swing.JLabel();
         checkInLabel = new javax.swing.JLabel();
         checkOutLabel = new javax.swing.JLabel();
-        checkInGuest = new javax.swing.JFormattedTextField();
-        checkOutGuest = new javax.swing.JFormattedTextField();
+        checkInGuest = new javax.swing.JLabel();
+        checkOutGuest = new javax.swing.JLabel();
+
+        st.setEditable(false);
+        st.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
+        st.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stActionPerformed(evt);
+            }
+        });
+
+        It.setEditable(false);
+        It.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
+        It.setText("check in");
+        It.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,46 +93,39 @@ public class GuestLoginForm extends javax.swing.JFrame {
 
         checkOutLabel.setText("Check Out Date:");
 
-        checkInGuest.setEditable(false);
-        checkInGuest.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
-        checkInGuest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkInGuestActionPerformed(evt);
-            }
-        });
+        checkInGuest.setBackground(new java.awt.Color(255, 255, 255));
+        checkInGuest.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        checkInGuest.setText("dd/mmm/yyyy");
+        checkInGuest.setToolTipText("");
 
-        checkOutGuest.setEditable(false);
-        checkOutGuest.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
-        checkOutGuest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkOutGuestActionPerformed(evt);
-            }
-        });
+        checkOutGuest.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        checkOutGuest.setText("dd/mmm/yyyy");
+        checkOutGuest.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
-                .addComponent(headerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90))
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(checkInLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(checkInGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(welcomeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(guestNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(checkOutLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(checkOutGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkOutLabel)
+                            .addComponent(checkInLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkInGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkOutGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(headerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,12 +139,12 @@ public class GuestLoginForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkInLabel)
-                    .addComponent(checkInGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(checkInGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkOutLabel)
-                    .addComponent(checkOutGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(507, Short.MAX_VALUE))
+                    .addComponent(checkOutGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(542, 542, 542))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {guestNameLabel, welcomeLabel});
@@ -140,13 +152,13 @@ public class GuestLoginForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void checkInGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInGuestActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkInGuestActionPerformed
+    private void ItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItActionPerformed
 
-    private void checkOutGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOutGuestActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkOutGuestActionPerformed
+    }//GEN-LAST:event_ItActionPerformed
+
+    private void stActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stActionPerformed
+
+    }//GEN-LAST:event_stActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,12 +196,14 @@ public class GuestLoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField checkInGuest;
+    private javax.swing.JFormattedTextField It;
+    private javax.swing.JLabel checkInGuest;
     private javax.swing.JLabel checkInLabel;
-    private javax.swing.JFormattedTextField checkOutGuest;
+    private javax.swing.JLabel checkOutGuest;
     private javax.swing.JLabel checkOutLabel;
     private javax.swing.JLabel guestNameLabel;
     private javax.swing.JLabel headerLabel;
+    private javax.swing.JFormattedTextField st;
     private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }
