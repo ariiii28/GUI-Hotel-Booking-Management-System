@@ -46,7 +46,7 @@ public class HomePage extends javax.swing.JFrame {
         int maxHeight = (int) screenSize.getHeight();
 
         // Set the size of the JFrame
-       // setSize(maxWidth, maxHeight);
+        // setSize(maxWidth, maxHeight);
 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
   
