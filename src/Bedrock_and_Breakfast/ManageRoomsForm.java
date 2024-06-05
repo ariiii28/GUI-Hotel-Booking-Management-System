@@ -445,6 +445,7 @@ public class ManageRoomsForm extends javax.swing.JFrame {
         roomTypesForm.pack();
         roomTypesForm.setLocationRelativeTo(null);
         roomTypesForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
     }//GEN-LAST:event_ShowTypes_ButtonActionPerformed
 
     private void jTextField_PhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PhoneNumberActionPerformed

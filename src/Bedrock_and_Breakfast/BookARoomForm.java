@@ -5,6 +5,7 @@
 package Bedrock_and_Breakfast;
 
 import java.text.SimpleDateFormat;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -294,7 +295,7 @@ public class BookARoomForm extends javax.swing.JFrame {
         String lname = jTextField_LastNAME.getText();
         String phone = jTextField_PhoneNumber.getText();
         String email = jTextField_Email.getText();
-        int roomType = Integer.valueOf(jComboBox_Type.getSelectedItem().toString());
+        int roomType = jComboBox_Type.getSelectedIndex(); // Adjusted to get the room type index
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_in = dateFormat.format(jDateChooser1_DateIn.getDate());
         String date_out = dateFormat.format(jDateChooser2_DateOut.getDate());
@@ -304,15 +305,14 @@ public class BookARoomForm extends javax.swing.JFrame {
             return;
         }
 
-        int roomNumber = Integer.parseInt(jComboBox_Type.getSelectedItem().toString());
+        BOOKING booking = new BOOKING(); // Create an instance of BOOKING
 
         if (booking.addClient(fname, lname, phone, email)) {
             int clientId = booking.getClientIdByEmail(email);
 
-            if (clientId != -1) {
-                if (booking.addBooking(clientId, roomNumber, date_in, date_out)) {
-                    booking.markRoomAsReserved(roomNumber);
-                    JOptionPane.showMessageDialog(this, "Room " + roomNumber + " booked successfully for client ID " + clientId + "!");
+            if (clientId >= 1) {
+                if (booking.addBooking(clientId, roomType, date_in, date_out)) {
+                    JOptionPane.showMessageDialog(this, "Room booked successfully for client ID " + clientId + "!");
 
                     // Prompt the user to proceed with booking
                     int response = JOptionPane.showConfirmDialog(this, "Do you want to proceed with booking?", "Confirm Booking", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -320,6 +320,9 @@ public class BookARoomForm extends javax.swing.JFrame {
                         // Proceed to the ConfirmationForm
                         ConfirmationForm confirmation = new ConfirmationForm();
                         confirmation.setVisible(true);
+                        confirmation.pack();
+                        confirmation.setLocationRelativeTo(null);
+                        confirmation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     }
 
                 } else {

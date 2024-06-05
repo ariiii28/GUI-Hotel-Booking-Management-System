@@ -49,7 +49,7 @@ public class ROOMS {
             Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void fillRoomsJTable(JTable table) {
         PreparedStatement ps;
         ResultSet rs;
@@ -78,9 +78,8 @@ public class ROOMS {
             Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    //create a function to fill a combo box with the rooms type id
 
+    //create a function to fill a combo box with the rooms type id
     public void fillRooms_TYPE_JComboBox(JComboBox combobox) {
         PreparedStatement ps;
         ResultSet rs;
@@ -147,7 +146,7 @@ public class ROOMS {
             return false;
         }
     }
-    
+
     public boolean removeRoom(int roomNumber) {
         PreparedStatement ps;
         ResultSet rs;
@@ -164,40 +163,36 @@ public class ROOMS {
             return false;
         }
     }
-    
-<<<<<<< Updated upstream
+
     // room type id, the price and the name of the room
     public String[] getTypeInfo(int clientId) {
-    PreparedStatement ps;
-    ResultSet rs;
-    String selectQuery = "SELECT TYPE.ID, TYPE.PRICE, TYPE.LABEL " +
-                         "FROM RESERVATIONS " +
-                         "JOIN ROOM ON RESERVATIONS.ROOM_NUMBER = ROOM.R_NUMBER " +
-                         "JOIN TYPE ON ROOM.TYPE = TYPE.ID " +
-                         "WHERE RESERVATIONS.CLIENT_ID = ?";
-    String[] roomTypeIdPriceAndLabel = new String[3];
+        PreparedStatement ps;
+        ResultSet rs;
+        String selectQuery = "SELECT TYPE.ID, TYPE.PRICE, TYPE.LABEL "
+                + "FROM RESERVATIONS "
+                + "JOIN ROOM ON RESERVATIONS.ROOM_NUMBER = ROOM.R_NUMBER "
+                + "JOIN TYPE ON ROOM.TYPE = TYPE.ID "
+                + "WHERE RESERVATIONS.CLIENT_ID = ?";
+        String[] roomTypeIdPriceAndLabel = new String[3];
 
-    try {
-        ps = dbManager.getConnection().prepareStatement(selectQuery);
-        ps.setInt(1, clientId);
-        rs = ps.executeQuery();
+        try {
+            ps = dbManager.getConnection().prepareStatement(selectQuery);
+            ps.setInt(1, clientId);
+            rs = ps.executeQuery();
 
-        if (rs.next()) {
-            roomTypeIdPriceAndLabel[0] = rs.getString("ID");
-            roomTypeIdPriceAndLabel[1] = rs.getString("PRICE");
-            roomTypeIdPriceAndLabel[2] = rs.getString("LABEL");
+            if (rs.next()) {
+                roomTypeIdPriceAndLabel[0] = rs.getString("ID");
+                roomTypeIdPriceAndLabel[1] = rs.getString("PRICE");
+                roomTypeIdPriceAndLabel[2] = rs.getString("LABEL");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ROOMS.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } catch (SQLException ex) {
-        Logger.getLogger(ROOMS.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    return roomTypeIdPriceAndLabel;
+        return roomTypeIdPriceAndLabel;
     }
 
-}
-=======
-    
-    //create a function to set a room reserved or not
-     public boolean setRoomToReserve(int number, String isReserved) {
+//create a function to set a room reserved or not
+    public boolean setRoomToReserve(int number, String isReserved) {
 
         PreparedStatement ps;
         ResultSet rs;
@@ -210,10 +205,11 @@ public class ROOMS {
             ps.setInt(4, number);
 
             return ps.executeUpdate() > 0;
+
         } catch (SQLException ex) {
-            Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CLIENTS.class
+                    .getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
 }
->>>>>>> Stashed changes
