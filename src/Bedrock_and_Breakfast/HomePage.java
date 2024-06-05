@@ -24,7 +24,7 @@ public class HomePage extends javax.swing.JFrame {
         ImageIcon logoicon = null;
     try {
         // Use the relative path from the classpath
-        java.net.URL imgURL = getClass().getResource("/Bedrock_and_Breakfast/images/logo2.png");
+        java.net.URL imgURL = getClass().getResource("images/logo2.png");
         if (imgURL != null) {
             logoicon = new ImageIcon(imgURL);
         } else {
