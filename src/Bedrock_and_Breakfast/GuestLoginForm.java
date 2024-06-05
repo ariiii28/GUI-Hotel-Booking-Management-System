@@ -4,19 +4,43 @@
  */
 package Bedrock_and_Breakfast;
 
+import java.util.Date;
+
 /**
  *
  * @author diyatopiwala
  */
 public class GuestLoginForm extends javax.swing.JFrame {
 
+    CLIENTS clients = new CLIENTS();
+    RESERVATION reservation = new RESERVATION();
+    int clientsId = 1;
     /**
      * Creates new form GuestLoginForm
      */
     public GuestLoginForm() {
         initComponents();
+        displayClientDetails(clientsId);
     }
 
+    private void displayClientDetails(int id) {
+        String[] clientDetails = clients.getClientDetails(id);
+        java.sql.Date checkingIn = reservation.getClientCheckInDate(id);
+        java.sql.Date checkingOut = reservation.getClientCheckOutDate(id);
+        
+        if (clientDetails != null && clientDetails.length == 5) {
+            String firstName = clientDetails[0];
+            String lastName = clientDetails[1];
+            guestNameLabel.setText(firstName + " " + lastName);
+            //checkInGuest.setText(checkingIn.toString());
+            //checkOutGuest.setText(checkingOut.toString());
+        } else {
+            guestNameLabel.setText("Guest");
+            checkInGuest.setText("dd/mmm/yyyy");
+            checkOutGuest.setText("dd/mmm/yyyy");
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +50,103 @@ public class GuestLoginForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        headerLabel = new javax.swing.JLabel();
+        welcomeLabel = new javax.swing.JLabel();
+        guestNameLabel = new javax.swing.JLabel();
+        checkInLabel = new javax.swing.JLabel();
+        checkOutLabel = new javax.swing.JLabel();
+        checkInGuest = new javax.swing.JFormattedTextField();
+        checkOutGuest = new javax.swing.JFormattedTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        headerLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        headerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        headerLabel.setText("Booking Details");
+
+        welcomeLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        welcomeLabel.setText("Welcome");
+
+        guestNameLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        guestNameLabel.setText("guest name,");
+
+        checkInLabel.setText("Check in Date:");
+
+        checkOutLabel.setText("Check Out Date:");
+
+        checkInGuest.setEditable(false);
+        checkInGuest.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
+        checkInGuest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkInGuestActionPerformed(evt);
+            }
+        });
+
+        checkOutGuest.setEditable(false);
+        checkOutGuest.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
+        checkOutGuest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkOutGuestActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 498, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(90, Short.MAX_VALUE)
+                .addComponent(headerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(checkInLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkInGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(welcomeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(guestNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(checkOutLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkOutGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 334, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(headerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(welcomeLabel)
+                    .addComponent(guestNameLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkInLabel)
+                    .addComponent(checkInGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkOutLabel)
+                    .addComponent(checkOutGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(507, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {guestNameLabel, welcomeLabel});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void checkInGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInGuestActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkInGuestActionPerformed
+
+    private void checkOutGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOutGuestActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkOutGuestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +184,12 @@ public class GuestLoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField checkInGuest;
+    private javax.swing.JLabel checkInLabel;
+    private javax.swing.JFormattedTextField checkOutGuest;
+    private javax.swing.JLabel checkOutLabel;
+    private javax.swing.JLabel guestNameLabel;
+    private javax.swing.JLabel headerLabel;
+    private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }

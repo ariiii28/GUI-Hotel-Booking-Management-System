@@ -82,5 +82,48 @@ public class RESERVATION {
             return false;
         }
     }
+    
+    public Date getClientCheckInDate(int client_id) {
+        PreparedStatement ps;
+        ResultSet rs;
+        String selectQuery = "SELECT DATE_IN FROM RESERVATIONS WHERE CLIENT_ID = ?";
+        Date checkInDate = null;
 
+        try {
+            ps = dbManager.getConnection().prepareStatement(selectQuery);
+            ps.setInt(1, client_id);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                checkInDate = rs.getDate("DATE_IN");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RESERVATION.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return checkInDate;
+    }
+
+    public Date getClientCheckOutDate(int client_id) {
+        PreparedStatement ps;
+        ResultSet rs;
+        String selectQuery = "SELECT DATE_OUT FROM RESERVATIONS WHERE CLIENT_ID = ?";
+        Date checkOutDate = null;
+
+        try {
+            ps = dbManager.getConnection().prepareStatement(selectQuery);
+            ps.setInt(1, client_id);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                checkOutDate = rs.getDate("DATE_OUT");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RESERVATION.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return checkOutDate;
+    }
 }

@@ -116,5 +116,31 @@ public class CLIENTS {
             Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    //create a function to get client details by ID
+    public String[] getClientDetails(int id) {
+        PreparedStatement ps;
+        ResultSet rs;
+        String selectQuery = "SELECT * FROM CLIENTS WHERE ID = ?";
+        String[] clientDetails = new String[5];
 
+        try {
+            ps = dbManager.getConnection().prepareStatement(selectQuery);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                clientDetails[0] = rs.getString(2); // First Name
+                clientDetails[1] = rs.getString(3); // Last Name
+                clientDetails[2] = rs.getString(4); // Phone Number
+                clientDetails[3] = rs.getString(5); // Email
+                clientDetails[4] = rs.getInt(1) + ""; // ID as String
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return clientDetails;
+    }
 }

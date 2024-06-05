@@ -230,7 +230,7 @@ public class LoginForm extends javax.swing.JFrame {
                         manage.pack();
                         manage.setLocationRelativeTo(null);
                         manage.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
+                        
                         this.dispose();
                     }
                     else if (username.equals("guest")) {
