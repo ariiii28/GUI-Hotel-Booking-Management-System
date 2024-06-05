@@ -14,6 +14,8 @@ public class GuestLoginForm extends javax.swing.JFrame {
 
     CLIENTS clients = new CLIENTS();
     RESERVATION reservation = new RESERVATION();
+    ROOMS rooms = new ROOMS();
+    
     int clientsId = 1;
     /**
      * Creates new form GuestLoginForm
@@ -23,21 +25,43 @@ public class GuestLoginForm extends javax.swing.JFrame {
         displayClientDetails(clientsId);
     }
 
+    //calculate number of nights
+    public int calculateNights(Date inDate, Date outDate)  {
+        long nights = (outDate.getTime() - inDate.getTime());
+        int noNights = (int) (nights / (24 * 60 * 60 * 1000));
+        return noNights;
+    }
+    
     private void displayClientDetails(int id) {
         String[] clientDetails = clients.getClientDetails(id);
         java.sql.Date checkingIn = reservation.getClientCheckInDate(id);
         java.sql.Date checkingOut = reservation.getClientCheckOutDate(id);
         
+        int totalNights = calculateNights(checkingIn, checkingOut);
+        String nights = String.valueOf(totalNights);
+        
+        String[] typeInfo = rooms.getTypeInfo(id);
+        int roomTypeID = Integer.parseInt(typeInfo[0]);
+        int roomPrice = Integer.parseInt(typeInfo[1]);
+        String roomName = typeInfo[2];
+        int totalPrice = roomPrice * totalNights;
+                
         if (clientDetails != null && clientDetails.length == 5) {
             String firstName = clientDetails[0];
             String lastName = clientDetails[1];
             guestNameLabel.setText(firstName + " " + lastName);
             checkInGuest.setText(checkingIn.toString());
             checkOutGuest.setText(checkingOut.toString());
+            numberOfNightsLabel.setText(nights);
+            priceLabel.setText("$"+ String.valueOf(totalPrice));
+            roomKindLabel.setText(String.valueOf(roomTypeID) + ": "+ roomName);
         } else {
             guestNameLabel.setText("Guest");
             checkInGuest.setText("dd/mmm/yyyy");
             checkOutGuest.setText("dd/mmm/yyyy");
+            numberOfNightsLabel.setText("0");
+            priceLabel.setText("0");
+            roomKindLabel.setText("0: none");
         }
     }
     
@@ -53,12 +77,19 @@ public class GuestLoginForm extends javax.swing.JFrame {
         st = new javax.swing.JFormattedTextField();
         It = new javax.swing.JFormattedTextField();
         headerLabel = new javax.swing.JLabel();
-        welcomeLabel = new javax.swing.JLabel();
-        guestNameLabel = new javax.swing.JLabel();
-        checkInLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         checkOutLabel = new javax.swing.JLabel();
-        checkInGuest = new javax.swing.JLabel();
         checkOutGuest = new javax.swing.JLabel();
+        checkInGuest = new javax.swing.JLabel();
+        checkInLabel = new javax.swing.JLabel();
+        guestNameLabel = new javax.swing.JLabel();
+        welcomeLabel = new javax.swing.JLabel();
+        costLabel = new javax.swing.JLabel();
+        priceLabel = new javax.swing.JLabel();
+        nightsLabel = new javax.swing.JLabel();
+        numberOfNightsLabel = new javax.swing.JLabel();
+        roomTypeLabel = new javax.swing.JLabel();
+        roomKindLabel = new javax.swing.JLabel();
 
         st.setEditable(false);
         st.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
@@ -78,76 +109,141 @@ public class GuestLoginForm extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
+        headerLabel.setBackground(new java.awt.Color(255, 255, 255));
         headerLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         headerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         headerLabel.setText("Booking Details");
+        headerLabel.setOpaque(true);
 
-        welcomeLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
-        welcomeLabel.setText("Welcome");
+        jPanel1.setBackground(new java.awt.Color(193, 223, 242));
 
-        guestNameLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
-        guestNameLabel.setText("guest name,");
-
-        checkInLabel.setText("Check in Date:");
-
+        checkOutLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
         checkOutLabel.setText("Check Out Date:");
+
+        checkOutGuest.setBackground(new java.awt.Color(255, 255, 255));
+        checkOutGuest.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        checkOutGuest.setText("dd/mmm/yyyy");
+        checkOutGuest.setToolTipText("");
+        checkOutGuest.setOpaque(true);
 
         checkInGuest.setBackground(new java.awt.Color(255, 255, 255));
         checkInGuest.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         checkInGuest.setText("dd/mmm/yyyy");
         checkInGuest.setToolTipText("");
+        checkInGuest.setOpaque(true);
 
-        checkOutGuest.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        checkOutGuest.setText("dd/mmm/yyyy");
-        checkOutGuest.setToolTipText("");
+        checkInLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        checkInLabel.setText("Check in Date:");
+
+        guestNameLabel.setFont(new java.awt.Font("Helvetica Neue", 3, 22)); // NOI18N
+        guestNameLabel.setText("guest name,");
+
+        welcomeLabel.setBackground(new java.awt.Color(255, 255, 255));
+        welcomeLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        welcomeLabel.setText("Welcome");
+
+        costLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        costLabel.setText("Cost:");
+
+        priceLabel.setBackground(new java.awt.Color(255, 255, 255));
+        priceLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        priceLabel.setText("price");
+        priceLabel.setToolTipText("");
+        priceLabel.setOpaque(true);
+
+        nightsLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        nightsLabel.setText("Number of Nights:");
+
+        numberOfNightsLabel.setBackground(new java.awt.Color(255, 255, 255));
+        numberOfNightsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numberOfNightsLabel.setText("nights");
+        numberOfNightsLabel.setToolTipText("");
+        numberOfNightsLabel.setOpaque(true);
+
+        roomTypeLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        roomTypeLabel.setText("Room Selected:");
+
+        roomKindLabel.setBackground(new java.awt.Color(255, 255, 255));
+        roomKindLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        roomKindLabel.setText("room type");
+        roomKindLabel.setToolTipText("");
+        roomKindLabel.setOpaque(true);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(welcomeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(guestNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(checkOutLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(checkInLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(costLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nightsLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(roomTypeLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(checkInGuest, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                            .addComponent(checkOutGuest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(numberOfNightsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(priceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(roomKindLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(welcomeLabel)
+                    .addComponent(guestNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkInLabel)
+                    .addComponent(checkInGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkOutLabel)
+                    .addComponent(checkOutGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numberOfNightsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nightsLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(costLabel)
+                    .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(roomKindLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roomTypeLabel))
+                .addContainerGap(373, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(welcomeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(guestNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkOutLabel)
-                            .addComponent(checkInLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkInGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(checkOutGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(headerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(headerLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(headerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(welcomeLabel)
-                    .addComponent(guestNameLabel))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkInLabel)
-                    .addComponent(checkInGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkOutLabel)
-                    .addComponent(checkOutGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(542, 542, 542))
+                .addComponent(headerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {guestNameLabel, welcomeLabel});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -201,8 +297,15 @@ public class GuestLoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel checkInLabel;
     private javax.swing.JLabel checkOutGuest;
     private javax.swing.JLabel checkOutLabel;
+    private javax.swing.JLabel costLabel;
     private javax.swing.JLabel guestNameLabel;
     private javax.swing.JLabel headerLabel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel nightsLabel;
+    private javax.swing.JLabel numberOfNightsLabel;
+    private javax.swing.JLabel priceLabel;
+    private javax.swing.JLabel roomKindLabel;
+    private javax.swing.JLabel roomTypeLabel;
     private javax.swing.JFormattedTextField st;
     private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables

@@ -164,4 +164,32 @@ public class ROOMS {
             return false;
         }
     }
+    
+    // room type id, the price and the name of the room
+    public String[] getTypeInfo(int clientId) {
+    PreparedStatement ps;
+    ResultSet rs;
+    String selectQuery = "SELECT TYPE.ID, TYPE.PRICE, TYPE.LABEL " +
+                         "FROM RESERVATIONS " +
+                         "JOIN ROOM ON RESERVATIONS.ROOM_NUMBER = ROOM.R_NUMBER " +
+                         "JOIN TYPE ON ROOM.TYPE = TYPE.ID " +
+                         "WHERE RESERVATIONS.CLIENT_ID = ?";
+    String[] roomTypeIdPriceAndLabel = new String[3];
+
+    try {
+        ps = dbManager.getConnection().prepareStatement(selectQuery);
+        ps.setInt(1, clientId);
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            roomTypeIdPriceAndLabel[0] = rs.getString("ID");
+            roomTypeIdPriceAndLabel[1] = rs.getString("PRICE");
+            roomTypeIdPriceAndLabel[2] = rs.getString("LABEL");
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(ROOMS.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return roomTypeIdPriceAndLabel;
+    }
+
 }
