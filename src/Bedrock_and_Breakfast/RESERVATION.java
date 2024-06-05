@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,7 +24,38 @@ public class RESERVATION {
 
     SimpleDBManager dbManager = new SimpleDBManager();
 
-    public boolean addReservation(int client_id, int room_number, Date date_in, Date date_out) {
+    public void fillReservationsJTable(JTable table) {
+        PreparedStatement ps;
+        ResultSet rs;
+        String selectQuery = "SELECT * FROM RESERVATIONS";
+
+        try {
+            ps = dbManager.getConnection().prepareStatement(selectQuery);
+            rs = ps.executeQuery();
+
+            DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+            tableModel.setRowCount(0);
+
+            Object[] row;
+
+            while (rs.next()) {
+
+                row = new Object[5];
+
+                row[0] = rs.getInt(1);
+                row[1] = rs.getInt(2);
+                row[2] = rs.getInt(3);
+                row[3] = rs.getString(4);
+                row[4] = rs.getString(5);
+                tableModel.addRow(row);
+            }
+            tableModel.fireTableDataChanged();
+        } catch (SQLException ex) {
+            Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public boolean addReservation(int client_id, int room_number, String date_in, String date_out) {
 
         PreparedStatement ps;
         ResultSet rs;
@@ -33,8 +66,8 @@ public class RESERVATION {
 
             ps.setInt(1, client_id);
             ps.setInt(2, room_number);
-            ps.setDate(3, date_in);
-            ps.setDate(4, date_out);
+            ps.setString(3, date_in);
+            ps.setString(4, date_out);
 
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
@@ -44,7 +77,7 @@ public class RESERVATION {
 
     }
 
-    public boolean editReservation(int reservation_id, int client_id, int room_number, Date date_in, Date date_out) {
+    public boolean editReservation(int reservation_id, int client_id, int room_number, String date_in, String date_out) {
 
         PreparedStatement ps;
         ResultSet rs;
@@ -53,11 +86,11 @@ public class RESERVATION {
         try {
             ps = dbManager.getConnection().prepareStatement(updateQuery);
 
-            ps.setInt(1, reservation_id);
-            ps.setInt(2, client_id);
-            ps.setInt(3, room_number);
-            ps.setDate(4, date_in);
-            ps.setDate(5, date_out);
+            ps.setInt(1, client_id);
+            ps.setInt(2, room_number);
+            ps.setString(3, date_in);
+            ps.setString(4, date_out);
+            ps.setInt(5, reservation_id);
 
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
