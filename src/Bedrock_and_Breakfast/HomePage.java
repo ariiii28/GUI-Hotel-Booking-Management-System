@@ -246,7 +246,12 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void BookARoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookARoomButtonActionPerformed
-        // TODO add your handling code here:
+        BookARoomForm booking = new BookARoomForm();
+        booking.setVisible(true);
+        booking.pack();
+        booking.setLocationRelativeTo(null);
+        booking.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
     }//GEN-LAST:event_BookARoomButtonActionPerformed
 
     /**
