@@ -72,7 +72,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLayeredPane1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="311" max="32767" attributes="0"/>
+                  <EmptySpace pref="289" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -95,6 +95,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -116,11 +117,11 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" min="-2" pref="1415" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="1380" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -183,6 +184,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="image goes here but its broken"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="ImageIcon logoicon = new ImageIcon(&quot;/PDC-Assignment-2/Images for PDC/logo.png&quot;);"/>
               </AuxValues>

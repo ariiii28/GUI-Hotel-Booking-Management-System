@@ -26,9 +26,9 @@
           <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="672" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="648" max="32767" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="673" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="648" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -37,13 +37,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="314" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="642" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="782" max="32767" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="643" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="782" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -55,6 +55,11 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -62,25 +67,24 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="queenImg" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="queenText" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Component id="doubleText1" min="-2" pref="745" max="-2" attributes="0"/>
-                          <EmptySpace pref="72" max="32767" attributes="0"/>
-                          <Component id="doubleImg" min="-2" pref="500" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                          <Component id="doubleImg" min="-2" pref="363" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="superiorImg" min="-2" pref="380" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="superiorText" min="-2" pref="857" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="queenImg" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="queenText" min="-2" pref="732" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="superiorImg" min="-2" pref="380" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                  <Component id="superiorText" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -88,24 +92,26 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="queenImg" min="-2" pref="279" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="doubleText1" min="-2" pref="281" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="queenText" min="-2" pref="265" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="doubleImg" min="-2" pref="248" max="-2" attributes="0"/>
+                          <Component id="queenText" pref="321" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="superiorImg" min="-2" pref="255" max="-2" attributes="0"/>
-                      <Component id="superiorText" min="-2" pref="263" max="-2" attributes="0"/>
+                      <Component id="doubleText1" min="-2" pref="281" max="-2" attributes="0"/>
+                      <Component id="doubleImg" min="-2" pref="248" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="444" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="superiorImg" min="-2" pref="255" max="-2" attributes="0"/>
+                      <Component id="superiorText" alignment="0" min="-2" pref="263" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="355" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -116,14 +122,6 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="2" name="/Users/diyatopiwala/Documents/GitHub/PDC-Assignment-2/src/Bedrock_and_Breakfast/images/Queen Room.png"/>
             </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="queenText">
-          <Properties>
-            <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="queenImg"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="QUEEN ROOM, $..... SLEEPS 1-2 PEOPLE, 1 BATHROOM, AMAZINGGG VIEW OF FOREST"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="doubleImg">
@@ -141,7 +139,7 @@
             <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="superiorImg"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="SUPERIOR ROOM, $..... SLEEPS 2-6 PEOPLE, 3 BATHROOM, AMAZINGGG VIEW OF MOUNTAINS AND FOREST + BATHTUB"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h1&gt;Superior Room: Luxurious Escape&lt;/h1&gt;&#xa;&#xa;&lt;p&gt;Experience unparalleled luxury in our superior room, perfect for families, groups, or a truly unforgettable getaway. This spacious room features stunning mountain and forest views, a private outdoor bathtub, and three bathrooms for ultimate convenience.&lt;/p&gt;&#xa;&#xa;&lt;h3&gt;Sleeps 2-6 people&lt;/h3&gt;&#xa;&#xa;&lt;h2&gt;Inclusions: &lt;/h2&gt;&#xa;&#xa;&lt;ul&gt;&#xa;  &lt;li&gt;In-room amenities (including a 27 inch television, mini-fridge and coffee maker)&lt;/li&gt;&#xa;  &lt;li&gt;Access to shared amenities such as our pool, hot tub, and fitness center&lt;/li&gt;&#xa;  &lt;li&gt;Free Wifi&lt;/li&gt;&#xa;&lt;/ul&gt;&#xa;&#xa;&lt;h3&gt;Cost: $500 per night&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="superiorImg">
@@ -153,7 +151,15 @@
         </Component>
         <Component class="javax.swing.JLabel" name="doubleText1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="DOUBLE ROOM, $..... SLEEPS 1-4 PEOPLE, 2 BATHROOM, AMAZINGGG VIEW OF MOUNTAINS AND FOREST "/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h1&gt;Double Room: Spacious Comfort with Mountain and Forest Views&lt;/h1&gt;&#xa;&#xa;&lt;p&gt;Enjoy ample space and stunning scenery in our double room, perfect for families or groups of friends.&lt;/p&gt;&#xa;&#xa;&lt;h3&gt;Sleeps 1-4 people&lt;/h3&gt;&#xa;&#xa;&lt;h2&gt;Inclusions: &lt;/h2&gt;&#xa;&#xa;&lt;ul&gt;&#xa;  &lt;li&gt;In-room amenities (including a 27 inch television, mini-fridge and coffee maker)&lt;/li&gt;&#xa;  &lt;li&gt;Access to shared amenities such as our pool, hot tub, and fitness center&lt;/li&gt;&#xa;  &lt;li&gt;Free Wifi&lt;/li&gt;&#xa;&lt;/ul&gt;&#xa;&#xa;&lt;h3&gt;Cost: $300 per night&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="queenText">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Font(&quot;Arial&quot;, 0, 16)" type="code"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt; &lt;h1&gt;Queen Room: Relax in Comfort with a Forest View&lt;/h1&gt; &lt;p&gt;Unwind in our cozy queen room, perfect for a romantic getaway or a solo retreat.&lt;/p&gt; &lt;p&gt;This room features a classy queen bed, a large window with a stunning view of the forest, and a private bathroom.&lt;/p&gt; &lt;h3&gt;Sleeps 1-2 people&lt;/h3&gt; &lt;h2&gt;Inclusions: &lt;/h2&gt; &lt;ul&gt; &lt;li&gt;In-room amenities (including a 27 inch television, mini-fridge and coffee maker)&lt;/li&gt; &lt;li&gt;Access to shared amenities such as our pool, hot tub, and fitness center&lt;/li&gt;   &lt;li&gt;Free Wifi&lt;/li&gt;  &lt;/ul&gt; &lt;h3&gt;Cost: $150 per night&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
         </Component>
       </SubComponents>
