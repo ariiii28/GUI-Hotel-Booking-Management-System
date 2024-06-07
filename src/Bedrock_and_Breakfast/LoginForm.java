@@ -233,7 +233,7 @@ public class LoginForm extends javax.swing.JFrame {
                         
                         this.dispose();
                     }
-                    else if (username.equals("guest")) {
+                    else if (username.equals("elonmusk@gmail.com")) {
                         System.out.println("found guest");
                         GuestLoginForm guest = new GuestLoginForm();
                         guest.setVisible(true);
