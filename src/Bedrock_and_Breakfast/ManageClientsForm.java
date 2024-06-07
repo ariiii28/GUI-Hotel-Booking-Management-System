@@ -8,7 +8,6 @@ import java.awt.Color;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 /**

@@ -68,12 +68,10 @@ public class ManageReservationsForm extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 28)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Bedrock & Breakfast");
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Helvetica", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Manage Reservations");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -101,42 +99,32 @@ public class ManageReservationsForm extends javax.swing.JFrame {
         );
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("ID:");
 
-        jTextField_ReservationID.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_ReservationID.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jTextField_ReservationID.setForeground(new java.awt.Color(51, 51, 51));
 
-        jTextField_ClientID.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_ClientID.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jTextField_ClientID.setForeground(new java.awt.Color(51, 51, 51));
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Client ID:");
 
-        jTextField_RoomNo.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_RoomNo.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jTextField_RoomNo.setForeground(new java.awt.Color(51, 51, 51));
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Room No:");
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Check In Date:");
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Check Out Date:");
 
         ReservationsTable.setAutoCreateRowSorter(true);
-        ReservationsTable.setBackground(new java.awt.Color(255, 255, 255));
         ReservationsTable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ReservationsTable.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
-        ReservationsTable.setForeground(new java.awt.Color(0, 0, 0));
         ReservationsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -163,9 +151,7 @@ public class ManageReservationsForm extends javax.swing.JFrame {
     jScrollPane1.setViewportView(ReservationsTable);
     ReservationsTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
-    AddNewReservation_Button.setBackground(new java.awt.Color(255, 255, 255));
     AddNewReservation_Button.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
-    AddNewReservation_Button.setForeground(new java.awt.Color(0, 0, 0));
     AddNewReservation_Button.setText("Add New Reservation");
     AddNewReservation_Button.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     AddNewReservation_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -175,9 +161,7 @@ public class ManageReservationsForm extends javax.swing.JFrame {
         }
     });
 
-    EditReservationButton.setBackground(new java.awt.Color(255, 255, 255));
     EditReservationButton.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
-    EditReservationButton.setForeground(new java.awt.Color(0, 0, 0));
     EditReservationButton.setText("Edit");
     EditReservationButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     EditReservationButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -187,9 +171,7 @@ public class ManageReservationsForm extends javax.swing.JFrame {
         }
     });
 
-    RemoveReservationButton.setBackground(new java.awt.Color(255, 255, 255));
     RemoveReservationButton.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
-    RemoveReservationButton.setForeground(new java.awt.Color(0, 0, 0));
     RemoveReservationButton.setText("Remove");
     RemoveReservationButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     RemoveReservationButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -199,9 +181,7 @@ public class ManageReservationsForm extends javax.swing.JFrame {
         }
     });
 
-    ClearFieldsReservationButton.setBackground(new java.awt.Color(255, 255, 255));
     ClearFieldsReservationButton.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
-    ClearFieldsReservationButton.setForeground(new java.awt.Color(0, 0, 0));
     ClearFieldsReservationButton.setText("Clear Fields");
     ClearFieldsReservationButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     ClearFieldsReservationButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

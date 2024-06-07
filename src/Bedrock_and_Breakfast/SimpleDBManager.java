@@ -13,8 +13,6 @@ import java.sql.Statement;
 
 public final class SimpleDBManager {
 
-    private static final String USER_NAME = "Bedrock"; // your DB username
-    private static final String PASSWORD = "breakfast"; // your DB password
     private static final String URL = "jdbc:derby:Bedrock;create=true"; // embedded DB URL
 
     private Connection conn;

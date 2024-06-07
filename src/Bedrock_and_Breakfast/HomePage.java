@@ -253,10 +253,6 @@ public class HomePage extends javax.swing.JFrame {
         booking.pack();
         booking.setLocationRelativeTo(null);
         booking.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     }//GEN-LAST:event_BookARoomButtonActionPerformed
 
     /**

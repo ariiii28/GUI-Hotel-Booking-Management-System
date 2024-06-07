@@ -22,9 +22,9 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public LoginForm() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -192,29 +192,29 @@ public class LoginForm extends javax.swing.JFrame {
         PreparedStatement ps;
         ResultSet rs;
 
-        //get the username and password
+        // Get the username and password
         String username = UsernameInput.getText();
         String password = String.valueOf(PasswordInput.getPassword());
 
-        //check if username/password is empty
-        if(username.trim().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Enter your Username Login", "Empty Username", 2);
+        // Check if username/password is empty
+        if (username.trim().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Enter your Username to Login", "Empty Username", 2);
         } else if (password.trim().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Enter your Password to Login", "Empty Password", 2);
         } else {
-           SimpleDBManager dbManager = new SimpleDBManager();
-           
-           String selectQuery = "SELECT * FROM USERS WHERE USERNAME = ? AND PASSWORD = ?";
+            SimpleDBManager dbManager = new SimpleDBManager();
+
+            String selectQuery = "SELECT * FROM USERS WHERE USERNAME = ? AND PASSWORD = ?";
             try {
                 ps = dbManager.getConnection().prepareStatement(selectQuery);
-                
+
                 ps.setString(1, username);
                 ps.setString(2, password);
-                
+
                 rs = ps.executeQuery();
-                
+
                 if (rs.next()) {
-                    //if this user exits open the HomePage and close the login form
+                    // If this user exists, open the appropriate form based on the username
                     if (username.equals("admin@bedrock.com")) {
                         System.out.println("found username");
                         Manage manage = new Manage();
@@ -222,22 +222,20 @@ public class LoginForm extends javax.swing.JFrame {
                         manage.pack();
                         manage.setLocationRelativeTo(null);
                         manage.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                        
+
                         this.dispose();
-                    }
-                    else if (username.equals("elonmusk@gmail.com")) {
-                        System.out.println("found guest");
+                    } else {
+                        System.out.println("found user: " + username);
                         GuestLoginForm guest = new GuestLoginForm();
                         guest.setVisible(true);
                         guest.pack();
                         guest.setLocationRelativeTo(null);
-                        
+
                         this.dispose();
                     }
                 } else {
-                    //if the user enters the wrong information
+                    // If the user enters the wrong information
                     JOptionPane.showMessageDialog(rootPane, "Wrong Username or Password", "Login Error", 2);
-                    
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
