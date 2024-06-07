@@ -64,12 +64,10 @@ public class BookARoomForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 28)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Bedrock & Breakfast");
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Helvetica", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Booking");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -96,23 +94,18 @@ public class BookARoomForm extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        jTextField_FirstNAME.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_FirstNAME.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jTextField_FirstNAME.setForeground(new java.awt.Color(51, 51, 51));
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("First Name:");
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Last Name:");
 
-        jTextField_LastNAME.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_LastNAME.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jTextField_LastNAME.setForeground(new java.awt.Color(51, 51, 51));
 
-        jTextField_PhoneNumber.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_PhoneNumber.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jTextField_PhoneNumber.setForeground(new java.awt.Color(51, 51, 51));
         jTextField_PhoneNumber.addActionListener(new java.awt.event.ActionListener() {
@@ -122,14 +115,11 @@ public class BookARoomForm extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Email:");
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Phone No:");
 
-        jTextField_Email.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_Email.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jTextField_Email.setForeground(new java.awt.Color(51, 51, 51));
         jTextField_Email.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +129,6 @@ public class BookARoomForm extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Type:");
 
         jComboBox_Type.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -150,11 +139,9 @@ public class BookARoomForm extends javax.swing.JFrame {
         });
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("CheckOut Date:");
 
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("CheckIn Date:");
 
         jDateChooser1_DateIn.setDateFormatString("yyyy-MM-dd");
@@ -163,9 +150,7 @@ public class BookARoomForm extends javax.swing.JFrame {
         jDateChooser2_DateOut.setDateFormatString("yyyy-MM-dd");
         jDateChooser2_DateOut.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
 
-        ConfirmBooking_Button.setBackground(new java.awt.Color(255, 255, 255));
         ConfirmBooking_Button.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
-        ConfirmBooking_Button.setForeground(new java.awt.Color(0, 0, 0));
         ConfirmBooking_Button.setText("Confirm Booking");
         ConfirmBooking_Button.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ConfirmBooking_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -175,9 +160,7 @@ public class BookARoomForm extends javax.swing.JFrame {
             }
         });
 
-        ClearFieldsButton.setBackground(new java.awt.Color(255, 255, 255));
         ClearFieldsButton.setFont(new java.awt.Font("Helvetica Neue", 0, 17)); // NOI18N
-        ClearFieldsButton.setForeground(new java.awt.Color(0, 0, 0));
         ClearFieldsButton.setText("Clear Fields");
         ClearFieldsButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ClearFieldsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
