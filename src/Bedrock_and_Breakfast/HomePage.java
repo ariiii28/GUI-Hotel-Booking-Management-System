@@ -235,6 +235,7 @@ public class HomePage extends javax.swing.JFrame {
         loginForm.pack();
         loginForm.setLocationRelativeTo(null);
         loginForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //System.exit(0);
     }//GEN-LAST:event_StaffLoginButtonMouseClicked
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
@@ -243,6 +244,7 @@ public class HomePage extends javax.swing.JFrame {
         loginForm.pack();
         loginForm.setLocationRelativeTo(null);
         loginForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //System.exit(0);
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void BookARoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookARoomButtonActionPerformed
@@ -251,7 +253,11 @@ public class HomePage extends javax.swing.JFrame {
         booking.pack();
         booking.setLocationRelativeTo(null);
         booking.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+<<<<<<< Updated upstream
         
+=======
+        //System.exit(0);
+>>>>>>> Stashed changes
     }//GEN-LAST:event_BookARoomButtonActionPerformed
 
     /**
