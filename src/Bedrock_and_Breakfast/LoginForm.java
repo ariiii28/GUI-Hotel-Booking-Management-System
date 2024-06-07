@@ -57,11 +57,9 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 22)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("USER LOGIN");
 
         BackButtonLogintoHome.setBackground(new java.awt.Color(204, 204, 204));
-        BackButtonLogintoHome.setForeground(new java.awt.Color(0, 0, 0));
         BackButtonLogintoHome.setText("< Back");
         BackButtonLogintoHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BackButtonLogintoHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -71,7 +69,6 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 28)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Bedrock & Breakfast");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -108,11 +105,9 @@ public class LoginForm extends javax.swing.JFrame {
         );
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Username:");
 
-        UsernameInput.setBackground(new java.awt.Color(255, 255, 255));
-        UsernameInput.setText("testuser");
+        UsernameInput.setText("admin@bedrock.com");
         UsernameInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsernameInputActionPerformed(evt);
@@ -120,10 +115,8 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Password:");
 
-        PasswordInput.setBackground(new java.awt.Color(255, 255, 255));
         PasswordInput.setText("password");
         PasswordInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +125,6 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         LoginButton.setBackground(new java.awt.Color(204, 204, 204));
-        LoginButton.setForeground(new java.awt.Color(0, 0, 0));
         LoginButton.setText("Login");
         LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -223,7 +215,7 @@ public class LoginForm extends javax.swing.JFrame {
                 
                 if (rs.next()) {
                     //if this user exits open the HomePage and close the login form
-                    if (username.equals("testuser")) {
+                    if (username.equals("admin@bedrock.com")) {
                         System.out.println("found username");
                         Manage manage = new Manage();
                         manage.setVisible(true);

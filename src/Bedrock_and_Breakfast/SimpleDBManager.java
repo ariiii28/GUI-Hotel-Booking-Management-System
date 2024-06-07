@@ -15,7 +15,7 @@ public final class SimpleDBManager {
 
     private static final String USER_NAME = "Bedrock"; // your DB username
     private static final String PASSWORD = "breakfast"; // your DB password
-    private static final String URL = "jdbc:derby:BDB;create=true"; // embedded DB URL
+    private static final String URL = "jdbc:derby:Bedrock;create=true"; // embedded DB URL
 
     private Connection conn;
 
@@ -117,19 +117,16 @@ public final class SimpleDBManager {
                 + "ID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, "
                 + "FIRSTNAME VARCHAR(50), "
                 + "LASTNAME VARCHAR(50), "
-                + "EMAIL VARCHAR(100), "
+                + "EMAIL VARCHAR(100) UNIQUE NOT NULL, "
                 + "PHONE VARCHAR(15)"
                 + ")",
                 "CREATE TABLE USERS ("
-                + "ID INT PRIMARY KEY, "
-                + "USERNAME VARCHAR(50) NOT NULL, "
+                + "ID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, "
+                + "USERNAME VARCHAR(100) NOT NULL, "
                 + "PASSWORD VARCHAR(50) NOT NULL, "
-                + "CONSTRAINT FK_CLIENT_ID FOREIGN KEY (ID) REFERENCES CLIENTS(ID)"
+                + "CONSTRAINT FK_CLIENT_ID FOREIGN KEY (ID) REFERENCES CLIENTS(ID), "
+                + "CONSTRAINT FK_EMAIL FOREIGN KEY (USERNAME) REFERENCES CLIENTS(EMAIL)"
                 + ")",
-                // Insert a client first
-                "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('John', 'Doe', 'john.doe@example.com', '123-456-7890')",
-                // Insert a user corresponding to the client
-                "INSERT INTO USERS (ID, USERNAME, PASSWORD) VALUES (1, 'testuser', 'password')",
                 "CREATE TABLE Type ("
                 + "ID INT PRIMARY KEY, "
                 + "Label VARCHAR(100), "
@@ -142,26 +139,41 @@ public final class SimpleDBManager {
                 + "reserved VARCHAR(25), "
                 + "FOREIGN KEY (type) REFERENCES Type(ID)"
                 + ")",
-                "INSERT INTO Type (ID, Label, Price) VALUES (1, 'Queen', '150')",
-                "INSERT INTO Type (ID, Label, Price) VALUES (2, 'Double', '300')",
-                "INSERT INTO Type (ID, Label, Price) VALUES (3, 'Superior', '500')",
                 "CREATE TABLE RESERVATIONS ("
                 + "ID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, "
                 + "CLIENT_ID INT, "
                 + "ROOM_NUMBER INT, "
                 + "DATE_IN DATE, "
-                + "DATE_OUT DATE"
+                + "DATE_OUT DATE, "
+                + "FOREIGN KEY (CLIENT_ID) REFERENCES CLIENTS(ID) ON DELETE CASCADE, "
+                + "FOREIGN KEY (ROOM_NUMBER) REFERENCES Room(r_number) ON DELETE CASCADE"
                 + ")",
+                "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Admin', 'Admin', 'admin@bedrock.com', '696-696-6969')",
+                "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Elon', 'Musk', 'elonmusk@gmail.com', '123-456-7890')",
+
+                "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Jeff', 'Bezos', 'amazon@gmail.com', '555-555-5555')",
+                "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Bernard', 'Arnault', 'louisvuitton@gmail.com', '111-111-1111')",
+                "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Mark', 'Zuckerberg', 'meta@facebook.com', '222-222-2222')",
+                "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Kim', 'Kardashian', 'northwest@skims.com', '444-444-4444')",
+                "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Giovanni', 'Ferrero', 'rocher@ferrero.com', '101-101-1010')",
+                "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Taylor', 'Swift', 'ttpd@taylornation.com', '131-131-1313')",
+                "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Oprah', 'Winfrey', 'yougetacar@gmail.com', '362-345-2457')",
+                "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Shiv', 'Nadar', 'shiv@software.com', '666-666-6666')",
+    
+                "INSERT INTO USERS (USERNAME, PASSWORD) VALUES ('admin@bedrock.com', 'password')",
+                "INSERT INTO USERS (USERNAME, PASSWORD) VALUES ('elonmusk@gmail.com', 'password')",
                 
-               
+                "INSERT INTO Type (ID, Label, Price) VALUES (1, 'Queen', '150')",
+                "INSERT INTO Type (ID, Label, Price) VALUES (2, 'Double', '300')",
+                "INSERT INTO Type (ID, Label, Price) VALUES (3, 'Superior', '500')"
             };
 
-            for (String sql : sqlStatements) {
-                stmt.execute(sql);
-            }
-
-            System.out.println("Database created successfully.");
+        for (String sql : sqlStatements) {
+            stmt.execute(sql);
         }
+
+        System.out.println("Database created successfully.");
     }
+}
 
 }

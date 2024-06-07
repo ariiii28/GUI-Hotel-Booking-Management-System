@@ -201,7 +201,7 @@ public class ROOMS {
         try {
             ps = dbManager.getConnection().prepareStatement(updateQuery);
 
-            ps.setString(1, isReserved);
+            ps.setString(3, isReserved);
             ps.setInt(4, number);
 
             return ps.executeUpdate() > 0;
