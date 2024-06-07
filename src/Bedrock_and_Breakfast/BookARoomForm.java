@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
  */
 public class BookARoomForm extends javax.swing.JFrame {
 
-    BOOKING booking = new BOOKING();
     ROOMS room = new ROOMS();
 
     /**
