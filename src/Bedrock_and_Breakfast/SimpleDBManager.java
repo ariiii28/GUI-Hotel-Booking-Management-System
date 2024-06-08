@@ -91,7 +91,7 @@ public final class SimpleDBManager {
             String tableName = rs.getString("TABLE_NAME");
             if (tableName.equalsIgnoreCase("CLIENTS")
                     || tableName.equalsIgnoreCase("USERS")
-                    || tableName.equalsIgnoreCase("Type")
+                    || tableName.equalsIgnoreCase("\"Type\"")
                     || tableName.equalsIgnoreCase("Room")
                     || tableName.equalsIgnoreCase("RESERVATIONS")) {
                 exists = true;
@@ -117,10 +117,10 @@ public final class SimpleDBManager {
                 + "CLIENT_ID INT,"
                 + "EMAIL_CLIENT VARCHAR(100) NOT NULL, "
                 + "PASSWORD VARCHAR(50) NOT NULL, "
-                + "CONSTRAINT FK_CLIENT_ID FOREIGN KEY (ID) REFERENCES CLIENTS(ID), "
+                + "CONSTRAINT FK_CLIENT_ID FOREIGN KEY (CLIENT_ID) REFERENCES CLIENTS(ID), "
                 + "CONSTRAINT FK_EMAIL FOREIGN KEY (EMAIL_CLIENT) REFERENCES CLIENTS(EMAIL)"
                 + ")",
-                "CREATE TABLE Type ("
+                "CREATE TABLE \"Type\" ("
                 + "ID INT PRIMARY KEY, "
                 + "Label VARCHAR(100), "
                 + "Price VARCHAR(10)"
@@ -130,7 +130,7 @@ public final class SimpleDBManager {
                 + "type INT, "
                 + "phone VARCHAR(25), "
                 + "reserved VARCHAR(25), "
-                + "FOREIGN KEY (type) REFERENCES Type(ID)"
+                + "FOREIGN KEY (type) REFERENCES \"Type\"(ID)"
                 + ")",
                 "CREATE TABLE RESERVATIONS ("
                 + "ID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, "
@@ -153,9 +153,9 @@ public final class SimpleDBManager {
                 "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Shiv', 'Nadar', 'shiv@software.com', '666-666-6666')",
                 "INSERT INTO USERS (EMAIL_CLIENT, PASSWORD) VALUES ('admin@bedrock.com', 'password')",
                 "INSERT INTO USERS (EMAIL_CLIENT, PASSWORD) VALUES ('elonmusk@gmail.com', 'password')",
-                "INSERT INTO Type (ID, Label, Price) VALUES (1, 'Queen', '150')",
-                "INSERT INTO Type (ID, Label, Price) VALUES (2, 'Double', '300')",
-                "INSERT INTO Type (ID, Label, Price) VALUES (3, 'Superior', '500')"
+                "INSERT INTO \"Type\" (ID, Label, Price) VALUES (1, 'Queen', '150')",
+                "INSERT INTO \"Type\" (ID, Label, Price) VALUES (2, 'Double', '300')",
+                "INSERT INTO \"Type\" (ID, Label, Price) VALUES (3, 'Superior', '500')"
             };
 
             for (String sql : sqlStatements) {
