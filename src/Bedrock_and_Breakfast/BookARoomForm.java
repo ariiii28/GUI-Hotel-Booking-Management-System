@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 public class BookARoomForm extends javax.swing.JFrame {
 
     ROOMS room = new ROOMS();
+    BOOKING booking = new BOOKING();
 
     /**
      * Creates new form BookARoomForm
@@ -280,62 +281,52 @@ public class BookARoomForm extends javax.swing.JFrame {
         String lname = jTextField_LastNAME.getText();
         String phone = jTextField_PhoneNumber.getText();
         String email = jTextField_Email.getText();
-        int roomType = jComboBox_Type.getSelectedIndex(); // Adjust as necessary
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_in = dateFormat.format(jDateChooser1_DateIn.getDate());
         String date_out = dateFormat.format(jDateChooser2_DateOut.getDate());
 
-        if (validateInputs(fname, lname, phone, email, date_in, date_out)) {
-            BOOKING booking = new BOOKING();
-            if (booking.addClient(fname, lname, phone, email)) {
-                int clientId = booking.getClientIdByEmail(email);
-                if (clientId > 0) {
-                    if (booking.addBooking(clientId, roomType, date_in, date_out)) {
-                        showSuccessMessage(clientId);
-                    } else {
-                        showErrorMessage("Failed to book room.");
+        if (fname.trim().isEmpty() || lname.trim().isEmpty() || phone.trim().isEmpty() || email.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in all the fields.", "Input Fields Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Assuming jComboBox_Type contains room numbers or descriptions with room numbers
+        int roomNumber;
+        try {
+            roomNumber = Integer.parseInt(jComboBox_Type.getSelectedItem().toString());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid room number selected.", "Room Selection Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (booking.addClient(fname, lname, phone, email)) {
+            int clientId = booking.getClientIdByEmail(email);
+
+            if (clientId != -1) {
+                if (booking.addReservation(clientId, roomNumber, date_in, date_out)) {
+                    booking.markRoomAsReserved(roomNumber);
+                    JOptionPane.showMessageDialog(this, "Room " + roomNumber + " booked successfully for client ID " + clientId + "!");
+
+                    // Prompt the user to proceed with booking
+                    int response = JOptionPane.showConfirmDialog(this, "Do you want to proceed with booking?", "Confirm Booking", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if (response == JOptionPane.YES_OPTION) {
+                        // Proceed to the ConfirmationForm
+                        ConfirmationForm confirmation = new ConfirmationForm();
+                        confirmation.setVisible(true);
                     }
+
                 } else {
-                    showErrorMessage("Failed to retrieve client ID.");
+                    JOptionPane.showMessageDialog(this, "Failed to book room.", "Booking Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                showErrorMessage("Failed to add client.");
+                JOptionPane.showMessageDialog(this, "Failed to retrieve client ID.", "Client ID Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            showErrorMessage("Please fill in all the fields.");
+            JOptionPane.showMessageDialog(this, "Failed to add client.", "Client Addition Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_ConfirmBooking_ButtonActionPerformed
-    private boolean validateInputs(String fname, String lname, String phone, String email, String date_in, String date_out) {
-        return !fname.trim().isEmpty() && !lname.trim().isEmpty() && !phone.trim().isEmpty() && !email.trim().isEmpty() && validateDates(date_in, date_out);
-    }
 
-    private boolean validateDates(String date_in, String date_out) {
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            java.util.Date checkIn = dateFormat.parse(date_in);
-            java.util.Date checkOut = dateFormat.parse(date_out);
-            return checkIn.before(checkOut);
-        } catch (Exception e) {
-            return false;
-        }
-    }
 
-    private void showSuccessMessage(int clientId) {
-        JOptionPane.showMessageDialog(this, "Room booked successfully for client ID " + clientId + "!");
-        int response = JOptionPane.showConfirmDialog(this, "Do you want to proceed with booking?", "Confirm Booking", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (response == JOptionPane.YES_OPTION) {
-            ConfirmationForm confirmation = new ConfirmationForm();
-            confirmation.setVisible(true);
-            confirmation.pack();
-            confirmation.setLocationRelativeTo(null);
-            confirmation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        }
-    }
-
-    private void showErrorMessage(String message) {
-        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
-    }
-    
     private void ClearFieldsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearFieldsButtonActionPerformed
 
         //jTextField_ID.setText("");
