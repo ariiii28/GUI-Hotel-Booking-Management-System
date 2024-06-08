@@ -280,50 +280,60 @@ public class BookARoomForm extends javax.swing.JFrame {
         String lname = jTextField_LastNAME.getText();
         String phone = jTextField_PhoneNumber.getText();
         String email = jTextField_Email.getText();
-        int roomType = jComboBox_Type.getSelectedIndex(); // Adjusted to get the room type index
+        int roomType = jComboBox_Type.getSelectedIndex(); // Adjust as necessary
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_in = dateFormat.format(jDateChooser1_DateIn.getDate());
         String date_out = dateFormat.format(jDateChooser2_DateOut.getDate());
 
-        if (fname.trim().isEmpty() || lname.trim().isEmpty() || phone.trim().isEmpty() || email.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill in all the fields.", "Input Fields Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        try {
-        BOOKING booking = new BOOKING(); // Create an instance of BOOKING
-        boolean clientAdded = booking.addClient(fname, lname, phone, email); 
-        if (clientAdded) {
-            int clientId = booking.getClientIdByEmail(email);
-            if (clientId >= 1) {
-                boolean bookingAdded = booking.addBooking(clientId, roomType, date_in, date_out);
-                if (bookingAdded) {
-                    JOptionPane.showMessageDialog(this, "Room booked successfully for client ID " + clientId + "!");
-
-                    // Prompt the user to proceed with booking
-                    int response = JOptionPane.showConfirmDialog(this, "Do you want to proceed with booking?", "Confirm Booking", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                    if (response == JOptionPane.YES_OPTION) {
-                        // Proceed to the ConfirmationForm
-                        ConfirmationForm confirmation = new ConfirmationForm();
-                        confirmation.setVisible(true);
-                        confirmation.pack();
-                        confirmation.setLocationRelativeTo(null);
-                        confirmation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        if (validateInputs(fname, lname, phone, email, date_in, date_out)) {
+            BOOKING booking = new BOOKING();
+            if (booking.addClient(fname, lname, phone, email)) {
+                int clientId = booking.getClientIdByEmail(email);
+                if (clientId > 0) {
+                    if (booking.addBooking(clientId, roomType, date_in, date_out)) {
+                        showSuccessMessage(clientId);
+                    } else {
+                        showErrorMessage("Failed to book room.");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Failed to book room.", "Booking Error", JOptionPane.ERROR_MESSAGE);
+                    showErrorMessage("Failed to retrieve client ID.");
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Failed to retrieve client ID.", "Client ID Error", JOptionPane.ERROR_MESSAGE);
+                showErrorMessage("Failed to add client.");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Failed to add client ID.", "Client ID Error", JOptionPane.ERROR_MESSAGE);
+            showErrorMessage("Please fill in all the fields.");
         }
     }//GEN-LAST:event_ConfirmBooking_ButtonActionPerformed
-    catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
+    private boolean validateInputs(String fname, String lname, String phone, String email, String date_in, String date_out) {
+        return !fname.trim().isEmpty() && !lname.trim().isEmpty() && !phone.trim().isEmpty() && !email.trim().isEmpty() && validateDates(date_in, date_out);
+    }
+
+    private boolean validateDates(String date_in, String date_out) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date checkIn = dateFormat.parse(date_in);
+            java.util.Date checkOut = dateFormat.parse(date_out);
+            return checkIn.before(checkOut);
+        } catch (Exception e) {
+            return false;
         }
+    }
+
+    private void showSuccessMessage(int clientId) {
+        JOptionPane.showMessageDialog(this, "Room booked successfully for client ID " + clientId + "!");
+        int response = JOptionPane.showConfirmDialog(this, "Do you want to proceed with booking?", "Confirm Booking", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.YES_OPTION) {
+            ConfirmationForm confirmation = new ConfirmationForm();
+            confirmation.setVisible(true);
+            confirmation.pack();
+            confirmation.setLocationRelativeTo(null);
+            confirmation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
+    }
+
+    private void showErrorMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
     
     private void ClearFieldsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearFieldsButtonActionPerformed
