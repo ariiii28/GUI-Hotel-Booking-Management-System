@@ -4,6 +4,8 @@
  */
 package Bedrock_and_Breakfast;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ariannemasinading
@@ -13,24 +15,26 @@ public class ConfirmationForm extends javax.swing.JFrame {
     CLIENTS clients = new CLIENTS();
     RESERVATION reservation = new RESERVATION();
     ROOMS rooms = new ROOMS();
+    boolean booked = false;
     
     int clientsId = 1;
     
+    GuestLoginForm guestLoginForm = new GuestLoginForm();
+    java.sql.Date checkingIn = reservation.getClientCheckInDate(clientsId);
+    java.sql.Date checkingOut = reservation.getClientCheckOutDate(clientsId);
+    String[] typeInfo = rooms.getTypeInfo(clientsId);
+    int roomPrice = Integer.parseInt(typeInfo[1]);
+    int totalNights = guestLoginForm.calculateNights(checkingIn, checkingOut);
+    int totalPrice = roomPrice * totalNights;
+        
     /**
      * Creates new form ConfirmationForm
      */
     public ConfirmationForm() {
         initComponents();
         
-        GuestLoginForm guestLoginForm = new GuestLoginForm();
+        priceLabel.setText("$" + String.valueOf(totalPrice));
         
-        //String[] clientDetails = clients.getClientDetails(clientsId);
-        java.sql.Date checkingIn = reservation.getClientCheckInDate(clientsId);
-        java.sql.Date checkingOut = reservation.getClientCheckOutDate(clientsId);
-        String[] typeInfo = rooms.getTypeInfo(clientsId);
-        int roomPrice = Integer.parseInt(typeInfo[1]);
-        int totalNights = guestLoginForm.calculateNights(checkingIn, checkingOut);
-        int totalPrice = roomPrice * totalNights;
     }
 
     /**
@@ -43,10 +47,14 @@ public class ConfirmationForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
+        cashButton = new javax.swing.JRadioButton();
+        cardButton = new javax.swing.JRadioButton();
+        paymentTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        costLabel = new javax.swing.JLabel();
+        priceLabel = new javax.swing.JLabel();
+        doneButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -55,57 +63,93 @@ public class ConfirmationForm extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-        jRadioButton1.setText("Cash (Pay at Property)");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        cashButton.setText("Cash (Pay at Property)");
+        cashButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                cashButtonActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setText("Credit/ Debit Card");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        cardButton.setText("Credit/ Debit Card");
+        cardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                cardButtonActionPerformed(evt);
             }
         });
-
-        jTextField1.setText("jTextField1");
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel2.setText("Select Payment Method");
+        jLabel2.setText("Select Payment Method:");
+
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        jLabel3.setText("Enter Payment Amount:");
+
+        costLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        costLabel.setText("Cost:");
+
+        priceLabel.setBackground(new java.awt.Color(255, 255, 255));
+        priceLabel.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        priceLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        priceLabel.setText("price");
+        priceLabel.setToolTipText("");
+        priceLabel.setOpaque(true);
+
+        doneButton.setText("Confirm");
+        doneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doneButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGap(54, 54, 54)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jRadioButton2)
-                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(costLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(priceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cashButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cardButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(21, 21, 21)
+                                        .addComponent(jLabel3)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(paymentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(51, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(doneButton)
+                .addGap(156, 156, 156))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(costLabel)
+                    .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jRadioButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(cashButton, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cardButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(paymentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addComponent(doneButton)
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -130,7 +174,7 @@ public class ConfirmationForm extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,13 +204,31 @@ public class ConfirmationForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void cashButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_cashButtonActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    private void cardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardButtonActionPerformed
+        String paymentString = paymentTextField.getText();
+        String price = Integer.toString(totalPrice);
+        System.out.println("Payment String: " + paymentString);
+        System.out.println("Price: " + price);
+        
+        if (paymentString.equals(price)) {
+            booked = true;
+        } 
+        else {
+            JOptionPane.showMessageDialog(this, "Incorrect Payment Amount");
+        }
+    }//GEN-LAST:event_cardButtonActionPerformed
+
+    private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        if (booked = true) {
+            JOptionPane.showMessageDialog(this, "Booking Confirmed!");
+            this.dispose();
+            System.exit(0);
+        }
+    }//GEN-LAST:event_doneButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,13 +266,17 @@ public class ConfirmationForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    javax.swing.JRadioButton cardButton;
+    javax.swing.JRadioButton cashButton;
+    javax.swing.JLabel costLabel;
+    javax.swing.JButton doneButton;
     javax.swing.JLabel jLabel1;
     javax.swing.JLabel jLabel2;
+    javax.swing.JLabel jLabel3;
     javax.swing.JLabel jLabel5;
     javax.swing.JPanel jPanel1;
     javax.swing.JPanel jPanel2;
-    javax.swing.JRadioButton jRadioButton1;
-    javax.swing.JRadioButton jRadioButton2;
-    javax.swing.JTextField jTextField1;
+    javax.swing.JTextField paymentTextField;
+    javax.swing.JLabel priceLabel;
     // End of variables declaration//GEN-END:variables
 }
