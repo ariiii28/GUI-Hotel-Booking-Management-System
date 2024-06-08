@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -287,7 +288,7 @@ public class BookARoomForm extends javax.swing.JFrame {
         String date_out = dateFormat.format(jDateChooser2_DateOut.getDate());
 
         if (validateInputs(fname, lname, phone, email, date_in, date_out)) {
-            BOOKING booking = new BOOKING();
+            
             if (booking.addClient(fname, lname, phone, email)) {
                 int clientId = booking.getClientIdByEmail(email);
                 if (clientId > 0) {
@@ -299,8 +300,11 @@ public class BookARoomForm extends javax.swing.JFrame {
                 }
             }
         }
-
     }//GEN-LAST:event_ConfirmBooking_ButtonActionPerformed
+
+    public JTextField getjTextField_Email() {
+        return jTextField_Email;
+    }
 
     private boolean validateInputs(String fname, String lname, String phone, String email, String date_in, String date_out) {
         return !fname.trim().isEmpty() && !lname.trim().isEmpty() && !phone.trim().isEmpty() && !email.trim().isEmpty() && validateDates(date_in, date_out);

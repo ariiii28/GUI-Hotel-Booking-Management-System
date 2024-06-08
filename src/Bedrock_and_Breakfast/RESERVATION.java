@@ -139,6 +139,9 @@ public class RESERVATION {
 
             if (rs.next()) {
                 checkInDate = rs.getDate("DATE_IN");
+                System.out.println("date found"); 
+            } else {
+                System.out.println("date not found"); /////// its staying as null - reservation date isnt working so 
             }
 
         } catch (SQLException ex) {
@@ -181,7 +184,7 @@ public class RESERVATION {
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                return rs.getInt(0);
+                return rs.getInt(1);
             } else {
                 return 0;
             }

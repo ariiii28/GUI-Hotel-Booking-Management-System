@@ -16,8 +16,10 @@ public class ConfirmationForm extends javax.swing.JFrame {
     RESERVATION reservation = new RESERVATION();
     ROOMS rooms = new ROOMS();
     boolean booked = false;
-    
-    int clientsId = 1;
+    BOOKING booking = new BOOKING();
+    BookARoomForm bookRoom = new BookARoomForm();
+    String getEmail = (bookRoom.getjTextField_Email()).getText();
+    int clientsId = booking.getClientIdByEmail(getEmail);
     
     GuestLoginForm guestLoginForm = new GuestLoginForm();
     java.sql.Date checkingIn = reservation.getClientCheckInDate(clientsId);

@@ -17,8 +17,11 @@ public class GuestLoginForm extends javax.swing.JFrame {
     CLIENTS clients = new CLIENTS();
     RESERVATION reservation = new RESERVATION();
     ROOMS rooms = new ROOMS();
+    BOOKING booking = new BOOKING();
+    BookARoomForm bookRoom = new BookARoomForm();
+    String getEmail = (bookRoom.getjTextField_Email()).getText();
+    int clientsId = booking.getClientIdByEmail(getEmail);
     
-    int clientsId = 1;
     /**
      * Creates new form GuestLoginForm
      */
@@ -27,7 +30,7 @@ public class GuestLoginForm extends javax.swing.JFrame {
         displayClientDetails(clientsId);
     }
 
-    //calculate number of nights
+    // calculate number of nights
     public int calculateNights(Date inDate, Date outDate)  {
         long nights = (outDate.getTime() - inDate.getTime());
         int noNights = (int) (nights / (24 * 60 * 60 * 1000));
@@ -36,8 +39,10 @@ public class GuestLoginForm extends javax.swing.JFrame {
     
     private void displayClientDetails(int id) {
         String[] clientDetails = clients.getClientDetails(id);
-        java.sql.Date checkingIn = reservation.getClientCheckInDate(id);
+        java.sql.Date checkingIn = reservation.getClientCheckInDate(id); // reservation date isnt working so this is null so rest of the stuff doesnt work 
+        System.out.println(checkingIn);
         java.sql.Date checkingOut = reservation.getClientCheckOutDate(id);
+        System.out.println(checkingOut);
         
         int totalNights = calculateNights(checkingIn, checkingOut);
         String nights = String.valueOf(totalNights);
