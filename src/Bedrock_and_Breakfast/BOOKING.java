@@ -11,24 +11,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BOOKING {
-    
+
     SimpleDBManager dbManager = new SimpleDBManager();
-    
+
     public BOOKING() {
-        this.dbManager = dbManager;
     }
 
     public boolean addClient(String fname, String lname, String phone, String email) {
-        PreparedStatement ps;
-        String addQuery = "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES (?,?,?,?)";
+        String insertQuery = "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES (?, ?, ?, ?)";
 
-        try {
-            ps = dbManager.getConnection().prepareStatement(addQuery);
+        try (PreparedStatement ps = dbManager.getConnection().prepareStatement(insertQuery)) {
             ps.setString(1, fname);
             ps.setString(2, lname);
             ps.setString(3, email);
             ps.setString(4, phone);
-
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(BOOKING.class.getName()).log(Level.SEVERE, null, ex);
@@ -37,59 +33,73 @@ public class BOOKING {
     }
 
     public int getClientIdByEmail(String email) {
-        PreparedStatement ps;
-        ResultSet rs;
-        String query = "SELECT ID FROM CLIENTS WHERE EMAIL = ?";
-        int clientId = -1;
+        String selectQuery = "SELECT ID FROM CLIENTS WHERE EMAIL = ?";
 
-        try {
-            ps = dbManager.getConnection().prepareStatement(query);
+        try (PreparedStatement ps = dbManager.getConnection().prepareStatement(selectQuery)) {
             ps.setString(1, email);
-            rs = ps.executeQuery();
-
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                clientId = rs.getInt("ID");
+                return rs.getInt("ID");
             }
         } catch (SQLException ex) {
             Logger.getLogger(BOOKING.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        return clientId;
+        return -1;
     }
 
-    public boolean addReservation(int client_id, int room_number, String date_in, String date_out) {
-        PreparedStatement ps;
-        String addQuery = "INSERT INTO RESERVATIONS (CLIENT_ID, ROOM_NUMBER, DATE_IN, DATE_OUT) VALUES (?,?,?,?)";
+    public boolean addBooking(int clientId, int roomType, String dateIn, String dateOut) {
+        int roomNumber = getAvailableRoomNumber(roomType);
+        if (roomNumber == -1) {
+            return false;
+        }
 
-        try {
-            ps = dbManager.getConnection().prepareStatement(addQuery);
-            ps.setInt(1, client_id);
-            ps.setInt(2, room_number);
-            ps.setString(3, date_in);
-            ps.setString(4, date_out);
+        String insertQuery = "INSERT INTO RESERVATIONS (CLIENT_ID, ROOM_NUMBER, ROOM_TYPE, DATE_IN, DATE_OUT) VALUES (?, ?, ?, ?, ?)";
 
-            if (ps.executeUpdate() > 0) {
-                markRoomAsReserved(room_number);
-                return true;
-            } else {
-                return false;
+        try (PreparedStatement ps = dbManager.getConnection().prepareStatement(insertQuery)) {
+            ps.setInt(1, clientId);
+            ps.setInt(2, roomNumber);
+            ps.setInt(3, roomType);
+            ps.setString(4, dateIn);
+            ps.setString(5, dateOut);
+            boolean bookingSuccess = ps.executeUpdate() > 0;
+
+            if (bookingSuccess) {
+                markRoomAsReserved(roomNumber);
             }
+
+            return bookingSuccess;
         } catch (SQLException ex) {
             Logger.getLogger(BOOKING.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
 
-    public void markRoomAsReserved(int room_number) {
-        PreparedStatement ps;
-        String updateQuery = "UPDATE ROOMS SET RESERVED = 'Yes' WHERE ROOM_NUMBER = ?";
+    public boolean markRoomAsReserved(int roomNumber) {
+        String updateQuery = "UPDATE Room SET reserved = 'Yes' WHERE r_number = ?";
+        try (PreparedStatement ps = dbManager.getConnection().prepareStatement(updateQuery)) {
+            ps.setInt(1, roomNumber);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(BOOKING.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 
-        try {
-            ps = dbManager.getConnection().prepareStatement(updateQuery);
-            ps.setInt(1, room_number);
-            ps.executeUpdate();
+    public int getAvailableRoomNumber(int roomType) {
+        int roomNumber = -1;
+        String query = "SELECT r_number FROM Room WHERE type = ? AND reserved = 'No' FETCH FIRST 1 ROW ONLY";
+
+        try (PreparedStatement ps = dbManager.getConnection().prepareStatement(query)) {
+            ps.setInt(1, roomType);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                roomNumber = rs.getInt("r_number");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(BOOKING.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        return roomNumber;
     }
 }
