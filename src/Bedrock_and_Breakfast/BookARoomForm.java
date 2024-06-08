@@ -290,60 +290,42 @@ public class BookARoomForm extends javax.swing.JFrame {
             return;
         }
 
+        try {
         BOOKING booking = new BOOKING(); // Create an instance of BOOKING
-
-        if (booking.addClient(fname, lname, phone, email)) {
+        boolean clientAdded = booking.addClient(fname, lname, phone, email); 
+        if (clientAdded) {
             int clientId = booking.getClientIdByEmail(email);
-
             if (clientId >= 1) {
-                if (booking.addBooking(clientId, roomType, date_in, date_out)) {
+                boolean bookingAdded = booking.addBooking(clientId, roomType, date_in, date_out);
+                if (bookingAdded) {
                     JOptionPane.showMessageDialog(this, "Room booked successfully for client ID " + clientId + "!");
 
                     // Prompt the user to proceed with booking
                     int response = JOptionPane.showConfirmDialog(this, "Do you want to proceed with booking?", "Confirm Booking", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
                     if (response == JOptionPane.YES_OPTION) {
-                        SimpleDBManager dbManager = new SimpleDBManager();
-                        String query = "SELECT * FROM USERS WHERE EMAIL_CLIENT = ?";
-                        try ( PreparedStatement ps = dbManager.getConnection().prepareStatement(query)) {
-                            ps.setString(1, email);
-                            ResultSet rs = ps.executeQuery();
-
-                            if (!rs.next()) {
-                                int createAccountResponse = JOptionPane.showConfirmDialog(this, "Email does not exist. Would you like to create an account?", "Email does not exist", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                                if (createAccountResponse == JOptionPane.YES_OPTION) {
-                                    // Open account creation form
-                                    CreateAccountForm createAccountForm = new CreateAccountForm();
-                                    createAccountForm.setVisible(true);
-                                    createAccountForm.pack();
-                                    createAccountForm.setLocationRelativeTo(null);
-                                    createAccountForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                                }
-                            } else {
-                                // Proceed to the ConfirmationForm
-                                ConfirmationForm confirmation = new ConfirmationForm();
-                                confirmation.setVisible(true);
-                                confirmation.pack();
-                                confirmation.setLocationRelativeTo(null);
-                                confirmation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                            }
-                        } catch (SQLException ex) {
-                            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
-                        } finally {
-                            dbManager.closeConnections();
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Failed to book room.", "Booking Error", JOptionPane.ERROR_MESSAGE);
+                        // Proceed to the ConfirmationForm
+                        ConfirmationForm confirmation = new ConfirmationForm();
+                        confirmation.setVisible(true);
+                        confirmation.pack();
+                        confirmation.setLocationRelativeTo(null);
+                        confirmation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Failed to retrieve client ID.", "Client ID Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Failed to book room.", "Booking Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Failed to add client.", "Client Addition Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Failed to retrieve client ID.", "Client ID Error", JOptionPane.ERROR_MESSAGE);
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to add client ID.", "Client ID Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_ConfirmBooking_ButtonActionPerformed
-
+    catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }
+    
     private void ClearFieldsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearFieldsButtonActionPerformed
 
         //jTextField_ID.setText("");
@@ -374,16 +356,24 @@ public class BookARoomForm extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BookARoomForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookARoomForm.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BookARoomForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookARoomForm.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BookARoomForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookARoomForm.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BookARoomForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookARoomForm.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
