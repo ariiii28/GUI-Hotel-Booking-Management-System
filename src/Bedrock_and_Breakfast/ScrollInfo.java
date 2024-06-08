@@ -4,6 +4,9 @@
  */
 package Bedrock_and_Breakfast;
 
+import java.awt.MediaTracker;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author diyatopiwala
@@ -15,6 +18,30 @@ public class ScrollInfo extends javax.swing.JFrame {
      */
     public ScrollInfo() {
         initComponents();
+        
+        java.net.URL imgURL = getClass().getResource("/org/me/Bedrock_and_Breakfast_images/Queen Room.png");
+        if (imgURL != null) {
+            queenImg.setIcon(new javax.swing.ImageIcon(imgURL));
+            queenImg.setText("");
+        } else {
+            System.out.println("Queen Room image not found!");
+        }
+
+        imgURL = getClass().getResource("/org/me/Bedrock_and_Breakfast_images/Superior Room.png");
+        if (imgURL != null) {
+            superiorImg.setIcon(new javax.swing.ImageIcon(imgURL));
+            superiorImg.setText("");
+        } else {
+            System.out.println("Superior Room image not found!");
+        }
+
+        imgURL = getClass().getResource("/org/me/Bedrock_and_Breakfast_images/Double Room.png");
+        if (imgURL != null) {
+            doubleImg.setIcon(new javax.swing.ImageIcon(imgURL));
+            doubleImg.setText("");
+        } else {
+            System.out.println("Double Room image not found!");
+        }
     }
 
     public javax.swing.JPanel getRoomPanel() {
@@ -31,12 +58,13 @@ public class ScrollInfo extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        delete = new javax.swing.JLabel();
         queenImg = new javax.swing.JLabel();
-        doubleImg = new javax.swing.JLabel();
         superiorText = new javax.swing.JLabel();
         superiorImg = new javax.swing.JLabel();
         doubleText1 = new javax.swing.JLabel();
         queenText = new javax.swing.JLabel();
+        doubleImg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,20 +72,21 @@ public class ScrollInfo extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
 
-        queenImg.setIcon(new javax.swing.ImageIcon("/Users/diyatopiwala/Documents/GitHub/PDC-Assignment-2/src/Bedrock_and_Breakfast/images/Queen Room.png")); // NOI18N
-
-        doubleImg.setIcon(new javax.swing.ImageIcon("/Users/diyatopiwala/Documents/GitHub/PDC-Assignment-2/src/Bedrock_and_Breakfast/images/Double Room.png")); // NOI18N
-        doubleImg.setLabelFor(superiorText);
+        queenImg.setLabelFor(doubleText1);
+        queenImg.setText("Image of Queen Room ");
 
         superiorText.setLabelFor(superiorImg);
         superiorText.setText("<html>\n<h1>Superior Room: Luxurious Escape</h1>\n\n<p>Experience unparalleled luxury in our superior room, perfect for families, groups, or a truly unforgettable getaway. This spacious room features stunning mountain and forest views, a private outdoor bathtub, and three bathrooms for ultimate convenience.</p>\n\n<h3>Sleeps 2-6 people</h3>\n\n<h2>Inclusions: </h2>\n\n<ul>\n  <li>In-room amenities (including a 27 inch television, mini-fridge and coffee maker)</li>\n  <li>Access to shared amenities such as our pool, hot tub, and fitness center</li>\n  <li>Free Wifi</li>\n</ul>\n\n<h3>Cost: $500 per night</h3>\n</html>");
 
-        superiorImg.setIcon(new javax.swing.ImageIcon("/Users/diyatopiwala/Documents/GitHub/PDC-Assignment-2/src/Bedrock_and_Breakfast/images/Superior Room.png")); // NOI18N
+        superiorImg.setText("Image of Superior Room ");
 
         doubleText1.setText("<html>\n<h1>Double Room: Spacious Comfort with Mountain and Forest Views</h1>\n\n<p>Enjoy ample space and stunning scenery in our double room, perfect for families or groups of friends.</p>\n\n<h3>Sleeps 1-4 people</h3>\n\n<h2>Inclusions: </h2>\n\n<ul>\n  <li>In-room amenities (including a 27 inch television, mini-fridge and coffee maker)</li>\n  <li>Access to shared amenities such as our pool, hot tub, and fitness center</li>\n  <li>Free Wifi</li>\n</ul>\n\n<h3>Cost: $300 per night</h3>\n</html>");
 
         queenText.setFont(new java.awt.Font("Arial", 0, 16));
         queenText.setText("<html> <h1>Queen Room: Relax in Comfort with a Forest View</h1> <p>Unwind in our cozy queen room, perfect for a romantic getaway or a solo retreat.</p> <p>This room features a classy queen bed, a large window with a stunning view of the forest, and a private bathroom.</p> <h3>Sleeps 1-2 people</h3> <h2>Inclusions: </h2> <ul> <li>In-room amenities (including a 27 inch television, mini-fridge and coffee maker)</li> <li>Access to shared amenities such as our pool, hot tub, and fitness center</li>   <li>Free Wifi</li>  </ul> <h3>Cost: $150 per night</h3> </html>");
+
+        doubleImg.setLabelFor(doubleText1);
+        doubleImg.setText("Image of Double Room ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -66,40 +95,50 @@ public class ScrollInfo extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(doubleText1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(doubleImg, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(delete)
+                        .addGap(30, 30, 30)
+                        .addComponent(queenImg, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addComponent(queenText, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(superiorImg, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addComponent(superiorText, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(queenImg)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(queenText, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addGap(157, 157, 157)
+                        .addComponent(doubleText1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(154, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addContainerGap(828, Short.MAX_VALUE)
+                    .addComponent(doubleImg, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(105, 105, 105)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(queenImg, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(queenText, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)))
+                        .addComponent(queenText, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(queenImg, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 47, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(doubleText1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(doubleImg, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(doubleText1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(superiorImg, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(superiorText, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(355, 355, 355))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(343, 343, 343)
+                    .addComponent(doubleImg, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(659, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -109,20 +148,20 @@ public class ScrollInfo extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 648, Short.MAX_VALUE)
+                    .addGap(0, 712, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 648, Short.MAX_VALUE)))
+                    .addGap(0, 713, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 314, Short.MAX_VALUE))
+                .addGap(0, 316, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 782, Short.MAX_VALUE)
+                    .addGap(0, 783, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 782, Short.MAX_VALUE)))
+                    .addGap(0, 783, Short.MAX_VALUE)))
         );
 
         pack();
@@ -164,6 +203,7 @@ public class ScrollInfo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel delete;
     private javax.swing.JLabel doubleImg;
     private javax.swing.JLabel doubleText1;
     private javax.swing.JPanel jPanel1;

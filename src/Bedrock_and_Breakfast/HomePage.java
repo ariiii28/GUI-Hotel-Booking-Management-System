@@ -21,23 +21,25 @@ public class HomePage extends javax.swing.JFrame {
     public HomePage() {
         initComponents();
         
+        // logo to change java cup when running file 
         ImageIcon logoicon = null;
-    try {
-        // Use the relative path from the classpath
-        java.net.URL imgURL = getClass().getResource("images/logo2.png");
-        if (imgURL != null) {
-            logoicon = new ImageIcon(imgURL);
-        } else {
-            System.out.println("Logo image not found!");
+        try {
+            // Use the relative path from the classpath
+            java.net.URL imgURL = getClass().getResource("/org/me/Bedrock_and_Breakfast_images/logo.png");
+            if (imgURL != null) {
+                logoicon = new ImageIcon(imgURL);
+            } else {
+                System.out.println("Logo image not found!");
+            }
+        } catch (Exception e) {
+            System.out.println("Error loading logo image: " + e.getMessage());
         }
-    } catch (Exception e) {
-        System.out.println("Error loading logo image: " + e.getMessage());
-    }
 
-    // Check if the image was successfully loaded
-    if (logoicon != null && logoicon.getImage() != null) {
-        setIconImage(logoicon.getImage());
-    }
+        // Check if the image was successfully loaded
+        if (logoicon != null && logoicon.getImage() != null) {
+            setIconImage(logoicon.getImage());
+        }
+
         // Get the screen size
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -76,10 +78,9 @@ public class HomePage extends javax.swing.JFrame {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jLabel1 = new javax.swing.JLabel();
         LoginButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        ImageIcon logoicon = new ImageIcon("/PDC-Assignment-2/Images for PDC/logo.png");
         StaffLoginButton = new javax.swing.JButton();
         BookARoomButton = new javax.swing.JButton();
+        logoIcon = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
@@ -114,8 +115,6 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("image goes here but its broken");
-
         StaffLoginButton.setBackground(new java.awt.Color(204, 204, 204));
         StaffLoginButton.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         StaffLoginButton.setText("Staff Login");
@@ -136,14 +135,16 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
+        logoIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/me/Bedrock_and_Breakfast_images/logo2.png"))); // NOI18N
+
         jScrollPane1.setToolTipText("");
         jScrollPane1.setHorizontalScrollBar(null);
 
         jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(LoginButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(StaffLoginButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(BookARoomButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(logoIcon, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -151,27 +152,27 @@ public class HomePage extends javax.swing.JFrame {
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1380, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 954, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                                 .addGap(39, 39, 39)
-                                .addComponent(BookARoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 891, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 954, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(BookARoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 891, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
+                                .addGap(18, 18, 18)
                                 .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(StaffLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1380, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(logoIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(536, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,17 +180,17 @@ public class HomePage extends javax.swing.JFrame {
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
                         .addComponent(BookARoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(88, 88, 88))
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addContainerGap()
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LoginButton)
-                            .addComponent(StaffLoginButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(StaffLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(logoIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
@@ -203,7 +204,7 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +236,6 @@ public class HomePage extends javax.swing.JFrame {
         loginForm.pack();
         loginForm.setLocationRelativeTo(null);
         loginForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //System.exit(0);
     }//GEN-LAST:event_StaffLoginButtonMouseClicked
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
@@ -244,15 +244,10 @@ public class HomePage extends javax.swing.JFrame {
         loginForm.pack();
         loginForm.setLocationRelativeTo(null);
         loginForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //System.exit(0);
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void BookARoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookARoomButtonActionPerformed
-        BookARoomForm booking = new BookARoomForm();
-        booking.setVisible(true);
-        booking.pack();
-        booking.setLocationRelativeTo(null);
-        booking.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        // TODO add your handling code here:
     }//GEN-LAST:event_BookARoomButtonActionPerformed
 
     /**
@@ -296,9 +291,9 @@ public class HomePage extends javax.swing.JFrame {
     javax.swing.JButton StaffLoginButton;
     javax.swing.JDialog jDialog1;
     javax.swing.JLabel jLabel1;
-    javax.swing.JLabel jLabel2;
     javax.swing.JLayeredPane jLayeredPane1;
     javax.swing.JPanel jPanel1;
     javax.swing.JScrollPane jScrollPane1;
+    javax.swing.JLabel logoIcon;
     // End of variables declaration//GEN-END:variables
 }
