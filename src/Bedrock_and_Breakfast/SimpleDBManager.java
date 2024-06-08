@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Bedrock_and_Breakfast;
 
 import java.sql.Connection;
@@ -13,8 +9,7 @@ import java.sql.Statement;
 
 public final class SimpleDBManager {
 
-    private static final String URL = "jdbc:derby:Bedrock;create=true"; // embedded DB URL
-
+    private static final String URL = "jdbc:derby:Bed;create=true"; // embedded DB URL
     private Connection conn;
 
     public SimpleDBManager() {
@@ -119,11 +114,11 @@ public final class SimpleDBManager {
                 + "PHONE VARCHAR(15)"
                 + ")",
                 "CREATE TABLE USERS ("
-                + "ID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, "
-                + "USERNAME VARCHAR(100) NOT NULL, "
+                + "CLIENT_ID INT,"
+                + "EMAIL_CLIENT VARCHAR(100) NOT NULL, "
                 + "PASSWORD VARCHAR(50) NOT NULL, "
                 + "CONSTRAINT FK_CLIENT_ID FOREIGN KEY (ID) REFERENCES CLIENTS(ID), "
-                + "CONSTRAINT FK_EMAIL FOREIGN KEY (USERNAME) REFERENCES CLIENTS(EMAIL)"
+                + "CONSTRAINT FK_EMAIL FOREIGN KEY (EMAIL_CLIENT) REFERENCES CLIENTS(EMAIL)"
                 + ")",
                 "CREATE TABLE Type ("
                 + "ID INT PRIMARY KEY, "
@@ -148,7 +143,6 @@ public final class SimpleDBManager {
                 + ")",
                 "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Admin', 'Admin', 'admin@bedrock.com', '696-696-6969')",
                 "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Elon', 'Musk', 'elonmusk@gmail.com', '123-456-7890')",
-
                 "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Jeff', 'Bezos', 'amazon@gmail.com', '555-555-5555')",
                 "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Bernard', 'Arnault', 'louisvuitton@gmail.com', '111-111-1111')",
                 "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Mark', 'Zuckerberg', 'meta@facebook.com', '222-222-2222')",
@@ -157,21 +151,18 @@ public final class SimpleDBManager {
                 "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Taylor', 'Swift', 'ttpd@taylornation.com', '131-131-1313')",
                 "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Oprah', 'Winfrey', 'yougetacar@gmail.com', '362-345-2457')",
                 "INSERT INTO CLIENTS (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES ('Shiv', 'Nadar', 'shiv@software.com', '666-666-6666')",
-    
-                "INSERT INTO USERS (USERNAME, PASSWORD) VALUES ('admin@bedrock.com', 'password')",
-                "INSERT INTO USERS (USERNAME, PASSWORD) VALUES ('elonmusk@gmail.com', 'password')",
-                
+                "INSERT INTO USERS (EMAIL_CLIENT, PASSWORD) VALUES ('admin@bedrock.com', 'password')",
+                "INSERT INTO USERS (EMAIL_CLIENT, PASSWORD) VALUES ('elonmusk@gmail.com', 'password')",
                 "INSERT INTO Type (ID, Label, Price) VALUES (1, 'Queen', '150')",
                 "INSERT INTO Type (ID, Label, Price) VALUES (2, 'Double', '300')",
                 "INSERT INTO Type (ID, Label, Price) VALUES (3, 'Superior', '500')"
             };
 
-        for (String sql : sqlStatements) {
-            stmt.execute(sql);
+            for (String sql : sqlStatements) {
+                stmt.execute(sql);
+            }
+
+            System.out.println("Database created successfully.");
         }
-
-        System.out.println("Database created successfully.");
     }
-}
-
 }

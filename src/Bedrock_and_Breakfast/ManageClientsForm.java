@@ -30,7 +30,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
 
         //populate the jtable
         client.fillClientJTable(ClientsTable);
-        
+
         ClientsTable.setRowHeight(30);
     }
 
@@ -341,26 +341,26 @@ public class ManageClientsForm extends javax.swing.JFrame {
     private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed
 
         try {
-        int id = Integer.parseInt(jTextField_ID.getText());
-        String fname = jTextField_FirstNAME.getText();
-        String lname = jTextField_LastNAME.getText();
-        String phone = jTextField_PhoneNumber.getText();
-        String email = jTextField_Email.getText();
+            int id = Integer.parseInt(jTextField_ID.getText());
+            String fname = jTextField_FirstNAME.getText();
+            String lname = jTextField_LastNAME.getText();
+            String phone = jTextField_PhoneNumber.getText();
+            String email = jTextField_Email.getText();
 
-        if (fname.trim().equals("") || lname.trim().equals("") || phone.trim().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Required Fields -> First/Last Name + Phone Number", "Empty Fields", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (client.editClient(id, fname, lname, email, phone)) {
-                JOptionPane.showMessageDialog(rootPane, "Client Updated Successfully", "Update Client", JOptionPane.INFORMATION_MESSAGE);
-                // Refresh the JTable data
-                client.fillClientJTable(ClientsTable);
+            if (fname.trim().equals("") || lname.trim().equals("") || phone.trim().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Required Fields -> First/Last Name + Phone Number", "Empty Fields", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Client Update Failed", "Update Client Error", JOptionPane.ERROR_MESSAGE);
+                if (client.editClient(id, fname, lname, email, phone)) {
+                    JOptionPane.showMessageDialog(rootPane, "Client Updated Successfully", "Update Client", JOptionPane.INFORMATION_MESSAGE);
+                    // Refresh the JTable data
+                    client.fillClientJTable(ClientsTable);
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Client Update Failed", "Update Client Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Invalid Client ID", "ID Error", JOptionPane.ERROR_MESSAGE);
         }
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(rootPane, "Invalid Client ID", "ID Error", JOptionPane.ERROR_MESSAGE);
-    }
     }//GEN-LAST:event_EditButtonActionPerformed
 
     private void RemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveButtonActionPerformed

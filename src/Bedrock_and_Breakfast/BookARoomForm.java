@@ -4,6 +4,9 @@
  */
 package Bedrock_and_Breakfast;
 
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -227,7 +230,7 @@ public class BookARoomForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(86, 86, 86)
+                .addGap(96, 96, 96)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jComboBox_Type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -239,7 +242,7 @@ public class BookARoomForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateChooser2_DateOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ConfirmBooking_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ClearFieldsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -265,7 +268,7 @@ public class BookARoomForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_EmailActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField_EmailActionPerformed
 
     private void jTextField_PhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PhoneNumberActionPerformed
@@ -298,23 +301,46 @@ public class BookARoomForm extends javax.swing.JFrame {
 
                     // Prompt the user to proceed with booking
                     int response = JOptionPane.showConfirmDialog(this, "Do you want to proceed with booking?", "Confirm Booking", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                    if (response == JOptionPane.YES_OPTION) {
-                        // Proceed to the ConfirmationForm
-                        ConfirmationForm confirmation = new ConfirmationForm();
-                        confirmation.setVisible(true);
-                        confirmation.pack();
-                        confirmation.setLocationRelativeTo(null);
-                        confirmation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    }
 
+                    if (response == JOptionPane.YES_OPTION) {
+                        SimpleDBManager dbManager = new SimpleDBManager();
+                        String query = "SELECT * FROM USERS WHERE EMAIL_CLIENT = ?";
+                        try ( PreparedStatement ps = dbManager.getConnection().prepareStatement(query)) {
+                            ps.setString(1, email);
+                            ResultSet rs = ps.executeQuery();
+
+                            if (!rs.next()) {
+                                int createAccountResponse = JOptionPane.showConfirmDialog(this, "Email does not exist. Would you like to create an account?", "Email does not exist", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                                if (createAccountResponse == JOptionPane.YES_OPTION) {
+                                    // Open account creation form
+                                    CreateAccountForm createAccountForm = new CreateAccountForm();
+                                    createAccountForm.setVisible(true);
+                                    createAccountForm.pack();
+                                    createAccountForm.setLocationRelativeTo(null);
+                                    createAccountForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                                }
+                            } else {
+                                // Proceed to the ConfirmationForm
+                                ConfirmationForm confirmation = new ConfirmationForm();
+                                confirmation.setVisible(true);
+                                confirmation.pack();
+                                confirmation.setLocationRelativeTo(null);
+                                confirmation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                            }
+                        } catch (SQLException ex) {
+                            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+                        } finally {
+                            dbManager.closeConnections();
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Failed to book room.", "Booking Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Failed to book room.", "Booking Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Failed to retrieve client ID.", "Client ID Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Failed to retrieve client ID.", "Client ID Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Failed to add client.", "Client Addition Error", JOptionPane.ERROR_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Failed to add client.", "Client Addition Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_ConfirmBooking_ButtonActionPerformed
 

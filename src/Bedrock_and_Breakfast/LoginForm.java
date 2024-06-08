@@ -189,34 +189,36 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
 
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
-        // Get the username and password
-        String username = UsernameInput.getText();
+        // Get the email and password
+        String email = UsernameInput.getText();
         String password = String.valueOf(PasswordInput.getPassword());
 
-        // Check if username/password is empty
-        if (username.trim().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Enter your Username to Login", "Empty Username", 2);
+        // Check if email/password is empty
+        if (email.trim().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Enter your Email to Login", "Empty Email", 2);
         } else if (password.trim().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Enter your Password to Login", "Empty Password", 2);
         } else {
             SimpleDBManager dbManager = new SimpleDBManager();
 
-            String selectQuery = "SELECT * FROM USERS WHERE USERNAME = ? AND PASSWORD = ?";
+            String selectQuery = "SELECT * FROM USERS WHERE EMAIL_CLIENT = ? AND PASSWORD = ?";
             try {
                 ps = dbManager.getConnection().prepareStatement(selectQuery);
 
-                ps.setString(1, username);
+                ps.setString(1, email);
                 ps.setString(2, password);
+
+                System.out.println("Executing query: " + ps.toString());
 
                 rs = ps.executeQuery();
 
                 if (rs.next()) {
-                    // If this user exists, open the appropriate form based on the username
-                    if (username.equals("admin@bedrock.com")) {
-                        System.out.println("found username");
+                    // If this user exists, open the appropriate form based on the email
+                    if (email.equals("admin@bedrock.com")) {
+                        System.out.println("Admin user found: " + email);
                         Manage manage = new Manage();
                         manage.setVisible(true);
                         manage.pack();
@@ -224,8 +226,8 @@ public class LoginForm extends javax.swing.JFrame {
                         manage.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
                         this.dispose();
-                    } else {
-                        System.out.println("found user: " + username);
+                    } else if (email.equals("elonmusk@gmail.com")) {
+                        System.out.println("Regular user found: " + email);
                         GuestLoginForm guest = new GuestLoginForm();
                         guest.setVisible(true);
                         guest.pack();
@@ -235,10 +237,22 @@ public class LoginForm extends javax.swing.JFrame {
                     }
                 } else {
                     // If the user enters the wrong information
-                    JOptionPane.showMessageDialog(rootPane, "Wrong Username or Password", "Login Error", 2);
+                    JOptionPane.showMessageDialog(rootPane, "Wrong Email or Password", "Login Error", 2);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    if (rs != null) {
+                        rs.close();
+                    }
+                    if (ps != null) {
+                        ps.close();
+                    }
+                    dbManager.closeConnections();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
