@@ -157,18 +157,19 @@ public class CreateAccountForm extends javax.swing.JFrame {
 
         SimpleDBManager dbManager = new SimpleDBManager();
         String selectQuery = "SELECT ID FROM CLIENTS WHERE EMAIL = ?";
-        String insertQuery = "INSERT INTO USERS (EMAIL_CLIENT, PASSWORD) VALUES (?, ?)";
+        String insertQuery = "INSERT INTO USERS (CLIENT_ID, EMAIL_CLIENT, PASSWORD) VALUES (?, ?, ?)";
 
-        try (PreparedStatement psSelect = dbManager.getConnection().prepareStatement(selectQuery)) {
+        try ( PreparedStatement psSelect = dbManager.getConnection().prepareStatement(selectQuery)) {
             psSelect.setString(1, email);
             ResultSet rs = psSelect.executeQuery();
 
             if (rs.next()) {
                 int clientId = rs.getInt("ID");
 
-                try (PreparedStatement psInsert = dbManager.getConnection().prepareStatement(insertQuery)) {
-                    psInsert.setString(1, email);
-                    psInsert.setString(2, password);
+                try ( PreparedStatement psInsert = dbManager.getConnection().prepareStatement(insertQuery)) {
+                    psInsert.setInt(1, clientId);
+                    psInsert.setString(2, email);
+                    psInsert.setString(3, password);
 
                     if (psInsert.executeUpdate() > 0) {
                         JOptionPane.showMessageDialog(this, "Account created successfully!");
