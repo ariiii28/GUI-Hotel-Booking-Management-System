@@ -76,7 +76,7 @@ public class ScrollInfo extends javax.swing.JFrame {
         queenImg.setText("Image of Queen Room ");
 
         superiorText.setLabelFor(superiorImg);
-        superiorText.setText("<html>\n<h1>Superior Room: Luxurious Escape</h1>\n\n<p>Experience unparalleled luxury in our superior room, perfect for families, groups, or a truly unforgettable getaway. This spacious room features stunning mountain and forest views, a private outdoor bathtub, and three bathrooms for ultimate convenience.</p>\n\n<h3>Sleeps 2-6 people</h3>\n\n<h2>Inclusions: </h2>\n\n<ul>\n  <li>In-room amenities (including a 27 inch television, mini-fridge and coffee maker)</li>\n  <li>Access to shared amenities such as our pool, hot tub, and fitness center</li>\n  <li>Free Wifi</li>\n</ul>\n\n<h3>Cost: $500 per night</h3>\n</html>");
+        superiorText.setText("<html> <h1>Superior Room: Luxurious Escape</h1>  <p>Experience unparalleled luxury in our superior room, perfect for families, groups, or a truly unforgettable getaway. This spacious room features stunning mountain and forest views, a private outdoor bathtub, and three bathrooms for ultimate convenience.</p>  <h3>Sleeps 2-6 people</h3>  <h2>Inclusions: </h2>  <ul>   <li>In-room amenities (including a 27 inch television, mini-fridge and coffee maker)</li>   <li>Access to shared amenities such as our pool, hot tub, and fitness center</li>   <li>Free Wifi</li> </ul>  <h3>Cost: $500 per night</h3> </html>");
 
         superiorImg.setText("Image of Superior Room ");
 
