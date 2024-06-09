@@ -21,7 +21,7 @@ public class ConfirmationForm extends javax.swing.JFrame {
     String getEmail = (bookRoom.getjTextField_Email()).getText();
     int clientsId = booking.getClientIdByEmail(getEmail);
     
-    GuestLoginForm guestLoginForm = new GuestLoginForm();
+    GuestLoginForm guestLoginForm = new GuestLoginForm(getEmail);
     java.sql.Date checkingIn = reservation.getClientCheckInDate(clientsId);
     java.sql.Date checkingOut = reservation.getClientCheckOutDate(clientsId);
     String[] typeInfo = rooms.getTypeInfo(clientsId);
@@ -34,7 +34,6 @@ public class ConfirmationForm extends javax.swing.JFrame {
      */
     public ConfirmationForm() {
         initComponents();
-        
         priceLabel.setText("$" + String.valueOf(totalPrice));
         
     }

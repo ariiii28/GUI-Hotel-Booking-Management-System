@@ -226,9 +226,9 @@ public class LoginForm extends javax.swing.JFrame {
                         manage.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
                         this.dispose();
-                    } else if (email.equals("elonmusk@gmail.com")) {
+                    } else {
                         System.out.println("Regular user found: " + email);
-                        GuestLoginForm guest = new GuestLoginForm();
+                        GuestLoginForm guest = new GuestLoginForm(email);
                         guest.setVisible(true);
                         guest.pack();
                         guest.setLocationRelativeTo(null);

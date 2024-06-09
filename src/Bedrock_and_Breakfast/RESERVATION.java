@@ -5,6 +5,7 @@
 package Bedrock_and_Breakfast;
 
 import java.sql.PreparedStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
@@ -127,51 +128,78 @@ public class RESERVATION {
     }
 
     public Date getClientCheckInDate(int client_id) {
-        PreparedStatement ps;
-        ResultSet rs;
-        String selectQuery = "SELECT DATE_IN FROM RESERVATIONS WHERE CLIENT_ID = ?";
-        Date checkInDate = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    String selectQuery = "SELECT DATE_IN FROM RESERVATIONS WHERE CLIENT_ID = ?";
+    java.sql.Date checkInDate = null;
 
-        try {
-            ps = dbManager.getConnection().prepareStatement(selectQuery);
-            ps.setInt(1, client_id);
-            rs = ps.executeQuery();
-
-            if (rs.next()) {
-                checkInDate = rs.getDate("DATE_IN");
-                System.out.println("date found"); 
-            } else {
-                System.out.println("date not found"); /////// its staying as null - reservation date isnt working so 
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(RESERVATION.class.getName()).log(Level.SEVERE, null, ex);
+    try {
+        Connection conn = dbManager.getConnection();
+        if (conn == null) {
+            System.out.println("Failed to establish a database connection.");
+            return null;
         }
 
-        return checkInDate;
+        ps = conn.prepareStatement(selectQuery);
+        ps.setInt(1, client_id);
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            checkInDate = rs.getDate("DATE_IN");
+            System.out.println("Check-in date found: " + checkInDate);
+        } else {
+            System.out.println("No check-in date found for client_id: " + client_id);
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(RESERVATION.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+        } catch (SQLException e) {
+            Logger.getLogger(RESERVATION.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
-    public Date getClientCheckOutDate(int client_id) {
-        PreparedStatement ps;
-        ResultSet rs;
-        String selectQuery = "SELECT DATE_OUT FROM RESERVATIONS WHERE CLIENT_ID = ?";
-        Date checkOutDate = null;
+    return checkInDate;
+}
 
-        try {
-            ps = dbManager.getConnection().prepareStatement(selectQuery);
-            ps.setInt(1, client_id);
-            rs = ps.executeQuery();
+public Date getClientCheckOutDate(int client_id) {
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    String selectQuery = "SELECT DATE_OUT FROM RESERVATIONS WHERE CLIENT_ID = ?";
+    java.sql.Date checkOutDate = null;
 
-            if (rs.next()) {
-                checkOutDate = rs.getDate("DATE_OUT");
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(RESERVATION.class.getName()).log(Level.SEVERE, null, ex);
+    try {
+        Connection conn = dbManager.getConnection();
+        if (conn == null) {
+            System.out.println("Failed to establish a database connection.");
+            return null;
         }
 
-        return checkOutDate;
+        ps = conn.prepareStatement(selectQuery);
+        ps.setInt(1, client_id);
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            checkOutDate = rs.getDate("DATE_OUT");
+            System.out.println("Check-out date found: " + checkOutDate);
+        } else {
+            System.out.println("No check-out date found for client_id: " + client_id);
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(RESERVATION.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+        } catch (SQLException e) {
+            Logger.getLogger(RESERVATION.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
+
+    return checkOutDate;
+}
     
     public int getRoomNumberFromReservation(int reservationID) {
         PreparedStatement ps;

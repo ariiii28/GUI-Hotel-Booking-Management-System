@@ -39,7 +39,8 @@ public class BOOKING {
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return rs.getInt("ID");
+                int clientId = rs.getInt("ID");
+                return clientId;
             }
         } catch (SQLException ex) {
             Logger.getLogger(BOOKING.class.getName()).log(Level.SEVERE, null, ex);

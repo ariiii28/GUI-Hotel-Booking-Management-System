@@ -19,17 +19,23 @@ public class GuestLoginForm extends javax.swing.JFrame {
     ROOMS rooms = new ROOMS();
     BOOKING booking = new BOOKING();
     BookARoomForm bookRoom = new BookARoomForm();
-    String getEmail = (bookRoom.getjTextField_Email()).getText();
-    int clientsId = booking.getClientIdByEmail(getEmail);
+    String userEmail;
+    //String getEmail = (bookRoom.getjTextField_Email()).getText();
+    int clientsId;
     
     /**
      * Creates new form GuestLoginForm
      */
-    public GuestLoginForm() {
+    public GuestLoginForm(String email) {
         initComponents();
+        this.userEmail = email;
+        this.clientsId = booking.getClientIdByEmail(userEmail); // wasnt working before lets see now
         displayClientDetails(clientsId);
     }
 
+    public String getEmail() {
+        return userEmail;
+    }
     // calculate number of nights
     public int calculateNights(Date inDate, Date outDate)  {
         long nights = (outDate.getTime() - inDate.getTime());
@@ -450,7 +456,7 @@ public class GuestLoginForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuestLoginForm().setVisible(true);
+                new GuestLoginForm("").setVisible(true);
             }
         });
     }
