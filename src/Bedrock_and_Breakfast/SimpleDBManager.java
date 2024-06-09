@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public final class SimpleDBManager {
 
-    private static final String URL = "jdbc:derby:Bed;create=true"; // embedded DB URL
+    private static final String URL = "jdbc:derby:BedRR;create=true"; // embedded DB URL
     private Connection conn;
 
     public SimpleDBManager() {
