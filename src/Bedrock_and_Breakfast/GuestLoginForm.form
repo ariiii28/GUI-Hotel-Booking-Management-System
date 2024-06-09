@@ -95,7 +95,39 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="thanksLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="emailButton" linkSize="3" pref="125" max="32767" attributes="0"/>
+                                              <Component id="emailLabel" min="-2" pref="125" max="-2" attributes="0"/>
+                                              <Component id="emailAddressLabel" min="-2" pref="134" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="textButton" linkSize="3" pref="125" max="32767" attributes="0"/>
+                                              <Component id="textLabel" max="32767" attributes="0"/>
+                                              <Component id="phoneNumberLabel" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="seeYouLabel" min="-2" pref="325" max="-2" attributes="0"/>
+                                      <Component id="exitButton" min="-2" pref="325" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="welcomeLabel" min="-2" max="-2" attributes="0"/>
@@ -108,7 +140,7 @@
                                       <Component id="checkInLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="costLabel" alignment="1" max="32767" attributes="0"/>
                                       <Component id="nightsLabel" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="roomTypeLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="roomTypeLabel" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -121,39 +153,15 @@
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="emailButton" linkSize="3" pref="125" max="32767" attributes="0"/>
-                                  <Component id="emailLabel" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="emailAddressLabel" min="-2" pref="134" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="textButton" linkSize="3" pref="125" max="32767" attributes="0"/>
-                              <Component id="textLabel" max="32767" attributes="0"/>
-                              <Component id="phoneNumberLabel" alignment="1" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="thanksLabel" pref="325" max="32767" attributes="0"/>
-                              <Component id="exitButton" max="32767" attributes="0"/>
-                              <Component id="seeYouLabel" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="welcomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="guestNameLabel" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
@@ -183,7 +191,9 @@
                       <Component id="roomKindLabel" linkSize="2" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="roomTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="textLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -397,6 +407,15 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="See You Soon!!!"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Helvetica Neue" size="13" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Need these details?"/>
           </Properties>
         </Component>
       </SubComponents>
