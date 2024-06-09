@@ -193,23 +193,36 @@ public class ROOMS {
 
 //create a function to set a room reserved or not
     public boolean setRoomToReserve(int number, String isReserved) {
+        String updateQuery = "UPDATE ROOM SET RESERVED = ? WHERE R_NUMBER = ?";
 
-        PreparedStatement ps;
-        ResultSet rs;
-        String updateQuery = "UPDATE ROOM SET TYPE = ?, PHONE = ?, RESERVED = ? WHERE R_NUMBER = ?";
-
-        try {
-            ps = dbManager.getConnection().prepareStatement(updateQuery);
-
-            ps.setString(3, isReserved);
-            ps.setInt(4, number);
+        try ( PreparedStatement ps = dbManager.getConnection().prepareStatement(updateQuery)) {
+            ps.setString(1, isReserved);
+            ps.setInt(2, number);
 
             return ps.executeUpdate() > 0;
 
         } catch (SQLException ex) {
-            Logger.getLogger(CLIENTS.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
+
+    public String isRoomReserved(int number) {
+        String selectQuery = "SELECT RESERVED FROM ROOM WHERE R_NUMBER = ?";
+
+        try ( PreparedStatement ps = dbManager.getConnection().prepareStatement(selectQuery)) {
+            ps.setInt(1, number);
+            try ( ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString(1);
+                } else {
+                    return "";
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
+        }
+    }
+
 }

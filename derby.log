@@ -1,8 +1,15 @@
 ----------------------------------------------------------------
+<<<<<<< Updated upstream
 Sun Jun 09 16:21:24 NZST 2024:
 Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018f-fb3a-c707-000006f83288 
 on database directory /Users/diyatopiwala/Documents/GitHub/PDC-Assignment-2/BedRR with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@277050dc 
 Loaded from file:/Users/diyatopiwala/Documents/GitHub/PDC-Assignment-2/lib/derby.jar
+=======
+Mon Jun 10 10:34:05 NZST 2024:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018f-ff23-27e1-000006e832e0 
+on database directory /Users/ariannemasinading/Documents/GitHub/PDC-Assignment-2/BedrockDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5c0369c4 
+Loaded from file:/Users/ariannemasinading/Documents/GitHub/PDC-Assignment-2/lib/derby.jar
+>>>>>>> Stashed changes
 java.vendor=Oracle Corporation
 java.runtime.version=11.0.22+9-LTS-219
 user.dir=/Users/diyatopiwala/Documents/GitHub/PDC-Assignment-2

@@ -4,6 +4,13 @@
  */
 package Bedrock_and_Breakfast;
 
+<<<<<<< Updated upstream
+=======
+import java.awt.Image;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+>>>>>>> Stashed changes
 import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -56,6 +63,7 @@ public class BookARoomForm extends javax.swing.JFrame {
         jDateChooser2_DateOut = new com.toedter.calendar.JDateChooser();
         ConfirmBooking_Button = new javax.swing.JButton();
         ClearFieldsButton = new javax.swing.JButton();
+<<<<<<< Updated upstream
         jLayeredPane1 = new javax.swing.JLayeredPane();
         doubleSmallImage = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -64,6 +72,8 @@ public class BookARoomForm extends javax.swing.JFrame {
         queenSmallImage1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         queenSmallImage3 = new javax.swing.JLabel();
+=======
+>>>>>>> Stashed changes
         jLabel2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -183,6 +193,7 @@ public class BookARoomForm extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< Updated upstream
         jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         queenSmallImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/me/Bedrock_and_Breakfast_images/QueenRoom_small.png"))); // NOI18N
@@ -312,6 +323,9 @@ public class BookARoomForm extends javax.swing.JFrame {
                         .addComponent(doubleSmallImage)
                         .addGap(271, 271, 271))))
         );
+=======
+        jLabel2.setText("1: Queen Room. Price (per Night) $150");
+>>>>>>> Stashed changes
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -341,6 +355,7 @@ public class BookARoomForm extends javax.swing.JFrame {
                             .addComponent(jComboBox_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jDateChooser1_DateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+<<<<<<< Updated upstream
                         .addComponent(jLabel9)
                         .addGap(4, 4, 4)
                         .addComponent(jDateChooser2_DateOut, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -352,6 +367,25 @@ public class BookARoomForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+=======
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jDateChooser1_DateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser2_DateOut, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(386, 386, 386)
+                .addComponent(jLabel2)
+                .addContainerGap(109, Short.MAX_VALUE))
+>>>>>>> Stashed changes
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,8 +393,44 @@ public class BookARoomForm extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+<<<<<<< Updated upstream
                         .addGap(18, 18, 18)
                         .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jTextField_FirstNAME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jTextField_LastNAME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jComboBox_Type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jDateChooser1_DateIn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser2_DateOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ConfirmBooking_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ClearFieldsButton))
+                        .addGap(274, 274, 274))
+>>>>>>> Stashed changes
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -411,6 +481,7 @@ public class BookARoomForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
+<<<<<<< Updated upstream
     private void jTextField_EmailActionPerformed(java.awt.event.ActionEvent evt) {                                                 
 
     }                                                
@@ -481,6 +552,9 @@ public class BookARoomForm extends javax.swing.JFrame {
 
 
     private void ClearFieldsButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+=======
+    private void ClearFieldsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearFieldsButtonActionPerformed
+>>>>>>> Stashed changes
 
         //jTextField_ID.setText("");
         jTextField_FirstNAME.setText("");
@@ -492,10 +566,127 @@ public class BookARoomForm extends javax.swing.JFrame {
         jDateChooser2_DateOut.setDate(null);
     }                                                 
 
+<<<<<<< Updated upstream
     private void jComboBox_TypeActionPerformed(java.awt.event.ActionEvent evt) {                                               
+=======
+    private void ConfirmBooking_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmBooking_ButtonActionPerformed
+        String fname = jTextField_FirstNAME.getText();
+        String lname = jTextField_LastNAME.getText();
+        String phone = jTextField_PhoneNumber.getText();
+        String email = jTextField_Email.getText();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date_in = dateFormat.format(jDateChooser1_DateIn.getDate());
+        String date_out = dateFormat.format(jDateChooser2_DateOut.getDate());
+
+        if (fname.trim().isEmpty() || lname.trim().isEmpty() || phone.trim().isEmpty() || email.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in all the fields.", "Input Fields Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int roomType = Integer.parseInt(jComboBox_Type.getSelectedItem().toString());
+        int clientId;
+
+        System.out.println("Room Type selected: " + roomType);
+        System.out.println("Date In: " + date_in);
+        System.out.println("Date Out: " + date_out);
+
+        try {
+            if (booking.addClient(fname, lname, phone, email)) {
+                clientId = booking.getClientIdByEmail(email);
+                System.out.println("Email used for retrieving client ID: " + email);
+                System.out.println("Retrieved Client ID: " + clientId);
+
+                if (clientId >= 1) {
+                    int roomNumber = booking.getAvailableRoomNumber(roomType); // Get an available room number
+                    System.out.println("Available Room Number: " + roomNumber);
+
+                    if (roomNumber > 0) {
+                        // Add room
+                        if (booking.addRoom(roomNumber, roomType)) {
+                            System.out.println("Room added successfully: " + roomNumber);
+
+                            // Proceed with booking
+                            boolean bookingSuccess = booking.addBooking(clientId, roomNumber, date_in, date_out);
+
+                            if (bookingSuccess) {
+                                JOptionPane.showMessageDialog(this, "Room " + roomNumber + " booked successfully for client ID " + clientId + "!");
+                                int response = JOptionPane.showConfirmDialog(this, "Do you want to proceed with booking?", "Confirm Booking", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                                if (response == JOptionPane.YES_OPTION) {
+                                    ConfirmationForm confirmation = new ConfirmationForm();
+                                    confirmation.setVisible(true);
+                                    confirmation.pack();
+                                    confirmation.setLocationRelativeTo(null);
+                                    confirmation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Failed to book room. Reason: Room might be already booked or dates are not valid.", "Booking Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Failed to add room.", "Room Addition Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "No available rooms for the selected room type.", "Booking Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Failed to retrieve client ID.", "Client ID Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to add client.", "Client Addition Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Failed to book room. Error: " + e.getMessage(), "Booking Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_ConfirmBooking_ButtonActionPerformed
+
+    private void jComboBox_TypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_TypeActionPerformed
+>>>>>>> Stashed changes
         // TODO add your handling code here:
     }                                              
 
+    private void jTextField_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_EmailActionPerformed
+
+    }//GEN-LAST:event_jTextField_EmailActionPerformed
+
+    private void jTextField_PhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PhoneNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_PhoneNumberActionPerformed
+
+    public JTextField getjTextField_Email() {
+        return jTextField_Email;
+    }
+
+//    private boolean validateInputs(String fname, String lname, String phone, String email, String date_in, String date_out) {
+//        return !fname.trim().isEmpty() && !lname.trim().isEmpty() && !phone.trim().isEmpty() && !email.trim().isEmpty() && validateDates(date_in, date_out);
+//    }
+//
+//    private boolean validateDates(String date_in, String date_out) {
+//        try {
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//            java.util.Date checkIn = dateFormat.parse(date_in);
+//            java.util.Date checkOut = dateFormat.parse(date_out);
+//            return checkIn.before(checkOut);
+//        } catch (Exception e) {
+//            return false;
+//        }
+//    }
+//
+//    private void showSuccessMessage(int clientId) {
+//        JOptionPane.showMessageDialog(this, "Room booked successfully for client ID " + clientId + "!");
+//        int response = JOptionPane.showConfirmDialog(this, "Do you want to proceed with booking?", "Confirm Booking", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+//        if (response == JOptionPane.YES_OPTION) {
+//            ConfirmationForm confirmation = new ConfirmationForm();
+//            confirmation.setVisible(true);
+//            confirmation.pack();
+//            confirmation.setLocationRelativeTo(null);
+//            confirmation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//        }
+//    }
+//
+//    private void showErrorMessage(String message) {
+//        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+//    }
     /**
      * @param args the command line arguments
      */
@@ -569,9 +760,13 @@ public class BookARoomForm extends javax.swing.JFrame {
     javax.swing.JTextField jTextField_FirstNAME;
     javax.swing.JTextField jTextField_LastNAME;
     javax.swing.JTextField jTextField_PhoneNumber;
+<<<<<<< Updated upstream
     javax.swing.JLabel queenSmallImage;
     javax.swing.JLabel queenSmallImage1;
     javax.swing.JLabel queenSmallImage2;
     javax.swing.JLabel queenSmallImage3;
     // End of variables declaration                   
+=======
+    // End of variables declaration//GEN-END:variables
+>>>>>>> Stashed changes
 }

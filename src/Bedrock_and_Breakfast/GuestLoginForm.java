@@ -74,7 +74,7 @@ public class GuestLoginForm extends javax.swing.JFrame {
             phoneNumberLabel.setText(phoneNumber + "?");
         } else {
             guestNameLabel.setText("Guest");
-            checkInGuest.setText("dd/mmm/yyyy");
+            checkInGuest.setText("yyyy/MM/dd");
             checkOutGuest.setText("dd/mmm/yyyy");
             numberOfNightsLabel.setText("0");
             priceLabel.setText("0");

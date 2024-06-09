@@ -4,7 +4,9 @@
  */
 package Bedrock_and_Breakfast;
 
+import static javax.print.attribute.Size2DSyntax.MM;
 import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -21,8 +23,10 @@ public class ConfirmationForm extends javax.swing.JFrame {
     String getEmail = (bookRoom.getjTextField_Email()).getText();
     int clientsId = booking.getClientIdByEmail(getEmail);
     
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    
     GuestLoginForm guestLoginForm = new GuestLoginForm(getEmail);
-    java.sql.Date checkingIn = reservation.getClientCheckInDate(clientsId);
+    java.sql.Date checkingIn = 
     java.sql.Date checkingOut = reservation.getClientCheckOutDate(clientsId);
     String[] typeInfo = rooms.getTypeInfo(clientsId);
     int roomPrice = Integer.parseInt(typeInfo[1]);

@@ -109,7 +109,7 @@ public class ManageRoomsForm extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Number:");
+        jLabel2.setText("Room No:");
 
         jTextField_Number.setBackground(new java.awt.Color(255, 255, 255));
         jTextField_Number.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
