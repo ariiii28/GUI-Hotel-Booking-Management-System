@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Mon Jun 10 13:33:53 NZST 2024:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018f-ffc7-c519-000006a02448 
-on database directory /Users/ariannemasinading/Documents/GitHub/PDC-Assignment-2/BedrockDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5c0369c4 
-Loaded from file:/Users/ariannemasinading/Documents/GitHub/PDC-Assignment-2/lib/derby.jar
+Mon Jun 10 13:41:05 NZST 2024:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018f-ffce-5c54-000006edb5b0 
+on database directory /Users/diyatopiwala/Documents/GitHub/PDC-Assignment-2/BedrockDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@277050dc 
+Loaded from file:/Users/diyatopiwala/Documents/GitHub/PDC-Assignment-2/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=11.0.22+9-LTS-219
-user.dir=/Users/ariannemasinading/Documents/GitHub/PDC-Assignment-2
+user.dir=/Users/diyatopiwala/Documents/GitHub/PDC-Assignment-2
 os.name=Mac OS X
 os.arch=aarch64
-os.version=14.2
+os.version=14.1.1
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
