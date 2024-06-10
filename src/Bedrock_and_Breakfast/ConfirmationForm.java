@@ -250,10 +250,12 @@ public class ConfirmationForm extends javax.swing.JFrame {
         if (booked = true) {
             JOptionPane.showMessageDialog(this, "Booking Confirmed!");
             CreateAccountForm create = new CreateAccountForm();
-            create.setVisible(true);
-            create.pack();
-            create.setLocationRelativeTo(null);
             create.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            create.setLocationRelativeTo(null);
+            create.setAlwaysOnTop(true);
+            create.pack();
+            create.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_doneButtonActionPerformed
 

@@ -451,6 +451,8 @@ public class BookARoomForm extends javax.swing.JFrame {
         System.out.println("Room Type selected: " + roomType);
         System.out.println("Date In: " + date_in);
         System.out.println("Date Out: " + date_out);
+        
+        
 
         try {
             if (booking.addClient(fname, lname, phone, email)) {
@@ -476,10 +478,12 @@ public class BookARoomForm extends javax.swing.JFrame {
 
                                 if (response == JOptionPane.YES_OPTION) {
                                     ConfirmationForm confirmation = new ConfirmationForm(clientId);
-                                    confirmation.setVisible(true);
-                                    confirmation.pack();
-                                    confirmation.setLocationRelativeTo(null);
                                     confirmation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                                    confirmation.setLocationRelativeTo(null);
+                                    confirmation.setAlwaysOnTop(true);
+                                    confirmation.pack();
+                                    confirmation.setVisible(true);
+                                    this.dispose();
                                 }
                             } else {
                                 JOptionPane.showMessageDialog(this, "Failed to book room. Reason: Room might be already booked or dates are not valid.", "Booking Error", JOptionPane.ERROR_MESSAGE);
