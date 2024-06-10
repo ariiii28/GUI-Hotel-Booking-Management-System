@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -19,7 +21,6 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ariannemasinading
  */
-
 public class RESERVATION {
 
     SimpleDBManager dbManager = new SimpleDBManager();
@@ -114,11 +115,11 @@ public class RESERVATION {
     }
 
     public int getClientIdByEmail(String email) {
-        String selectQuery = "SELECT ID FROM CLIENTS WHERE EMAIL = ?";
+        String selectQuery = "SELECT CLIENT_ID FROM RESERVATIONS WHERE CLIENT_ID = ?";
         try ( PreparedStatement ps = dbManager.getConnection().prepareStatement(selectQuery)) {
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            if (rs.first()) {
                 return rs.getInt("ID");
             }
         } catch (SQLException ex) {
@@ -169,7 +170,7 @@ public class RESERVATION {
     public java.sql.Date getClientCheckOutDate(int client_id) {
         String selectQuery = "SELECT DATE_OUT FROM RESERVATIONS WHERE CLIENT_ID = ?";
         java.sql.Date checkOutDate = null;
-        
+
         try ( PreparedStatement ps = dbManager.getConnection().prepareStatement(selectQuery)) {
             ps.setInt(1, client_id);
 
@@ -185,6 +186,34 @@ public class RESERVATION {
             Logger.getLogger(RESERVATION.class.getName()).log(Level.SEVERE, null, ex);
         }
         return checkOutDate;
+    }
+
+    public Map<String, Object> getClientDetailsByID(int clientid) {
+        Map<String, Object> clientDetails = new HashMap<>();
+        String query = "SELECT CLIENT_ID, DATE_IN, DATE_OUT FROM Reservations WHERE CLIENT_ID = ?";
+
+        try (PreparedStatement ps = dbManager.getConnection().prepareStatement(query)) {
+
+            // Set the email parameter
+            ps.setInt(1, clientid);
+ 
+
+            try ( ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    clientDetails.put("CLIENT_ID", rs.getInt("CLIENT_ID"));
+                    clientDetails.put("DATE_IN", rs.getDate("DATE_IN"));
+                    clientDetails.put("DATE_OUT", rs.getDate("DATE_OUT"));
+                    System.out.println("CLIENT_ID: " + clientid);
+   
+                    
+                } else {
+                    System.out.println("No reservation found for client ID: " + clientid);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return clientDetails;
     }
 
     public int getRoomNumberFromReservation(int reservationID) {
@@ -203,5 +232,9 @@ public class RESERVATION {
             Logger.getLogger(CLIENTS.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
         }
+    }
+
+    Map<String, Object> getClientDetailsByEmail(String email) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

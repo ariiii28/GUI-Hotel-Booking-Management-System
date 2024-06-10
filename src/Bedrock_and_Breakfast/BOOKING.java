@@ -118,16 +118,16 @@ public class BOOKING {
         }
     }
     
-    public boolean addRoom(int roomNumber, int roomType) {
-        String insertQuery = "INSERT INTO Room (r_number, type, phone, reserved) VALUES (?, ?, '', 'Yes')";
+    public boolean addRoom(int roomNumber, int roomType, String phone) {
+        String insertQuery = "INSERT INTO Room (r_number, type, phone, reserved) VALUES (?, ?, ?, 'Yes')";
         try (PreparedStatement ps = dbManager.getConnection().prepareStatement(insertQuery)) {
             ps.setInt(1, roomNumber);
             ps.setInt(2, roomType);
+            ps.setString(3, phone);
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(BOOKING.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
-
 }

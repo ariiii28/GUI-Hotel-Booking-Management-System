@@ -7,6 +7,7 @@ package Bedrock_and_Breakfast;
 import static javax.print.attribute.Size2DSyntax.MM;
 import javax.swing.JOptionPane;
 import java.text.SimpleDateFormat;
+import java.util.Map;
 
 /**
  *
@@ -17,29 +18,49 @@ public class ConfirmationForm extends javax.swing.JFrame {
     CLIENTS clients = new CLIENTS();
     RESERVATION reservation = new RESERVATION();
     ROOMS rooms = new ROOMS();
-    boolean booked = false;
     BOOKING booking = new BOOKING();
-    BookARoomForm bookRoom = new BookARoomForm();
-    String getEmail = (bookRoom.getjTextField_Email()).getText();
-    int clientsId = booking.getClientIdByEmail(getEmail);
-    
+    boolean booked = false;
+
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+    java.sql.Date checkingIn;
+    java.sql.Date checkingOut;
+    int totalPrice;
     
-    GuestLoginForm guestLoginForm = new GuestLoginForm(getEmail);
-    java.sql.Date checkingIn = 
-    java.sql.Date checkingOut = reservation.getClientCheckOutDate(clientsId);
-    String[] typeInfo = rooms.getTypeInfo(clientsId);
-    int roomPrice = Integer.parseInt(typeInfo[1]);
-    int totalNights = guestLoginForm.calculateNights(checkingIn, checkingOut);
-    int totalPrice = roomPrice * totalNights;
-        
-    /**
-     * Creates new form ConfirmationForm
-     */
-    public ConfirmationForm() {
+
+    public ConfirmationForm(int clientId) {
         initComponents();
-        priceLabel.setText("$" + String.valueOf(totalPrice));
-        
+
+        // Use the clientId parameter directly to retrieve client details
+        Map<String, Object> clientDetails = reservation.getClientDetailsByID(clientId);
+        if (!clientDetails.isEmpty()) {
+            this.checkingIn = (java.sql.Date) clientDetails.get("DATE_IN");
+            this.checkingOut = (java.sql.Date) clientDetails.get("DATE_OUT");
+
+            if (checkingIn != null && checkingOut != null) { // Add null checks
+                String[] typeInfo = rooms.getTypeInfo(clientId);
+                if (typeInfo != null && typeInfo.length > 1) {
+                    int roomPrice = Integer.parseInt(typeInfo[1]);
+                    int totalNights = calculateNights(checkingIn, checkingOut);
+                    this.totalPrice = roomPrice * totalNights;
+                    priceLabel.setText("$" + totalPrice);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Room information not found.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Check-in or check-out date is missing.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No client details found.");
+        }
+
+    }
+
+    // Method to calculate nights between two dates
+    private int calculateNights(java.sql.Date checkingIn, java.sql.Date checkingOut) {
+        long diffInMillies = Math.abs(checkingOut.getTime() - checkingIn.getTime());
+        long diff = diffInMillies / (1000 * 60 * 60 * 24);
+        return (int) diff;
     }
 
     /**
@@ -218,11 +239,10 @@ public class ConfirmationForm extends javax.swing.JFrame {
         String price = Integer.toString(totalPrice);
         System.out.println("Payment String: " + paymentString);
         System.out.println("Price: " + price);
-        
+
         if (paymentString.equals(price)) {
             booked = true;
-        } 
-        else {
+        } else {
             JOptionPane.showMessageDialog(this, "Incorrect Payment Amount");
         }
     }//GEN-LAST:event_cardButtonActionPerformed
@@ -265,7 +285,6 @@ public class ConfirmationForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConfirmationForm().setVisible(true);
             }
         });
     }
