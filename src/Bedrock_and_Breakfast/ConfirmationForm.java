@@ -7,6 +7,7 @@ package Bedrock_and_Breakfast;
 import javax.swing.JOptionPane;
 import java.text.SimpleDateFormat;
 import java.util.Map;
+import javax.swing.JFrame;
 
 /**
  *
@@ -248,8 +249,11 @@ public class ConfirmationForm extends javax.swing.JFrame {
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         if (booked = true) {
             JOptionPane.showMessageDialog(this, "Booking Confirmed!");
-            this.dispose();
-            System.exit(0);
+            CreateAccountForm create = new CreateAccountForm();
+            create.setVisible(true);
+            create.pack();
+            create.setLocationRelativeTo(null);
+            create.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
     }//GEN-LAST:event_doneButtonActionPerformed
 
