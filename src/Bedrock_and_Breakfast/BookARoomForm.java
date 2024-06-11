@@ -191,7 +191,7 @@ public class BookARoomForm extends javax.swing.JFrame {
 
         jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        queenSmallImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/me/Bedrock_and_Breakfast_images/QueenRoom_small.png"))); // NOI18N
+        queenSmallImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Bedrock_and_Breakfast_images/QueenRoom_small.png"))); // NOI18N
         queenSmallImage.setText("jLabel11");
         queenSmallImage.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -212,7 +212,7 @@ public class BookARoomForm extends javax.swing.JFrame {
                                 .addContainerGap())
         );
 
-        queenSmallImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/me/Bedrock_and_Breakfast_images/DoubleRoom_small.png"))); // NOI18N
+        queenSmallImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Bedrock_and_Breakfast_images/DoubleRoom_small.png"))); // NOI18N
         queenSmallImage1.setText("jLabel11");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -232,7 +232,7 @@ public class BookARoomForm extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        queenSmallImage3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/me/Bedrock_and_Breakfast_images/SuperiorRoom_small.png"))); // NOI18N
+        queenSmallImage3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Bedrock_and_Breakfast_images/SuperiorRoom_small.png"))); // NOI18N
         queenSmallImage3.setText("jLabel11");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);

@@ -25,7 +25,7 @@ public class HomePage extends javax.swing.JFrame {
         ImageIcon logoicon = null;
         try {
             // Use the relative path from the classpath
-            java.net.URL imgURL = getClass().getResource("/org/me/Bedrock_and_Breakfast_images/logo.png");
+            java.net.URL imgURL = getClass().getResource("/Resources/Bedrock_and_Breakfast_images/logo.png");
             if (imgURL != null) {
                 logoicon = new ImageIcon(imgURL);
             } else {
@@ -135,7 +135,7 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        logoIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/me/Bedrock_and_Breakfast_images/logo2.png"))); // NOI18N
+        logoIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Bedrock_and_Breakfast_images/logo2.png"))); // NOI18N
 
         jScrollPane1.setToolTipText("");
         jScrollPane1.setHorizontalScrollBar(null);

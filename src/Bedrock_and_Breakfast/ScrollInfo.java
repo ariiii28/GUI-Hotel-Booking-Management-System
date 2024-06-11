@@ -19,7 +19,7 @@ public class ScrollInfo extends javax.swing.JFrame {
     public ScrollInfo() {
         initComponents();
         
-        java.net.URL imgURL = getClass().getResource("/org/me/Bedrock_and_Breakfast_images/Queen Room.png");
+        java.net.URL imgURL = getClass().getResource("/Resources/Bedrock_and_Breakfast_images/Queen Room.png");
         if (imgURL != null) {
             queenImg.setIcon(new javax.swing.ImageIcon(imgURL));
             queenImg.setText("");
@@ -27,7 +27,7 @@ public class ScrollInfo extends javax.swing.JFrame {
             System.out.println("Queen Room image not found!");
         }
 
-        imgURL = getClass().getResource("/org/me/Bedrock_and_Breakfast_images/Superior Room.png");
+        imgURL = getClass().getResource("/Resources/Bedrock_and_Breakfast_images/Superior Room.png");
         if (imgURL != null) {
             superiorImg.setIcon(new javax.swing.ImageIcon(imgURL));
             superiorImg.setText("");
@@ -35,7 +35,7 @@ public class ScrollInfo extends javax.swing.JFrame {
             System.out.println("Superior Room image not found!");
         }
 
-        imgURL = getClass().getResource("/org/me/Bedrock_and_Breakfast_images/Double Room.png");
+        imgURL = getClass().getResource("/Resources/Bedrock_and_Breakfast_images/Double Room.png");
         if (imgURL != null) {
             doubleImg.setIcon(new javax.swing.ImageIcon(imgURL));
             doubleImg.setText("");
